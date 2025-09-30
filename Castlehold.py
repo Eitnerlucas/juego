@@ -183,7 +183,7 @@ class Juego:
         self.enemigos = pygame.sprite.Group()
 
         self.spawn_timer = 0
-        self.spawn_interval = 2000
+        self.spawn_interval = 2000 
         self.enemigo_velocidad = -2
 
         self.puntaje_A = 0
@@ -263,6 +263,8 @@ class Juego:
             self.manejar_eventos()
             teclas = pygame.key.get_pressed()
             if self.game_over and teclas[pygame.K_ESCAPE]:
+                cod_usuario, nombre, apodo, clave = obtener_codigo_usuario()
+                guardar_detalle_partida(cod_usuario, self.partidas_jugadas, self.puntaje_A, self.puntaje_B)
                 pygame.quit()
                 sys.exit()
             self.actualizar(dt)
