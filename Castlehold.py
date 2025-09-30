@@ -104,6 +104,13 @@ def guardar_detalle_partida(cod_usuario, num_partida, puntaje_a, puntaje_b):
         with open("detalle_partidas.txt", "a") as f:
             f.write(f"{id_jugador},{cod_usuario},{num_partida},{puntaje_a},{puntaje_b},{fecha}\n")
 
+
+def Guardar_colisiones(cod_usuario, num_partida, x, y, obs="enemigo eliminado"):
+    fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open("colisiones.txt", "a") as f:
+        f.write(f"{cod_usuario},{num_partida},{x},{y},{obs},{fecha}\n")
+        
+
 # ====== Clases ======
 class Jugador(pygame.sprite.Sprite):
     def __init__(self, x, y):
@@ -217,6 +224,8 @@ class Juego:
             if resultado == "castillo":
                 self.vidas -= 1
                 self.puntaje_B += 1
+                cod_usuario = obtener_codigo_usuario()[0]
+                Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y, "enemigo llegó al castillo")
                 if self.vidas <= 0:
                     self.game_over = True
 
@@ -224,6 +233,10 @@ class Juego:
         if colisiones:
             kills = len(colisiones)
             self.puntaje_A += kills
+            for bala, enemigos in colisiones.items():
+                for enemigo in enemigos:
+                    cod_usuario = obtener_codigo_usuario()[0]
+                    Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y,)
             if self.puntaje_A % 5 == 0:
                 self.enemigo_velocidad -= 0.5
                 if self.spawn_interval > 600:

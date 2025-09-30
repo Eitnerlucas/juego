@@ -1,3 +1,1 @@
-001, Lucas, Ancho, 001
-001, Lucas, Ancho, 001
-002, lucasa, joa, 002
+001, joa, lucas, 001

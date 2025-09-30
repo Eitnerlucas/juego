@@ -1,0 +1,6 @@
+001,1,516,304,enemigo eliminado,2025-09-30 09:42:29
+001,1,18,127,enemigo llegó al castillo,2025-09-30 09:42:35
+001,1,18,367,enemigo llegó al castillo,2025-09-30 09:42:37
+001,1,18,334,enemigo llegó al castillo,2025-09-30 09:42:39
+001,1,18,356,enemigo llegó al castillo,2025-09-30 09:42:41
+001,1,18,176,enemigo llegó al castillo,2025-09-30 09:42:43
