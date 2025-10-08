@@ -114,21 +114,21 @@ def Guardar_colisiones(cod_usuario, num_partida, x, y, obs="enemigo eliminado"):
 # ====== Clases ======
 class Jugador(pygame.sprite.Sprite):
     def __init__(self, x, y):
-        super().__init__()
-        self.image = pygame.Surface((40, 40))
-        self.image.fill(COLOR_JUGADOR)
-        self.rect = self.image.get_rect(center=(x, y))
-        self.vel_y = 0
-        self.velocidad = 5
+        super().__init__() # super() llama al constructor de la clase padre (pygame.sprite.Sprite)
+        self.image = pygame.Surface((40, 40)) #crea una superficie de 40x40 pixeles
+        self.image.fill(COLOR_JUGADOR) #rellena la superficie con el color definido
+        self.rect = self.image.get_rect(center=(x, y)) #obtiene el rectángulo que rodea la imagen y lo centra en (x, y)
+        self.vel_y = 0 #velocidad vertical inicial
+        self.velocidad = 5 #velocidad de movimiento
 
-    def manejar_input(self, teclas):
-        self.vel_y = 0
-        if teclas[pygame.K_UP]:
-            self.vel_y = -self.velocidad
-        if teclas[pygame.K_DOWN]:
-            self.vel_y = self.velocidad
+    def manejar_input(self, teclas): #maneja el input del teclado
+        self.vel_y = 0 #resetea la velocidad vertical
+        if teclas[pygame.K_UP]: #si la tecla arriba está presionada
+            self.vel_y = -self.velocidad #mueve hacia arriba
+        if teclas[pygame.K_DOWN]: #si la tecla abajo está presionada
+            self.vel_y = self.velocidad #mueve hacia abajo
 
-    def update(self):
+    def update(self): #actualiza la posición del jugador
         teclas = pygame.key.get_pressed()
         self.manejar_input(teclas)
         self.rect.y += self.vel_y
@@ -171,6 +171,8 @@ class Enemigo(pygame.sprite.Sprite):
             return "castillo"
         return None
 
+MAX_JUGADAS = 50
+NUM_OBJETOS = 2
 
 # ====== Juego ======
 class Juego:
@@ -197,7 +199,11 @@ class Juego:
         self.puntaje_B = 0
         self.vidas = 5
         self.game_over = False
+        self.contador_jugadas = 0
+        self.matriz_jugadas = [[0 for _ in range(NUM_OBJETOS)] for _ in range(MAX_JUGADAS)]
 
+        
+        
     def manejar_eventos(self):
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
@@ -222,6 +228,8 @@ class Juego:
         for enemigo in list(self.enemigos):
             resultado = enemigo.update()
             if resultado == "castillo":
+                self.matriz_jugadas[self.contador_jugadas][1] = 1
+                self.contador_jugadas += 1
                 self.vidas -= 1
                 self.puntaje_B += 1
                 cod_usuario = obtener_codigo_usuario()[0]
@@ -231,6 +239,8 @@ class Juego:
 
         colisiones = pygame.sprite.groupcollide(self.balas, self.enemigos, True, True)
         if colisiones:
+            self.matriz_jugadas[self.contador_jugadas][0] = 1
+            self.contador_jugadas += 1
             kills = len(colisiones)
             self.puntaje_A += kills
             for bala, enemigos in colisiones.items():
@@ -263,19 +273,20 @@ class Juego:
         texto = fuente.render(f"{self.nombre_jugador} | Puntaje: {self.puntaje_A} | Puntaje enemigo {self.puntaje_B}", True, COLOR_TEXTO)
         surf.blit(texto, (10, 10))
 
-        self.dibujar_barra_vida(surf)
+        self.dibujar_barra_vida(surf) 
 
         if self.game_over:
             msg = fuente.render("GAME OVER - Presiona ESC para salir", True, (255, 50, 50))
             rect = msg.get_rect(center=(ANCHO // 2, ALTO // 2))
             surf.blit(msg, rect)
-
+           
     def run(self):
         while True:
             dt = clock.tick(FPS)
             self.manejar_eventos()
             teclas = pygame.key.get_pressed()
-            if self.game_over and teclas[pygame.K_ESCAPE]:
+            if self.game_over and teclas[pygame.K_ESCAPE]:    
+                print( self.matriz_jugadas)
                 cod_usuario, nombre, apodo, clave = obtener_codigo_usuario()
                 guardar_detalle_partida(cod_usuario, self.partidas_jugadas, self.puntaje_A, self.puntaje_B)
                 pygame.quit()
@@ -283,7 +294,7 @@ class Juego:
             self.actualizar(dt)
             self.dibujar(pantalla)
             pygame.display.flip()
-
+            
 
 # ====== Ejecutar ======
 if __name__ == "__main__":
