@@ -4,3 +4,20 @@
 001,1,18,334,enemigo llegó al castillo,2025-09-30 09:42:39
 001,1,18,356,enemigo llegó al castillo,2025-09-30 09:42:41
 001,1,18,176,enemigo llegó al castillo,2025-09-30 09:42:43
+000,2,434,94,enemigo eliminado,2025-10-09 13:21:16
+000,2,492,221,enemigo eliminado,2025-10-09 13:21:17
+000,2,550,304,enemigo eliminado,2025-10-09 13:21:19
+000,2,588,159,enemigo eliminado,2025-10-09 13:21:20
+000,2,524,101,enemigo eliminado,2025-10-09 13:21:23
+000,2,474,322,enemigo eliminado,2025-10-09 13:21:25
+000,2,498,232,enemigo eliminado,2025-10-09 13:21:27
+000,2,722,100,enemigo eliminado,2025-10-09 13:21:29
+000,2,494,59,enemigo eliminado,2025-10-09 13:21:29
+000,2,736,51,enemigo eliminado,2025-10-09 13:21:32
+000,2,286,61,enemigo eliminado,2025-10-09 13:21:34
+000,2,317,174,enemigo eliminado,2025-10-09 13:21:36
+000,2,449,275,enemigo eliminado,2025-10-09 13:21:37
+000,2,470,141,enemigo eliminado,2025-10-09 13:21:38
+000,2,353,364,enemigo eliminado,2025-10-09 13:21:41
+000,2,548,342,enemigo eliminado,2025-10-09 13:21:41
+000,2,638,306,enemigo eliminado,2025-10-09 13:21:42
