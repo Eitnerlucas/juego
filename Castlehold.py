@@ -171,8 +171,33 @@ class Enemigo(pygame.sprite.Sprite):
             return "castillo"
         return None
 
-MAX_JUGADAS = 50
-NUM_OBJETOS = 2
+
+
+class GestionMatriz:
+    def __init__(self, MAX_JUGADAS=50, NUM_OBJETOS=2, DIAS =31, MES=12, PARTIDAS=100):
+        #PRIMERA MATRIZ (JUGADAS X OBJETOS)
+        self.matriz_jugadas = [[0 for _ in range(NUM_OBJETOS)] for _ in range(MAX_JUGADAS)]
+        #SEGUNDA MATRIZ (DIAS X OBJETOS)
+        self.matriz_dias = [[0 for _ in range(NUM_OBJETOS)] for _ in range(DIAS)]
+        #TERCERA MATRIZ (PARTIDA X MES X OBJETOS)
+        self.matriz_3D = [[[0 for _ in range(NUM_OBJETOS)] for _ in range(MES)] for _ in range(PARTIDAS)]
+        
+    def cargar_matriz_jugadas(self, fila, objeto):
+        self.matriz_jugadas[fila][objeto] += 1
+        
+    def cargar_matriz_dias(self, dia, objeto):
+        self.matriz_dias[dia][objeto] += 1
+        
+    def cargar_matriz_3D(self, partida, mes, objeto):
+        self.matriz_3D[partida][mes][objeto] += 1
+        
+    def mostrar_matriz(self, matriz):
+        for fila in matriz:
+            for valor in fila:
+                print(f"|{valor}|", end="")
+            print()
+        print()
+
 
 # ====== Juego ======
 class Juego:
@@ -190,7 +215,7 @@ class Juego:
         self.sprites = pygame.sprite.Group(self.jugador)
         self.balas = pygame.sprite.Group()
         self.enemigos = pygame.sprite.Group()
-
+        self.matriz = GestionMatriz()
         self.spawn_timer = 0
         self.spawn_interval = 2000 
         self.enemigo_velocidad = -2
@@ -200,7 +225,7 @@ class Juego:
         self.vidas = 5
         self.game_over = False
         self.contador_jugadas = 0
-        self.matriz_jugadas = [[0 for _ in range(NUM_OBJETOS)] for _ in range(MAX_JUGADAS)]
+        
 
         
         
@@ -228,10 +253,10 @@ class Juego:
         for enemigo in list(self.enemigos):
             resultado = enemigo.update()
             if resultado == "castillo":
-                self.matriz_jugadas[self.contador_jugadas][1] = 1
-                self.contador_jugadas += 1
                 self.vidas -= 1
                 self.puntaje_B += 1
+                self.matriz.cargar_matriz_jugadas(self.contador_jugadas, 1)
+                self.contador_jugadas += 1
                 cod_usuario = obtener_codigo_usuario()[0]
                 Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y, "enemigo llegó al castillo")
                 if self.vidas <= 0:
@@ -239,10 +264,10 @@ class Juego:
 
         colisiones = pygame.sprite.groupcollide(self.balas, self.enemigos, True, True)
         if colisiones:
-            self.matriz_jugadas[self.contador_jugadas][0] = 1
-            self.contador_jugadas += 1
             kills = len(colisiones)
             self.puntaje_A += kills
+            self.matriz.cargar_matriz_jugadas(self.contador_jugadas, 0)
+            self.contador_jugadas += 1
             for bala, enemigos in colisiones.items():
                 for enemigo in enemigos:
                     cod_usuario = obtener_codigo_usuario()[0]
@@ -285,8 +310,9 @@ class Juego:
             dt = clock.tick(FPS)
             self.manejar_eventos()
             teclas = pygame.key.get_pressed()
-            if self.game_over and teclas[pygame.K_ESCAPE]:    
-                print( self.matriz_jugadas)
+            if self.game_over and teclas[pygame.K_ESCAPE]:
+                print("jugas|objetos")   
+                self.matriz.mostrar_matriz(self.matriz.matriz_jugadas)
                 cod_usuario, nombre, apodo, clave = obtener_codigo_usuario()
                 guardar_detalle_partida(cod_usuario, self.partidas_jugadas, self.puntaje_A, self.puntaje_B)
                 pygame.quit()
