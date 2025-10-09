@@ -5,7 +5,7 @@ import os  #para operaciones del sistema
 from datetime import datetime #para obtener fechas
 
 # ====== Configuración ======
-ANCHO, ALTO = 800, 450
+ANCHO, ALTO = 1400, 800 #cambio el tamaño de la ventana
 FPS = 60
 COLOR_FONDO = (20, 20, 30)
 COLOR_CASTILLO = (80, 80, 200)
@@ -15,19 +15,53 @@ COLOR_BALA = (250, 250, 100)
 COLOR_BARRA_VIDA = (80, 200, 80)
 COLOR_BARRA_VACIA = (200, 50, 50)
 COLOR_TEXTO = (220, 220, 220)
+COLOR_JEFE = (150, 0, 0)
+
 
 pygame.init()
 pantalla = pygame.display.set_mode((ANCHO, ALTO))
 pygame.display.set_caption("Juego de Eitner- registro de usuario")
 clock = pygame.time.Clock()
 fuente = pygame.font.SysFont("consolas", 20)
+fondo_inicio = pygame.image.load("fondo_galdor.png").convert() #carga la imagen de fondo y la convierte para optimizar el rendimiento
+fondo_juego = pygame.image.load("dungeon.png").convert() #carga la imagen de fondo y la convierte para optimizar el rendimiento
 
 
-# ====== Registro de jugador en pantalla ======
+#========= pantalla de inicio ========
+def pantalla_inicio():
+    activo = True
+    while activo:
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif evento.type == pygame.KEYDOWN:
+                if evento.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
+                else:
+                    return  # cualquier otra tecla continúa
+
+        pantalla.blit(fondo_inicio,(0,0))
+
+        # Mensajes
+       # titulo = fuente.render("COMENZAR", True, COLOR_TEXTO)
+        instruccion = fuente.render("Presiona cualquier tecla para comenzar", True, (180, 180, 180))
+        salir = fuente.render("Presiona ESC para salir", True, (180, 100, 100))
+
+        #pantalla.blit(titulo, (ANCHO//2 - titulo.get_width()//2, ALTO//2 - 60))
+        pantalla.blit(instruccion, (ANCHO//2 - instruccion.get_width()//2, ALTO//2)) # centra el texto
+        pantalla.blit(salir, (ANCHO//2 - salir.get_width()//2, ALTO//2 + 40)) # centra el texto
+
+        pygame.display.flip()
+        clock.tick(FPS)
+
+
+
+# =============== Registro de jugador en pantalla ====== AHORA SE EJECUTA AL FINALIZAR LA PARTIDA    
 def pantalla_registro():
     texto = "" 
     activo = True
-
     while activo:
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT: #se fija si el usuario quiere saalir 
@@ -53,6 +87,8 @@ def pantalla_registro():
         pygame.display.flip()
         clock.tick(FPS)
         
+        
+        
 def obtener_codigo_usuario():
     with open("usuarios.txt", "r") as archivo:
         for linea in archivo:
@@ -62,6 +98,9 @@ def obtener_codigo_usuario():
             apodo = campos[2]
             clave = campos[3]
     return cod_usuario, nombre, apodo, clave
+    
+    
+    
     
 # ====== Funciones para manejo de archivos ======    
             
@@ -111,15 +150,17 @@ def Guardar_colisiones(cod_usuario, num_partida, x, y, obs="enemigo eliminado"):
         f.write(f"{cod_usuario},{num_partida},{x},{y},{obs},{fecha}\n")
         
 
+
+
 # ====== Clases ======
 class Jugador(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__() # super() llama al constructor de la clase padre (pygame.sprite.Sprite)
-        self.image = pygame.Surface((40, 40)) #crea una superficie de 40x40 pixeles
+        self.image = pygame.Surface((70, 70)) #crea una superficie de 40x40 pixeles
         self.image.fill(COLOR_JUGADOR) #rellena la superficie con el color definido
         self.rect = self.image.get_rect(center=(x, y)) #obtiene el rectángulo que rodea la imagen y lo centra en (x, y)
         self.vel_y = 0 #velocidad vertical inicial
-        self.velocidad = 5 #velocidad de movimiento
+        self.velocidad = 10 #velocidad de movimiento
 
     def manejar_input(self, teclas): #maneja el input del teclado
         self.vel_y = 0 #resetea la velocidad vertical
@@ -148,7 +189,7 @@ class Bala(pygame.sprite.Sprite):
         self.image = pygame.Surface((12, 6))
         self.image.fill(COLOR_BALA)
         self.rect = self.image.get_rect(center=(x, y))
-        self.vel_x = 10
+        self.vel_x = 15
 
     def update(self):
         self.rect.x += self.vel_x
@@ -159,7 +200,7 @@ class Bala(pygame.sprite.Sprite):
 class Enemigo(pygame.sprite.Sprite):
     def __init__(self, y, velocidad):
         super().__init__()
-        self.image = pygame.Surface((30, 30))
+        self.image = pygame.Surface((50, 50))
         self.image.fill(COLOR_ENEMIGO)
         self.rect = self.image.get_rect(midright=(ANCHO, y))
         self.vel_x = velocidad
@@ -171,10 +212,32 @@ class Enemigo(pygame.sprite.Sprite):
             return "castillo"
         return None
 
+class jefe(pygame.sprite.Sprite):
+    def __init__(self, y):
+        super().__init__()
+        self.image = pygame.Surface((120, 120))
+        self.image.fill(COLOR_JEFE)
+        self.rect = self.image.get_rect(midright=(ANCHO, y)) #toma el punto medio del lado derecho como referencia
+        self.vel_x = -2
+        self.vida = 10
+        
+    def update(self):
+        self.rect.x += self.vel_x
+        if self.rect.right < 50:  # tocó el castillo
+            self.kill()
+            return "castillo"
+        if self.vida <= 0:
+            self.kill()
+            return "muerto"
+        return None
+    
+    def recibir_dano(self, cantidad):
+        self.vida -= cantidad
+        
 
 
 class GestionMatriz:
-    def __init__(self, MAX_JUGADAS=50, NUM_OBJETOS=2, DIAS =31, MES=12, PARTIDAS=100):
+    def __init__(self, MAX_JUGADAS=150, NUM_OBJETOS=2, DIAS =31, MES=12, PARTIDAS=100):
         #PRIMERA MATRIZ (JUGADAS X OBJETOS)
         self.matriz_jugadas = [[0 for _ in range(NUM_OBJETOS)] for _ in range(MAX_JUGADAS)]
         #SEGUNDA MATRIZ (DIAS X OBJETOS)
@@ -218,17 +281,34 @@ class Juego:
         self.matriz = GestionMatriz()
         self.spawn_timer = 0
         self.spawn_interval = 2000 
-        self.enemigo_velocidad = -2
+        self.enemigo_velocidad = -3
 
         self.puntaje_A = 0
         self.puntaje_B = 0
         self.vidas = 5
         self.game_over = False
         self.contador_jugadas = 0
-        
+        #selfs para manejar jefes
+        self.nivel = 1
+        self.enemigos_para_jefe = 25 # cantidad de enemigos a eliminar para que aparezca el jefe
+        self.jefe_activo = False # indica si el jefe está activo en pantalla
+        self.jefe = None # referencia al jefe
+        self.max_nivel = 5  # Nivel máximo para limitar la dificultad
 
-        
-        
+    def subir_nivel(self):
+        if self.nivel < self.max_nivel:
+            self.nivel += 1
+            print(f"Nivel {self.nivel} alcanzado!")
+            # reinciar enemigos y puntaje parcial si queres
+            self.spawn_interval = max(500, self.spawn_interval - 300)  # reducir el intervalo de spawn
+            self.enemigo_velocidad -= 0.5  # aumentar la velocidad de los enemigos
+            self.jefe_activo = False
+            self.jefe = None
+        else:
+            print("¡¡ JUEGO COMPLETADO !!")        
+            self.game_over = True
+            
+            
     def manejar_eventos(self):
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
@@ -250,37 +330,78 @@ class Juego:
         self.sprites.update()
         self.balas.update()
 
-        for enemigo in list(self.enemigos):
-            resultado = enemigo.update()
-            if resultado == "castillo":
-                self.vidas -= 1
-                self.puntaje_B += 1
-                self.matriz.cargar_matriz_jugadas(self.contador_jugadas, 1)
-                self.contador_jugadas += 1
-                cod_usuario = obtener_codigo_usuario()[0]
-                Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y, "enemigo llegó al castillo")
-                if self.vidas <= 0:
-                    self.game_over = True
-
-        colisiones = pygame.sprite.groupcollide(self.balas, self.enemigos, True, True)
+        # --- QUITÉ la primera pasada que llamaba enemigo.update() aquí ---
+        # Procesamos colisiones primero (esto permite gestionar daño/muerte inmediatamente)
+        colisiones = pygame.sprite.groupcollide(self.balas, self.enemigos, True, False)
         if colisiones:
             kills = len(colisiones)
             self.puntaje_A += kills
             self.matriz.cargar_matriz_jugadas(self.contador_jugadas, 0)
             self.contador_jugadas += 1
-            for bala, enemigos in colisiones.items():
-                for enemigo in enemigos:
+
+            for bala, lista_enemigos in colisiones.items():
+                for enemigo in lista_enemigos:
+                    if isinstance(enemigo, jefe):
+                        enemigo.recibir_dano(1)  # cada bala le quita 1 al jefe
+                        # comprobar muerte inmediatamente
+                        if enemigo.vida <= 0:
+                            # removerlo y gestionar subida de nivel AHORA
+                            enemigo.kill()
+                            if enemigo in self.enemigos:
+                                self.enemigos.remove(enemigo)
+                            self.jefe_activo = False
+                            self.jefe = None
+                            self.subir_nivel()
+                    else:
+                        enemigo.kill()
+                        # guardar colisión de enemigo eliminado
                     cod_usuario = obtener_codigo_usuario()[0]
-                    Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y,)
-            if self.puntaje_A % 5 == 0:
+                    Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y)
+
+            # ajustar dificultad en base a puntaje
+            if self.puntaje_A % 25 == 0:
                 self.enemigo_velocidad -= 0.5
                 if self.spawn_interval > 600:
                     self.spawn_interval -= 200
 
+        # verificar si toca invocar al jefe (si no está activo)
+        if self.puntaje_A >= self.enemigos_para_jefe * self.nivel and not self.jefe_activo:
+            self.jefe = jefe(ALTO // 2)
+            self.enemigos.add(self.jefe)
+            self.jefe_activo = True
+
+        # UNA SOLA pasada para actualizar enemigos y procesar "castillo"
+        for enemigo in list(self.enemigos):
+            resultado = enemigo.update()
+            if resultado == "castillo":
+                if isinstance(enemigo, jefe):
+                    self.vidas -= 3
+                    self.puntaje_B += 3
+                    # ya que llegó al castillo, lo removemos
+                    if enemigo in self.enemigos:
+                        self.enemigos.remove(enemigo)
+                    self.jefe_activo = False
+                    self.jefe = None
+                else:
+                    self.vidas -= 1
+                    self.puntaje_B += 1
+                    self.matriz.cargar_matriz_jugadas(self.contador_jugadas, 1)
+                    self.contador_jugadas += 1
+                    cod_usuario = obtener_codigo_usuario()[0]
+                    Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y, "enemigo llegó al castillo")
+
+                if self.vidas <= 0:
+                    self.game_over = True
+
+
+                    
+                    
+                    
+
     def dibujar_barra_vida(self, surf):
         max_ancho = 150
         alto = 20
-        x = ANCHO - max_ancho - 20
+        x = 60
         y = 20
         pygame.draw.rect(surf, COLOR_BARRA_VACIA, (x, y, max_ancho, alto))
         ancho_actual = int(max_ancho * (self.vidas / 5))
@@ -288,15 +409,20 @@ class Juego:
         pygame.draw.rect(surf, (255, 255, 255), (x, y, max_ancho, alto), 2)
 
     def dibujar(self, surf):
-        surf.fill(COLOR_FONDO)
-        pygame.draw.rect(surf, COLOR_CASTILLO, (0, 0, 50, ALTO))
+        
+        surf.blit(fondo_juego, (0, 0))  # Usa la imagen de fondo cargada
+        #  pygame.draw.rect(surf, COLOR_CASTILLO, (0, 0, 50, ALTO))
 
         self.sprites.draw(surf)
         self.balas.draw(surf)
         self.enemigos.draw(surf)
+        
+        texto_nivel = fuente.render(f"Nivel: {self.nivel}", True, COLOR_TEXTO)
+        surf.blit(texto_nivel, (1100, 10))
 
-        texto = fuente.render(f"{self.nombre_jugador} | Puntaje: {self.puntaje_A} | Puntaje enemigo {self.puntaje_B}", True, COLOR_TEXTO)
-        surf.blit(texto, (10, 10))
+
+        texto = fuente.render(f"Puntaje: {self.puntaje_A}", True, COLOR_TEXTO)
+        surf.blit(texto, (1250, 10))
 
         self.dibujar_barra_vida(surf) 
 
@@ -304,6 +430,7 @@ class Juego:
             msg = fuente.render("GAME OVER - Presiona ESC para salir", True, (255, 50, 50))
             rect = msg.get_rect(center=(ANCHO // 2, ALTO // 2))
             surf.blit(msg, rect)
+           
            
     def run(self):
         while True:
@@ -324,5 +451,5 @@ class Juego:
 
 # ====== Ejecutar ======
 if __name__ == "__main__":
-    nombre = pantalla_registro()
-    Juego(nombre).run()
+    pantalla_inicio()
+    Juego("jugador").run()
