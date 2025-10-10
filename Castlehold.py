@@ -375,27 +375,73 @@ class Enemigo(SpriteAnimado):
         return None
 
 
-class jefe(pygame.sprite.Sprite):
-    def __init__(self, y):
-        super().__init__()
-        self.image = pygame.Surface((120, 120))
-        self.image.fill(COLOR_JEFE)
-        self.rect = self.image.get_rect(midright=(ANCHO, y))
-        self.vel_x = -2
-        self.vida = 5
+import pygame
+import os
 
-    def update(self):
-        self.rect.x += self.vel_x
-        if self.rect.right < 50:  # tocó el castillo
-            self.kill()
-            return "castillo"
-        if self.vida <= 0:
-            self.kill()
-            return "muerto"
-        return None
+class Jefe(pygame.sprite.Sprite):
+    def __init__(self, x, y, escala=3):
+        super().__init__()
+        self.escala = escala
+        self.animaciones = {
+            'caminar': self.cargar_animacion('Sprite/jefe/caminar'),
+            'danio': self.cargar_animacion('Sprite/jefe/danio'),
+            'muerte': self.cargar_animacion('Sprite/jefe/muerte')
+        }
+
+        self.estado = 'caminar'
+        self.frame = 0
+        self.image = self.animaciones[self.estado][self.frame]
+        self.rect = self.image.get_rect(topleft=(x, y))
+
+        self.vida = 5
+        self.tiempo_danio = 0
+        self.vivo = True
+
+    def cargar_animacion(self, ruta):
+        imagenes = []
+        for nombre in sorted(os.listdir(ruta)):
+            img = pygame.image.load(os.path.join(ruta, nombre)).convert_alpha()
+            ancho = int(img.get_width() * self.escala)
+            alto = int(img.get_height() * self.escala)
+            img = pygame.transform.scale(img, (ancho, alto))
+            imagenes.append(img)
+        return imagenes
+
 
     def recibir_dano(self, cantidad):
+        if not self.vivo:
+            return
         self.vida -= cantidad
+        if self.vida > 0:
+            self.estado = 'danio'
+            self.frame = 0
+            self.tiempo_danio = pygame.time.get_ticks()
+        else:
+            self.estado = 'muerte'
+            self.frame = 0
+            self.vivo = False
+
+    def update(self):
+        ahora = pygame.time.get_ticks()
+
+        # Volver a caminar después de recibir daño
+        if self.estado == 'danio' and ahora - self.tiempo_danio > 300:
+            if self.vivo:
+                self.estado = 'caminar'
+
+        # Avanzar frames de animación
+        self.frame += 0.2
+        if self.frame >= len(self.animaciones[self.estado]):
+            if self.estado == 'muerte':
+                self.kill()
+                return
+            self.frame = 0
+
+        self.image = self.animaciones[self.estado][int(self.frame)]
+
+        # Movimiento si está caminando
+        if self.estado == 'caminar':
+            self.rect.x -= 2
 
 
 class GestionMatriz:
@@ -454,10 +500,11 @@ class Juego:
         self.contador_jugadas = 0
         # selfs para manejar jefes
         self.nivel = 1
-        self.enemigos_para_jefe = 25  # cantidad de enemigos a eliminar para que aparezca el jefe
+        self.enemigos_para_jefe = 5  # cantidad de enemigos a eliminar para que aparezca el jefe
         self.jefe_activo = False  # indica si el jefe está activo en pantalla
         self.jefe = None  # referencia al jefe
         self.max_nivel = 5  # Nivel máximo para limitar la dificultad
+        self.barras_vidas = cargar_frames(ruta("Sprite/barra"), escala = 3)
 
     def subir_nivel(self):
         if self.nivel < self.max_nivel:
@@ -508,7 +555,7 @@ class Juego:
             resultado = enemigo.update()  # Enemigo.update() maneja movimiento y animación
 
             # si es jefe tratamos distinto
-            if isinstance(enemigo, jefe):
+            if isinstance(enemigo, Jefe):
                 if resultado == "castillo":
                     self.vidas -= 3
                     self.puntaje_B += 3
@@ -545,7 +592,7 @@ class Juego:
 
             for bala, enemigos in colisiones.items():
                 for enemigo in enemigos:
-                    if isinstance(enemigo, jefe):
+                    if isinstance(enemigo, Jefe):
                         enemigo.recibir_dano(1)  # cada bala le quita 1 de vida al jefe
                     else:
                         enemigo.recibir_dano(1)  # cada bala le quita 1 de vida al enemigo normal
@@ -561,19 +608,19 @@ class Juego:
 
         # verificar si toca invocar al jefe
         if self.puntaje_A >= self.enemigos_para_jefe * self.nivel and not self.jefe_activo:
-            self.jefe = jefe(ALTO // 2)
+            self.jefe = Jefe(ANCHO -200 ,ALTO // 2)
             self.enemigos.add(self.jefe)
             self.jefe_activo = True
-
+            
+            
     def dibujar_barra_vida(self, surf):
-        max_ancho = 150
-        alto = 20
-        x = 60
-        y = 20
-        pygame.draw.rect(surf, COLOR_BARRA_VACIA, (x, y, max_ancho, alto))
-        ancho_actual = int(max_ancho * (self.vidas / 5))
-        pygame.draw.rect(surf, COLOR_BARRA_VIDA, (x, y, ancho_actual, alto))
-        pygame.draw.rect(surf, (255, 255, 255), (x, y, max_ancho, alto), 2)
+            if not self.barras_vidas:
+                return  # si no cargaron las imágenes, no hacer nada
+            # Elegir la imagen correcta según la vida actual (0 a 5)
+            vida_index = max(0, min(self.vidas, 5))  # asegura que no salga de rango
+            barra = self.barras_vidas[vida_index]
+            surf.blit(barra, (60, 20))  # posición de la barra
+            # posición de la barra
 
     def dibujar(self, surf):
         surf.blit(fondo_juego, (0, 0))
@@ -591,8 +638,10 @@ class Juego:
 
         texto = fuente.render(f"Puntaje: {self.puntaje_A}", True, COLOR_TEXTO)
         surf.blit(texto, (1250, 10))
-
         self.dibujar_barra_vida(surf)
+
+    
+
 
         if self.game_over:
             msg = fuente.render("GAME OVER - Presiona ESC para salir", True, (255, 50, 50))
