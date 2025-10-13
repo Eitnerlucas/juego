@@ -113,6 +113,42 @@ class SpriteAnimado(pygame.sprite.Sprite):
             self.image = self.frames[self.indice_frame]
 
 
+class Bala(pygame.sprite.Sprite):
+    def __init__(self, x, y, direccion):
+        super().__init__()
+        self.frames = []
+        self.cargar_animacion("Sprite/bala")
+        self.frame_index = 0
+        self.image = self.frames[self.frame_index]
+        self.rect = self.image.get_rect(center=(x, y))
+        self.velocidad = 15 
+        self.anim_speed = 0.9  # qué tan rápido cambia de frame
+        self.contador_anim = 0
+
+    def cargar_animacion(self, carpeta):
+        """Carga todas las imágenes de la carpeta de animación"""
+        for nombre in sorted(os.listdir(carpeta)):
+            if nombre.endswith(".png"):
+                ruta = os.path.join(carpeta, nombre)
+                imagen = pygame.image.load(ruta).convert_alpha()
+                self.frames.append(imagen)
+
+    def update(self):
+        # Movimiento
+        self.rect.x += self.velocidad
+
+        # Animación
+        self.contador_anim += self.anim_speed
+        if self.contador_anim >= 1:
+            self.frame_index = (self.frame_index + 1) % len(self.frames)
+            self.image = self.frames[self.frame_index]
+            self.contador_anim = 0
+
+        # Si sale de la pantalla, eliminar
+        if self.rect.right < 0 or self.rect.left > 1400:
+            self.kill()
+
+
 # ====== Pantalla de inicio ======
 def pantalla_inicio():
     activo = True
@@ -320,25 +356,7 @@ class Jugador(SpriteAnimado):
                 self.cambiar_accion(self.accion_previa)
 
 
-class Bala(pygame.sprite.Sprite):
-    def __init__(self, x, y, direccion="derecha"):
-        super().__init__()
-        self.image = pygame.Surface((15, 5))  # tamaño de la bala
-        self.image.fill(COLOR_BALA)  # color amarillo
-        self.rect = self.image.get_rect(center=(x, y))
-        self.velocidad = 20
 
-        # Dirección del disparo: aceptar "izquierda" o "derecha"
-        if direccion == "izquierda":
-            self.velocidad *= -1
-
-    def update(self):
-        # Mover la bala
-        self.rect.x += self.velocidad
-
-        # Eliminar la bala si sale de la pantalla
-        if self.rect.right < 0 or self.rect.left > ANCHO:
-            self.kill()
 
 
 class Enemigo(SpriteAnimado):
@@ -486,7 +504,7 @@ class Juego:
         self.jugador.juego = self  # ← referencia para que el jugador acceda a self.balas
 
         self.sprites = pygame.sprite.Group(self.jugador)
-        self.balas = pygame.sprite.Group()
+        self.grupo_balas = pygame.sprite.Group()
         self.enemigos = pygame.sprite.Group()
         self.matriz = GestionMatriz()
         self.spawn_timer = 0
@@ -529,11 +547,11 @@ class Juego:
                     pygame.quit()
                     sys.exit()
 
-    def crear_bala(self, x, y, direccion="derecha"):
-        bala = Bala(x, y, direccion)  # Crea una instancia de la clase Bala
-        # agrego la bala a ambos grupos para que se dibuje y actualice correctamente
-        self.balas.add(bala)
+    def crear_bala(self, x, y, direccion):
+        bala = Bala(x, y, direccion)
+        self.grupo_balas.add(bala)
         self.sprites.add(bala)
+
 
     def actualizar(self, dt):
         if self.game_over:
@@ -548,7 +566,7 @@ class Juego:
 
         # actualizaciones
         self.sprites.update()
-        self.balas.update()
+        self.grupo_balas.update()
 
         # revisar enemigos (solo una vez por frame)
         for enemigo in list(self.enemigos):
@@ -583,7 +601,7 @@ class Juego:
                         self.game_over = True
 
         # Colisiones entre balas y enemigos
-        colisiones = pygame.sprite.groupcollide(self.balas, self.enemigos, True, False)
+        colisiones = pygame.sprite.groupcollide(self.grupo_balas, self.enemigos, True, False)
         if colisiones:
             kills = len(colisiones)
             self.puntaje_A += kills
@@ -626,7 +644,7 @@ class Juego:
         surf.blit(fondo_juego, (0, 0))
 
         self.sprites.draw(surf)
-        self.balas.draw(surf)
+        self.grupo_balas.draw(surf)
         self.enemigos.draw(surf)
 
         for e in self.enemigos:
@@ -667,6 +685,8 @@ class Juego:
 
 # ====== Ejecutar ======
 if __name__ == "__main__":
+    print(__file__)
     pantalla_inicio()
     Juego("jugador").run()
     pantalla_registro()
+    
