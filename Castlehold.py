@@ -6,23 +6,15 @@ from datetime import datetime
 
 # ====== Configuración ======
 ANCHO, ALTO = 1400, 800
-FPS = 60
-COLOR_FONDO = (20, 20, 30)
-COLOR_CASTILLO = (80, 80, 200)
-COLOR_JUGADOR = (200, 200, 240)
-COLOR_ENEMIGO = (200, 80, 80)
-COLOR_BALA = (250, 250, 100)
-COLOR_BARRA_VIDA = (80, 200, 80)
-COLOR_BARRA_VACIA = (200, 50, 50)
-COLOR_TEXTO = (220, 220, 220)
-COLOR_JEFE = (150, 0, 0)
+FPS = 75
+COLOR_TEXTO = (255, 255, 255)
+COLOR_TEXTO_REGISTRO = (255, 205, 0)
 
+# ====== Inicialización ======
 pygame.init()
 pantalla = pygame.display.set_mode((ANCHO, ALTO))
 pygame.display.set_caption("Juego de Eitner - registro de usuario")
 clock = pygame.time.Clock()
-fuente = pygame.font.SysFont("consolas", 20)
-
 # === RUTA BASE ===
 BASE_DIR = os.path.dirname(__file__)  # directorio donde está Castlehold.py
 
@@ -35,6 +27,8 @@ def ruta(relativa):
 # === FONDOS ===
 fondo_inicio = pygame.image.load(ruta("fondo_galdor.png")).convert()
 fondo_juego = pygame.image.load(ruta("dungeon.png")).convert()
+fuente = pygame.font.Font(ruta("QuinqueFive.ttf"), 10)
+fuente_R = pygame.font.Font(ruta("QuinqueFive.ttf"), 15)
 
 
 def cargar_frames(carpeta, escala=3):
@@ -192,11 +186,11 @@ def pantalla_registro():
                 else:
                     texto += evento.unicode
 
-        pantalla.fill(COLOR_FONDO)
-        msg = fuente.render("Ingresar: código, nombre, apodo, clave", True, COLOR_TEXTO)
-        pantalla.blit(msg, (0, 30))
-        render = fuente.render(texto, True, (200, 200, 200))
-        pantalla.blit(render, (0, 60))
+        pantalla.blit(fondo_inicio, (0, 0))
+        msg = fuente_R.render("Ingresar: codigo, nombre, apodo, clave", True, COLOR_TEXTO_REGISTRO)
+        pantalla.blit(msg, (340, 230))
+        render = fuente_R.render(texto, True,(255, 205, 0))
+        pantalla.blit(render, (350, 280))
         pygame.display.flip()
         clock.tick(FPS)
 
@@ -637,7 +631,7 @@ class Juego:
             # Elegir la imagen correcta según la vida actual (0 a 5)
             vida_index = max(0, min(self.vidas, 5))  # asegura que no salga de rango
             barra = self.barras_vidas[vida_index]
-            surf.blit(barra, (60, 20))  # posición de la barra
+            surf.blit(barra, (60, 0))  # posición de la barra
             # posición de la barra
 
     def dibujar(self, surf):
@@ -686,7 +680,8 @@ class Juego:
 # ====== Ejecutar ======
 if __name__ == "__main__":
     print(__file__)
+    pantalla_registro()
     pantalla_inicio()
     Juego("jugador").run()
-    pantalla_registro()
+    
     
