@@ -428,7 +428,7 @@ class Jefe2(Jefe):
         self.frame = 0
         self.image = self.animaciones[self.estado][self.frame]
         self.rect = self.image.get_rect(topleft=(x, y))
-        self.vida = 5
+        self.vida = 8
         self.tiempo_danio = 0
         self.vivo = True
         self.mask = pygame.mask.from_surface(self.image)
@@ -470,7 +470,7 @@ class Jefe2(Jefe):
             self.frame = 0
         self.image = self.animaciones[self.estado][int(self.frame)]
         if self.estado == 'caminar':
-            self.rect.x -= 2
+            self.rect.x -= 1
             if self.rect.right < 50:
                 self.kill()
                 return "castillo"
@@ -660,12 +660,14 @@ class Juego:
             pos_y = random.randint(100, ALTO - 400)  # posición vertical aleatoria
 
             # A partir del nivel 3, vuelve el jefe principal
-            if self.nivel >= 3:
+            if self.nivel == 1:
                 self.jefe = Jefe(ANCHO + 150, pos_y)
             elif self.nivel == 2:
                 self.jefe = Jefe2(ANCHO + 150, pos_y)
-            else:
+            elif self.nivel == 3:
                 self.jefe = Jefe(ANCHO + 150, pos_y)
+            else:
+                self.jefe = Jefe2(ANCHO + 150, pos_y)
 
             self.enemigos.add(self.jefe)
             self.sprites.add(self.jefe, layer=5)
