@@ -57,10 +57,12 @@ class SpriteAnimado(pygame.sprite.Sprite):
         if self.frames:
             self.image = self.frames[self.indice_frame]
             self.rect = self.image.get_rect(center=pos_inicial)
+            self.mask = pygame.mask.from_surface(self.image)
         else:
             self.image = pygame.Surface((50, 50))
             self.image.fill((255, 0, 255))
             self.rect = self.image.get_rect(center=pos_inicial)
+            self.mask = pygame.mask.from_surface(self.image)
         self.timer_animacion = 0
         self.velocidad_animacion = 120
         self.escala = escala
@@ -99,6 +101,7 @@ class Bala(pygame.sprite.Sprite):
         self.frame_index = 0
         self.image = self.frames[self.frame_index]
         self.rect = self.image.get_rect(center=(x, y))
+        self.mask = pygame.mask.from_surface(self.image)
         self.velocidad = 15 
         self.anim_speed = 0.9
         self.contador_anim = 0
@@ -299,7 +302,6 @@ class Enemigo(SpriteAnimado):
         if not self.muerto:
             self.rect.x += self.vel_x
             if self.rect.right < 50:
-                self.kill()
                 return "castillo"
         else:
             if self.indice_frame == len(self.frames) - 1:
@@ -334,7 +336,6 @@ class Enemigo2(SpriteAnimado):
         if not self.muerto:
             self.rect.x += self.vel_x
             if self.rect.right < 50:
-                self.kill()
                 return "castillo"
         else:
             if self.indice_frame == len(self.frames) - 1:
@@ -398,7 +399,6 @@ class Jefe(pygame.sprite.Sprite):
         if self.estado == 'caminar':
             self.rect.x -= 2
             if self.rect.right < 50:
-                self.kill()
                 return "castillo"
         return None
 
@@ -450,7 +450,6 @@ class Jefe2(Jefe):
         self.frame += 0.2
         if self.frame >= len(self.animaciones[self.estado]):
             if self.estado == 'muerte':
-                self.kill()
                 return "muerto"
             self.frame = 0
         self.image = self.animaciones[self.estado][int(self.frame)]
@@ -625,7 +624,7 @@ class Juego:
                 self.subir_nivel()
 
         # Colisiones balas-enemigos
-        colisiones = pygame.sprite.groupcollide(self.grupo_balas, self.enemigos, True, False)
+        colisiones = pygame.sprite.groupcollide(self.grupo_balas, self.enemigos, True, False, pygame.sprite.collide_mask)
         if colisiones:
             kills = len(colisiones)
             self.puntaje_A += kills
@@ -713,7 +712,7 @@ class Juego:
 # ====== Ejecutar ======
 if __name__ == "__main__":
     print(__file__)
-    pantalla_registro()
-    pantalla_inicio()
+    #pantalla_registro()
+    #pantalla_inicio()
     Juego("jugador").run()
     
