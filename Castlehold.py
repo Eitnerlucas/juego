@@ -15,22 +15,22 @@ pygame.init()
 pantalla = pygame.display.set_mode((ANCHO, ALTO))
 pygame.display.set_caption("Juego de Eitner - registro de usuario")
 clock = pygame.time.Clock()
-# === RUTA BASE ===
-BASE_DIR = os.path.dirname(__file__)  # directorio donde está Castlehold.py
 
+# === RUTA BASE ===
+BASE_DIR = os.path.dirname(__file__)
 
 def ruta(relativa):
-    """Devuelve la ruta absoluta del archivo, partiendo de Castlehold.py"""
     return os.path.join(BASE_DIR, relativa)
-
 
 # === FONDOS ===
 fondo_inicio = pygame.image.load(ruta("fondo_galdor.png")).convert()
+fondo_inicio = pygame.transform.scale(fondo_inicio, (ANCHO, ALTO))
 fondo_juego = pygame.image.load(ruta("dungeon.png")).convert()
+fondo_juego = pygame.transform.scale(fondo_juego, (ANCHO, ALTO))
 fuente = pygame.font.Font(ruta("QuinqueFive.ttf"), 10)
 fuente_R = pygame.font.Font(ruta("QuinqueFive.ttf"), 15)
 
-
+# ====== Funciones de carga de frames ======
 def cargar_frames(carpeta, escala=3):
     frames = []
     if not os.path.exists(carpeta):
@@ -46,32 +46,22 @@ def cargar_frames(carpeta, escala=3):
             frames.append(img)
     return frames
 
-
-# ====== Clase base animada ======
+# ====== Clases base ======
 class SpriteAnimado(pygame.sprite.Sprite):
     def __init__(self, animaciones, pos_inicial, escala=1, accion_inicial=None):
         super().__init__()
         self.animaciones = animaciones
-        # Si no se pasa una acción inicial, usa la primera que haya
-        if accion_inicial and accion_inicial in animaciones:
-            self.accion_actual = accion_inicial
-        else:
-            self.accion_actual = list(animaciones.keys())[0]
+        self.accion_actual = accion_inicial if accion_inicial and accion_inicial in animaciones else list(animaciones.keys())[0]
         self.frames = self.animaciones[self.accion_actual]
         self.indice_frame = 0
-        # proteger si no hay frames
         if self.frames:
             self.image = self.frames[self.indice_frame]
             self.rect = self.image.get_rect(center=pos_inicial)
         else:
-            # placeholder si no hay imágenes
             self.image = pygame.Surface((50, 50))
             self.image.fill((255, 0, 255))
             self.rect = self.image.get_rect(center=pos_inicial)
-
-        # Temporizador de animación (ms)
         self.timer_animacion = 0
-        # milisegundos por frame (valor por defecto)
         self.velocidad_animacion = 120
         self.escala = escala
 
@@ -81,18 +71,14 @@ class SpriteAnimado(pygame.sprite.Sprite):
             self.frames = self.animaciones[nueva_accion]
             self.indice_frame = 0
             self.timer_animacion = 0
-
-            # velocidad distinta por acción (ms por frame)
             if nueva_accion == "shoot":
-                self.velocidad_animacion = 60  # anima más rápido el disparo
+                self.velocidad_animacion = 60
             elif nueva_accion == "run":
                 self.velocidad_animacion = 100
             elif nueva_accion == "dead":
                 self.velocidad_animacion = 180
             else:
                 self.velocidad_animacion = 140
-
-            # actualizar imagen inicial de la nueva acción (si hay frames)
             if self.frames:
                 self.image = self.frames[0]
 
@@ -102,10 +88,8 @@ class SpriteAnimado(pygame.sprite.Sprite):
         self.timer_animacion += dt
         if self.timer_animacion >= self.velocidad_animacion:
             self.timer_animacion = 0
-            # avanzar frame
             self.indice_frame = (self.indice_frame + 1) % len(self.frames)
             self.image = self.frames[self.indice_frame]
-
 
 class Bala(pygame.sprite.Sprite):
     def __init__(self, x, y, direccion):
@@ -116,34 +100,26 @@ class Bala(pygame.sprite.Sprite):
         self.image = self.frames[self.frame_index]
         self.rect = self.image.get_rect(center=(x, y))
         self.velocidad = 15 
-        self.anim_speed = 0.9  # qué tan rápido cambia de frame
+        self.anim_speed = 0.9
         self.contador_anim = 0
 
     def cargar_animacion(self, carpeta):
-        """Carga todas las imágenes de la carpeta de animación"""
         for nombre in sorted(os.listdir(carpeta)):
             if nombre.endswith(".png"):
-                ruta = os.path.join(carpeta, nombre)
-                imagen = pygame.image.load(ruta).convert_alpha()
-                self.frames.append(imagen)
+                ruta_img = os.path.join(carpeta, nombre)
+                self.frames.append(pygame.image.load(ruta_img).convert_alpha())
 
     def update(self):
-        # Movimiento
         self.rect.x += self.velocidad
-
-        # Animación
         self.contador_anim += self.anim_speed
         if self.contador_anim >= 1:
             self.frame_index = (self.frame_index + 1) % len(self.frames)
             self.image = self.frames[self.frame_index]
             self.contador_anim = 0
-
-        # Si sale de la pantalla, eliminar
-        if self.rect.right < 0 or self.rect.left > 1400:
+        if self.rect.right < 0 or self.rect.left > ANCHO:
             self.kill()
 
-
-# ====== Pantalla de inicio ======
+# ====== Pantallas iniciales ======
 def pantalla_inicio():
     activo = True
     while activo:
@@ -157,7 +133,6 @@ def pantalla_inicio():
                     sys.exit()
                 else:
                     return
-
         pantalla.blit(fondo_inicio, (0, 0))
         instruccion = fuente.render("Presiona cualquier tecla para comenzar", True, (180, 180, 180))
         salir = fuente.render("Presiona ESC para salir", True, (180, 100, 100))
@@ -166,8 +141,6 @@ def pantalla_inicio():
         pygame.display.flip()
         clock.tick(FPS)
 
-
-# ====== Registro ======
 def pantalla_registro():
     texto = ""
     activo = True
@@ -185,30 +158,24 @@ def pantalla_registro():
                     texto = texto[:-1]
                 else:
                     texto += evento.unicode
-
         pantalla.blit(fondo_inicio, (0, 0))
         msg = fuente_R.render("Ingresar: codigo, nombre, apodo, clave", True, COLOR_TEXTO_REGISTRO)
         pantalla.blit(msg, (340, 230))
-        render = fuente_R.render(texto, True,(255, 205, 0))
+        render = fuente_R.render(texto, True, COLOR_TEXTO_REGISTRO)
         pantalla.blit(render, (350, 280))
         pygame.display.flip()
         clock.tick(FPS)
-
 
 def obtener_codigo_usuario():
     with open(ruta("usuarios.txt"), "r") as archivo:
         for linea in archivo:
             campos = linea.strip().split(",")
             if len(campos) < 4:
-                continue  # salta líneas incompletas
-            cod_usuario = campos[0]
-            nombre = campos[1]
-            apodo = campos[2]
-            clave = campos[3]
+                continue
+            cod_usuario, nombre, apodo, clave = campos[0], campos[1], campos[2], campos[3]
     return cod_usuario, nombre, apodo, clave
 
-
-# ====== Archivos ======
+# ====== Gestión de partidas y colisiones ======
 def acumulador_partidas():
     archivo_path = ruta("acumulador_partidas.txt")
     if not os.path.exists(archivo_path):
@@ -218,45 +185,31 @@ def acumulador_partidas():
     else:
         with open(archivo_path, "r") as archivo:
             linea = archivo.readline()
-            if linea:
-                num = int(linea.strip())
-                return num + 1
-            else:
-                return 1
-
+            return int(linea.strip()) + 1 if linea else 1
 
 def guardar_partida(num):
     with open(ruta("acumulador_partidas.txt"), "w") as archivo:
         archivo.write(str(num))
 
-
 def guardar_detalle_partida(cod_usuario, num_partida, puntaje_a, puntaje_b):
     archivo_path = ruta("detalle_partidas.txt")
     fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    if not os.path.exists(archivo_path):
-        id_jugador = 1
-        with open(archivo_path, "w") as f:
-            f.write(f"{id_jugador},{cod_usuario},{num_partida},{puntaje_a},{puntaje_b},{fecha}\n")
-    else:
+    id_jugador = 1
+    if os.path.exists(archivo_path):
         with open(archivo_path, "r") as f:
             lineas = f.readlines()
         if lineas:
             ultima_linea = lineas[-1].strip()
-            ultimo_id = int(ultima_linea.split(",")[0])
-            id_jugador = ultimo_id + 1
-        else:
-            id_jugador = 1
-        with open(archivo_path, "a") as f:
-            f.write(f"{id_jugador},{cod_usuario},{num_partida},{puntaje_a},{puntaje_b},{fecha}\n")
-
+            id_jugador = int(ultima_linea.split(",")[0]) + 1
+    with open(archivo_path, "a") as f:
+        f.write(f"{id_jugador},{cod_usuario},{num_partida},{puntaje_a},{puntaje_b},{fecha}\n")
 
 def Guardar_colisiones(cod_usuario, num_partida, x, y, obs="enemigo eliminado"):
     fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open(ruta("colisiones.txt"), "a") as f:
         f.write(f"{cod_usuario},{num_partida},{x},{y},{obs},{fecha}\n")
 
-
-# ====== Clases ======
+# ====== Clases de Jugador y Enemigos ======
 class Jugador(SpriteAnimado):
     def __init__(self, x, y, escala=2):
         animaciones = {
@@ -266,24 +219,17 @@ class Jugador(SpriteAnimado):
             "dead": cargar_frames(ruta("Sprite/jugador/dead"))
         }
         super().__init__(animaciones, (x, y), escala=escala)
-
-        # Movimiento
         self.vel_y = 0
         self.velocidad = 10
-
-        # Disparo
-        self.direccion = "derecha"  # "derecha" o "izquierda"
+        self.direccion = "derecha"
         self.disparando = False
-        self.tiempo_recarga = 300  # milisegundos entre disparos
+        self.tiempo_recarga = 300
         self.ultimo_disparo = 0
-        self.accion_previa = "quieto"  # para recordar en qué estado estaba antes de disparar
-        self.bala_disparada = False  # aseguranos que solo salga 1 bala por animación
-
-        # referencia al juego (se asigna desde Juego.__init__)
+        self.accion_previa = "quieto"
+        self.bala_disparada = False
         self.juego = None
 
     def manejar_input(self, teclas):
-        # mov vertical
         self.vel_y = 0
         if teclas[pygame.K_UP]:
             self.vel_y = -self.velocidad
@@ -293,23 +239,15 @@ class Jugador(SpriteAnimado):
             desired_action = "run"
         else:
             desired_action = "quieto"
-
-        # guardo la acción previa (la que debe retomarse al terminar el shoot)
         self.accion_previa = desired_action
-
-        # Si está disparando no sobreescribo la animación actual (shoot),
-        # pero sí actualizo la accion_previa para volver a ella después.
         if not self.disparando:
             self.cambiar_accion(desired_action)
 
     def disparar(self):
-        """Inicia la animación de disparo y controla el cooldown.
-           No crea la bala inmediatamente: la bala sale en el frame clave."""
         if not self.juego:
             return
         tiempo_actual = pygame.time.get_ticks()
         if tiempo_actual - self.ultimo_disparo >= self.tiempo_recarga:
-            # iniciar animación de disparo
             self.disparando = True
             self.bala_disparada = False
             self.cambiar_accion("shoot")
@@ -318,59 +256,42 @@ class Jugador(SpriteAnimado):
     def update(self, *args):
         dt = clock.get_time()
         teclas = pygame.key.get_pressed()
-
-        # manejar movimiento (incluso mientras dispara)
         self.manejar_input(teclas)
         self.rect.y += self.vel_y
         self.rect.clamp_ip(pantalla.get_rect())
-
-        # si mantiene SPACE y puede disparar -> inicia la animación (el proyectil sale en el frame clave)
         if teclas[pygame.K_SPACE] and not self.juego.game_over:
             self.disparar()
-
-        # actualizar animación
         self.update_animacion(dt)
-
-        # Lógica de disparo sincronizada con la animación
         if self.disparando and self.frames:
-            # elegir frame clave: el frame 1 si existe, sino el último disponible
             key_frame = 1 if len(self.frames) > 1 else len(self.frames) - 1
             key_frame = max(0, min(key_frame, len(self.frames) - 1))
-
             if self.indice_frame == key_frame and not self.bala_disparada:
-                # crear la bala en el momento exacto del frame
-                # usamos crear_bala del juego para que la bala quede en ambos grupos
                 self.juego.crear_bala(self.rect.centerx + 50, self.rect.centery, self.direccion)
                 self.bala_disparada = True
-
-            # cuando termina la animación de disparo volvemos a la acción previa
             if self.indice_frame == len(self.frames) - 1:
                 self.disparando = False
                 self.bala_disparada = False
                 self.cambiar_accion(self.accion_previa)
 
-
-
-
-
 class Enemigo(SpriteAnimado):
-    def __init__(self, y, velocidad, escala=0.5):
+    def __init__(self, y, velocidad, escala=1):
         animaciones = {
-            "enemy run": cargar_frames(ruta("Sprite/enemigo/enemy run")),
-            "enemy down": cargar_frames(ruta("Sprite/enemigo/enemy down"))
+            "enemy run": cargar_frames(ruta("Sprite/enemigo/enemy run"), escala=2.75),
+            "enemy down": cargar_frames(ruta("Sprite/enemigo/enemy down"), escala=2.75)
         }
         super().__init__(animaciones, (ANCHO, y), accion_inicial="enemy run")
         self.vel_x = velocidad
         self.vida = 1
         self.max_vida = 1
         self.muerto = False
+        self.escala = escala
 
     def recibir_dano(self, cantidad):
         self.vida -= cantidad
         if self.vida <= 0 and not self.muerto:
             self.cambiar_accion("enemy down")
             self.muerto = True
-            self.vel_x = 0  # detener el movimiento
+            self.vel_x = 0
 
     def update(self):
         dt = clock.get_time()
@@ -381,15 +302,47 @@ class Enemigo(SpriteAnimado):
                 self.kill()
                 return "castillo"
         else:
-            # esperar a que termine la animación antes de eliminar
+            if self.indice_frame == len(self.frames) - 1:
+                self.kill()
+        return None
+
+# ====== Nuevo enemigo a partir del nivel 2 ======
+class Enemigo2(SpriteAnimado):
+    def __init__(self, y, velocidad, escala=6):
+        animaciones = {
+            "run": cargar_frames(ruta("Sprite/enemidos/caminata"), escala=3.75),
+            "down": cargar_frames(ruta("Sprite/enemidos/esquelemuerte"), escala=3.75)
+        }
+        super().__init__(animaciones, (ANCHO, y), accion_inicial="run")
+        self.vel_x = velocidad
+        self.vida = 1
+        self.max_vida = 1
+        self.escala = escala
+        self.muerto = False
+        
+
+    def recibir_dano(self, cantidad):
+        self.vida -= cantidad
+        if self.vida <= 0 and not self.muerto:
+            self.cambiar_accion("down")
+            self.muerto = True
+            self.vel_x = 0
+
+    def update(self):
+        dt = clock.get_time()
+        self.update_animacion(dt)
+        if not self.muerto:
+            self.rect.x += self.vel_x
+            if self.rect.right < 50:
+                self.kill()
+                return "castillo"
+        else:
             if self.indice_frame == len(self.frames) - 1:
                 self.kill()
         return None
 
 
-import pygame
-import os
-
+# ====== Clase Jefe ======
 class Jefe(pygame.sprite.Sprite):
     def __init__(self, x, y, escala=3):
         super().__init__()
@@ -399,26 +352,23 @@ class Jefe(pygame.sprite.Sprite):
             'danio': self.cargar_animacion('Sprite/jefe/danio'),
             'muerte': self.cargar_animacion('Sprite/jefe/muerte')
         }
-
         self.estado = 'caminar'
         self.frame = 0
         self.image = self.animaciones[self.estado][self.frame]
         self.rect = self.image.get_rect(topleft=(x, y))
-
         self.vida = 5
         self.tiempo_danio = 0
         self.vivo = True
 
-    def cargar_animacion(self, ruta):
+    def cargar_animacion(self, ruta_carpeta):
         imagenes = []
-        for nombre in sorted(os.listdir(ruta)):
-            img = pygame.image.load(os.path.join(ruta, nombre)).convert_alpha()
+        for nombre in sorted(os.listdir(ruta_carpeta)):
+            img = pygame.image.load(os.path.join(ruta_carpeta, nombre)).convert_alpha()
             ancho = int(img.get_width() * self.escala)
             alto = int(img.get_height() * self.escala)
             img = pygame.transform.scale(img, (ancho, alto))
             imagenes.append(img)
         return imagenes
-
 
     def recibir_dano(self, cantidad):
         if not self.vivo:
@@ -435,27 +385,84 @@ class Jefe(pygame.sprite.Sprite):
 
     def update(self):
         ahora = pygame.time.get_ticks()
-
-        # Volver a caminar después de recibir daño
         if self.estado == 'danio' and ahora - self.tiempo_danio > 300:
             if self.vivo:
                 self.estado = 'caminar'
-
-        # Avanzar frames de animación
         self.frame += 0.2
         if self.frame >= len(self.animaciones[self.estado]):
             if self.estado == 'muerte':
                 self.kill()
-                return
+                return "muerto"
             self.frame = 0
-
         self.image = self.animaciones[self.estado][int(self.frame)]
-
-        # Movimiento si está caminando
         if self.estado == 'caminar':
             self.rect.x -= 2
+            if self.rect.right < 50:
+                self.kill()
+                return "castillo"
+        return None
+
+# ====== Jefe2 para nivel >=2 ======
+class Jefe2(Jefe):
+    def __init__(self, x, y, escala=4):
+        super().__init__(x, y, escala)
+        self.animaciones = {
+            "caminar": cargar_frames(ruta("Sprite/jefedos/walk"), escala),
+            "danio": cargar_frames(ruta("Sprite/jefedos/danio"), escala),
+            "muerte": cargar_frames(ruta("Sprite/jefedos/muerte"), escala)
+        }
+        self.estado = "caminar"
+        self.frame = 0
+        self.image = self.animaciones[self.estado][self.frame]
+        self.rect = self.image.get_rect(topleft=(x, y))
+        self.vida = 5
+        self.tiempo_danio = 0
+        self.vivo = True
+
+    def cargar_animacion(self, ruta_carpeta):
+        imagenes = []
+        for nombre in sorted(os.listdir(ruta_carpeta)):
+            img = pygame.image.load(os.path.join(ruta_carpeta, nombre)).convert_alpha()
+            ancho = int(img.get_width() * self.escala)
+            alto = int(img.get_height() * self.escala)
+            img = pygame.transform.scale(img, (ancho, alto))
+            imagenes.append(img)
+        return imagenes
+
+    def recibir_dano(self, cantidad):
+        if not self.vivo:
+            return
+        self.vida -= cantidad
+        if self.vida > 0:
+            self.estado = 'danio'
+            self.frame = 0
+            self.tiempo_danio = pygame.time.get_ticks()
+        else:
+            self.estado = 'muerte'
+            self.frame = 0
+            self.vivo = False
+
+    def update(self):
+        ahora = pygame.time.get_ticks()
+        if self.estado == 'danio' and ahora - self.tiempo_danio > 300:
+            if self.vivo:
+                self.estado = 'caminar'
+        self.frame += 0.2
+        if self.frame >= len(self.animaciones[self.estado]):
+            if self.estado == 'muerte':
+                self.kill()
+                return "muerto"
+            self.frame = 0
+        self.image = self.animaciones[self.estado][int(self.frame)]
+        if self.estado == 'caminar':
+            self.rect.x -= 2
+            if self.rect.right < 50:
+                self.kill()
+                return "castillo"
+        return None
 
 
+# ====== Clase Juego ======
 class GestionMatriz:
     def __init__(self, MAX_JUGADAS=500, NUM_OBJETOS=2, DIAS=31, MES=12, PARTIDAS=100):
         # PRIMERA MATRIZ (JUGADAS X OBJETOS)
@@ -551,39 +558,55 @@ class Juego:
         if self.game_over:
             return
 
-        # spawn
+        # Spawn de enemigos
+        # Spawn de enemigos
         self.spawn_timer += dt
         if self.spawn_timer >= self.spawn_interval:
             self.spawn_timer = 0
-            enemigo = Enemigo(random.randint(40, ALTO - 40), self.enemigo_velocidad)
-            self.enemigos.add(enemigo)
 
-        # actualizaciones
+            # A partir del nivel 3, mezclamos ambos tipos de enemigos
+            if self.nivel >= 3:
+                if random.random() < 0.5:  # 50% de probabilidad de cada tipo
+                    enemigo = Enemigo(random.randint(40, ALTO - 40), self.enemigo_velocidad)
+                else:
+                    enemigo = Enemigo2(random.randint(40, ALTO - 40), self.enemigo_velocidad)
+            elif self.nivel == 2:
+                enemigo = Enemigo2(random.randint(40, ALTO - 40), self.enemigo_velocidad)
+            else:
+                enemigo = Enemigo(random.randint(40, ALTO - 40), self.enemigo_velocidad)
+
+            self.enemigos.add(enemigo)
+            self.sprites.add(enemigo)
+
+
+        # Actualización de todos los sprites (jugador, enemigos, balas)
         self.sprites.update()
         self.grupo_balas.update()
 
-        # revisar enemigos (solo una vez por frame)
+        # Revisar enemigos
         for enemigo in list(self.enemigos):
-            resultado = enemigo.update()  # Enemigo.update() maneja movimiento y animación
+            resultado = None
 
-            # si es jefe tratamos distinto
-            if isinstance(enemigo, Jefe):
-                if resultado == "castillo":
+            # Solo comprobaciones de estado sin llamar update otra vez
+            if isinstance(enemigo, (Jefe, Jefe2)):
+                # Jefe: revisar si llegó al castillo
+                if enemigo.estado == "caminar" and enemigo.rect.right < 50:
+                    resultado = "castillo"
+                elif enemigo.estado == "muerte" and enemigo.frame >= len(enemigo.animaciones["muerte"]) - 1:
+                    resultado = "muerto"
+            else:
+                # Enemigo normal: revisar si llegó al castillo
+                if enemigo.rect.right < 50:
+                    resultado = "castillo"
+
+            # Aplicar resultados
+            if resultado == "castillo":
+                if isinstance(enemigo, (Jefe, Jefe2)):
                     self.vidas -= 3
                     self.puntaje_B += 3
-                    self.enemigos.remove(enemigo)
                     self.jefe_activo = False
                     self.jefe = None
-                    if self.vidas <= 0:
-                        self.game_over = True
-                elif resultado == "muerto":
-                    self.enemigos.remove(enemigo)
-                    self.jefe_activo = False
-                    self.jefe = None
-                    self.subir_nivel()
-            else:
-                # enemigo normal
-                if resultado == "castillo":
+                else:
                     self.vidas -= 1
                     self.puntaje_B += 1
                     self.matriz.cargar_matriz_jugadas(self.contador_jugadas, 1)
@@ -591,10 +614,17 @@ class Juego:
                     cod_usuario = obtener_codigo_usuario()[0]
                     Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y,
                                       "enemigo llegó al castillo")
-                    if self.vidas <= 0:
-                        self.game_over = True
+                enemigo.kill()
+                if self.vidas <= 0:
+                    self.game_over = True
 
-        # Colisiones entre balas y enemigos
+            elif resultado == "muerto":
+                enemigo.kill()
+                self.jefe_activo = False
+                self.jefe = None
+                self.subir_nivel()
+
+        # Colisiones balas-enemigos
         colisiones = pygame.sprite.groupcollide(self.grupo_balas, self.enemigos, True, False)
         if colisiones:
             kills = len(colisiones)
@@ -604,26 +634,29 @@ class Juego:
 
             for bala, enemigos in colisiones.items():
                 for enemigo in enemigos:
-                    if isinstance(enemigo, Jefe):
-                        enemigo.recibir_dano(1)  # cada bala le quita 1 de vida al jefe
-                    else:
-                        enemigo.recibir_dano(1)  # cada bala le quita 1 de vida al enemigo normal
-
+                    enemigo.recibir_dano(1)
                     cod_usuario = obtener_codigo_usuario()[0]
-                    Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y,)
+                    Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y)
 
-            # aumentar dificultad por puntaje
-            if self.puntaje_A % 25 == 0:
-                self.enemigo_velocidad -= 0.5
-                if self.spawn_interval > 600:
-                    self.spawn_interval -= 200
-
-        # verificar si toca invocar al jefe
+        # Invocar jefe según nivel
+# Invocar jefe según nivel
         if self.puntaje_A >= self.enemigos_para_jefe * self.nivel and not self.jefe_activo:
-            self.jefe = Jefe(ANCHO -200 ,ALTO // 2)
+            pos_y = random.randint(100, ALTO - 300)  # posición vertical aleatoria
+
+            # A partir del nivel 3, vuelve el jefe principal
+            if self.nivel >= 3:
+                self.jefe = Jefe(ANCHO + 150, pos_y)
+            elif self.nivel == 2:
+                self.jefe = Jefe2(ANCHO + 150, pos_y)
+            else:
+                self.jefe = Jefe(ANCHO + 150, pos_y)
+
             self.enemigos.add(self.jefe)
+            self.sprites.add(self.jefe)
             self.jefe_activo = True
-            
+
+
+
             
     def dibujar_barra_vida(self, surf):
             if not self.barras_vidas:
@@ -683,5 +716,4 @@ if __name__ == "__main__":
     pantalla_registro()
     pantalla_inicio()
     Juego("jugador").run()
-    
     

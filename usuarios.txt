@@ -11,3 +11,36 @@ L,L,L,L
 L,L,L,L
 L,LL,L,L
  L,L,L,L
+l,l,l,l
+l,l,l,l
+
+l,l,l,l,
+,l,ll
+,l,l,l,
+l,l,l,l
+,l,l,l,l
+l,l,l,l,
+ l,l,l,l
+ ,l,l,l,l
+l,l,l,l
+l,l,ll,l
+l,l,l,l
+l,l,l,l
+l,l,l,l,
+l,l,l,l
+l,ll,,l,l
+l,l,l,l
+l,l,l,l
+l,l,l,l
+ l,l,l,l
+l,l,l,l
+l,l,l,l 
+l,l,l,l
+l,l,lll,
+l,l,l,l
+l,l,l,l
+l,l,l,l
+l,l,l,l
+l,l,l,l
+l,l,l,l
+l,l,l,l
