@@ -2,6 +2,7 @@ import pygame
 import sys
 import random
 import os
+from pygame.sprite import LayeredUpdates
 from datetime import datetime
 
 # ====== Configuración ======
@@ -518,7 +519,8 @@ class Juego:
         self.jugador = Jugador(60, ALTO // 2)
         self.jugador.juego = self  # ← referencia para que el jugador acceda a self.balas
 
-        self.sprites = pygame.sprite.Group(self.jugador)
+        self.sprites = LayeredUpdates()
+        self.sprites.add(self.jugador, layer=3)
         self.grupo_balas = pygame.sprite.Group()
         self.enemigos = pygame.sprite.Group()
         self.matriz = GestionMatriz()
@@ -590,7 +592,7 @@ class Juego:
                 enemigo = Enemigo(random.randint(40, ALTO - 40), self.enemigo_velocidad)
 
             self.enemigos.add(enemigo)
-            self.sprites.add(enemigo)
+            self.sprites.add(enemigo, layer = 1)
 
 
         # Actualización de todos los sprites (jugador, enemigos, balas)
@@ -655,7 +657,7 @@ class Juego:
         # Invocar jefe según nivel
 # Invocar jefe según nivel
         if self.puntaje_A >= self.enemigos_para_jefe * self.nivel and not self.jefe_activo:
-            pos_y = random.randint(100, ALTO - 300)  # posición vertical aleatoria
+            pos_y = random.randint(100, ALTO - 400)  # posición vertical aleatoria
 
             # A partir del nivel 3, vuelve el jefe principal
             if self.nivel >= 3:
@@ -666,7 +668,7 @@ class Juego:
                 self.jefe = Jefe(ANCHO + 150, pos_y)
 
             self.enemigos.add(self.jefe)
-            self.sprites.add(self.jefe)
+            self.sprites.add(self.jefe, layer=5)
             self.jefe_activo = True
 
 
@@ -685,8 +687,6 @@ class Juego:
         surf.blit(fondo_juego, (0, 0))
 
         self.sprites.draw(surf)
-        self.grupo_balas.draw(surf)
-        self.enemigos.draw(surf)
 
         for e in self.enemigos:
             if hasattr(e, "dibujar_barra_vida"):
