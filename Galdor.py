@@ -22,6 +22,13 @@ BASE_DIR = os.path.dirname(__file__)
 def ruta(relativa):
     return os.path.join(BASE_DIR, relativa)
 
+def colision_mask_segura(sprite1, sprite2):
+    """Evita errores cuando una de las máscaras es None."""
+    if sprite1.mask is None or sprite2.mask is None:
+        return False  # no hay colisión posible
+    return pygame.sprite.collide_mask(sprite1, sprite2)
+
+
 # === FONDOS ===
 fondo_inicio = pygame.image.load(ruta("fondo_galdor.png")).convert()
 fondo_inicio = pygame.transform.scale(fondo_inicio, (ANCHO, ALTO))
@@ -295,6 +302,7 @@ class Enemigo(SpriteAnimado):
             self.cambiar_accion("enemy down")
             self.muerto = True
             self.vel_x = 0
+            self.mask =  None
 
     def update(self):
         dt = clock.get_time()
@@ -329,6 +337,8 @@ class Enemigo2(SpriteAnimado):
             self.cambiar_accion("down")
             self.muerto = True
             self.vel_x = 0
+            self.mask = None
+            
 
     def update(self):
         dt = clock.get_time()
@@ -360,6 +370,7 @@ class Jefe(pygame.sprite.Sprite):
         self.vida = 5
         self.tiempo_danio = 0
         self.vivo = True
+        self.mask = pygame.mask.from_surface(self.image)
 
     def cargar_animacion(self, ruta_carpeta):
         imagenes = []
@@ -383,6 +394,7 @@ class Jefe(pygame.sprite.Sprite):
             self.estado = 'muerte'
             self.frame = 0
             self.vivo = False
+            self.mask = None
 
     def update(self):
         ahora = pygame.time.get_ticks()
@@ -418,6 +430,8 @@ class Jefe2(Jefe):
         self.vida = 5
         self.tiempo_danio = 0
         self.vivo = True
+        self.mask = pygame.mask.from_surface(self.image)
+
 
     def cargar_animacion(self, ruta_carpeta):
         imagenes = []
@@ -441,6 +455,7 @@ class Jefe2(Jefe):
             self.estado = 'muerte'
             self.frame = 0
             self.vivo = False
+            self.mask = None
 
     def update(self):
         ahora = pygame.time.get_ticks()
@@ -624,7 +639,7 @@ class Juego:
                 self.subir_nivel()
 
         # Colisiones balas-enemigos
-        colisiones = pygame.sprite.groupcollide(self.grupo_balas, self.enemigos, True, False, pygame.sprite.collide_mask)
+        colisiones = pygame.sprite.groupcollide(self.grupo_balas, self.enemigos, True, False, colision_mask_segura)
         if colisiones:
             kills = len(colisiones)
             self.puntaje_A += kills
