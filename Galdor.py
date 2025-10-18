@@ -14,7 +14,7 @@ COLOR_TEXTO_REGISTRO = (255, 205, 0)
 # ====== Inicialización ======
 pygame.init()
 pantalla = pygame.display.set_mode((ANCHO, ALTO))
-pygame.display.set_caption("Juego de Eitner - registro de usuario")
+pygame.display.set_caption("Juego de Eitner")
 clock = pygame.time.Clock()
 
 # === RUTA BASE ===
@@ -234,7 +234,7 @@ class Jugador(SpriteAnimado):
         self.velocidad = 10
         self.direccion = "derecha"
         self.disparando = False
-        self.tiempo_recarga = 300
+        self.tiempo_recarga = 150
         self.ultimo_disparo = 0
         self.accion_previa = "quieto"
         self.bala_disparada = False
@@ -479,29 +479,171 @@ class Jefe2(Jefe):
 
 # ====== Clase Juego ======
 class GestionMatriz:
-    def __init__(self, MAX_JUGADAS=500, NUM_OBJETOS=2, DIAS=31, MES=12, PARTIDAS=100):
-        # PRIMERA MATRIZ (JUGADAS X OBJETOS)
-        self.matriz_jugadas = [[0 for _ in range(NUM_OBJETOS)] for _ in range(MAX_JUGADAS)]
-        # SEGUNDA MATRIZ (DIAS X OBJETOS)
+    def __init__(self, MAX_JUGADAS=50, NUM_OBJETOS=2, DIAS =31, MES=12, PARTIDAS=10):
+        #PRIMERA MATRIZ (JUGADAS X OBJETOS)
+        self.matriz_jugadas = [[0 for _ in range(NUM_OBJETOS)] for _ in range(MAX_JUGADAS)] #[[cuantos elementos en cada fila] cuantas filas en cada matriz]
+        #SEGUNDA MATRIZ (DIAS X OBJETOS)
         self.matriz_dias = [[0 for _ in range(NUM_OBJETOS)] for _ in range(DIAS)]
-        # TERCERA MATRIZ (PARTIDA X MES X OBJETOS)
+        #TERCERA MATRIZ (PARTIDA X MES X OBJETOS)
         self.matriz_3D = [[[0 for _ in range(NUM_OBJETOS)] for _ in range(MES)] for _ in range(PARTIDAS)]
-
+        
     def cargar_matriz_jugadas(self, fila, objeto):
         self.matriz_jugadas[fila][objeto] += 1
-
+        
     def cargar_matriz_dias(self, dia, objeto):
         self.matriz_dias[dia][objeto] += 1
-
+        
     def cargar_matriz_3D(self, partida, mes, objeto):
         self.matriz_3D[partida][mes][objeto] += 1
+        
+    def calcular_totales(self):
+        # Totales por fila (por jugada)
+        totales_filas = [sum(fila) for fila in self.matriz_jugadas]
 
-    def mostrar_matriz(self, matriz):
-        for fila in matriz:
-            for valor in fila:
-                print(f"|{valor}|", end="")
-            print()
-        print()
+        # Totales por columna (por tipo de objeto/evento)
+        totales_columnas = [sum(col) for col in zip(*self.matriz_jugadas)]
+
+        # Total general (suma de todo)
+        total_general = sum(totales_filas)
+    
+        return totales_filas, totales_columnas, total_general
+
+        
+    def mostrar_matriz(self):
+        print("\n=== MATRIZ DE JUGADAS ===")
+        for i, fila in enumerate(self.matriz_jugadas):
+            print(f"Fila {i + 1}: {fila} | Total Fila: {sum(fila)}")
+
+        # Totales por columna
+        totales_columnas = [sum(col) for col in zip(*self.matriz_jugadas)]
+        print(f"Totales por objeto: {totales_columnas}")
+        print(f"Total general: {sum(totales_columnas)}")
+
+    
+    def mostrar_matriz_dias(self):
+        print("=== MATRIZ DE INTERVENCIÓN POR DÍA ===")
+        print("Día | Objeto 0 | Objeto 1 | Total Día")
+        print("--------------------------------------")
+
+        totales_dia = []
+        for i, fila in enumerate(self.matriz_dias):
+            total_dia = sum(fila)
+            totales_dia.append(total_dia)
+            print(f"{i+1:3} | " + " | ".join(f"{v:8}" for v in fila) + f" | {total_dia:9}")
+
+        print("--------------------------------------")
+        totales_objetos = [sum(col) for col in zip(*self.matriz_dias)]
+        total_general = sum(totales_dia)
+        print("Totales objetos:", " | ".join(f"{v:8}" for v in totales_objetos), "|", total_general)
+
+        # Mejor y peor día
+        if any(totales_dia):
+            mejor_dia = totales_dia.index(max(totales_dia)) + 1
+            peor_dia = totales_dia.index(min(totales_dia)) + 1
+            print(f"\nEl Mejor Día: {mejor_dia} (Total: {max(totales_dia)})")
+            print(f"El Peor Día: {peor_dia} (Total: {min(totales_dia)})")
+        else:
+            print("\nSin registros de días aún.")
+            
+
+    def mostrar_matriz_3D(self):
+        print("=== MATRIZ 3D (SOLO PARTIDAS CON MOVIMIENTO) ===")
+        hay_partidas_con_movimiento = False  # bandera para saber si hay alguna partida válida
+
+        for idx_partida, partida in enumerate(self.matriz_3D):
+            # Calcular el total de la partida (suma de todos los objetos y meses)
+            total_partida = sum(sum(mes) for mes in partida)
+
+            if total_partida == 0:
+                continue  # si no hubo movimientos, no se muestra esta partida
+
+            hay_partidas_con_movimiento = True
+            print(f"\nPartida {idx_partida + 1}")
+            print("Mes | Obj0 | Obj1 | Total Mes")
+            print("------------------------------")
+
+            # mostrar todos los meses, aunque tengan ceros
+            for idx_mes, mes in enumerate(partida):
+                total_mes = sum(mes)
+                print(f"{idx_mes + 1:3} | " + " | ".join(f"{v:5}" for v in mes) + f" | {total_mes:10}")
+
+            print("------------------------------")
+            print(f"Total partida {idx_partida + 1}: {total_partida}")
+
+        # Si ninguna partida tuvo movimiento
+        if not hay_partidas_con_movimiento:
+            print("\nNo hay partidas registradas con movimiento aún.")
+
+        # Totales generales (solo si hubo partidas con datos)
+        if hay_partidas_con_movimiento:
+            totales_obj = [
+                sum(sum(mes[j] for mes in partida) for partida in self.matriz_3D)
+                for j in range(len(self.matriz_3D[0][0]))
+            ]
+            total_general = sum(totales_obj)
+            print("\nTotales generales por objeto:",
+                  " | ".join(f"Obj {j} : {v}" for j, v in enumerate(totales_obj)))
+            print("Total 3D general:", total_general)
+
+    
+    def mostrar_matriz_con_puntero(self):
+        print("\n=== MATRIZ DE JUGADAS (MÉTODO DEL PUNTERO) ===")
+        fila_puntero = 0
+        while fila_puntero < len(self.matriz_jugadas):
+            fila = self.matriz_jugadas[fila_puntero]
+            col_puntero = 0
+            total_fila = 0
+
+            print(f"Fila {fila_puntero + 1} -> ", end="")
+            while col_puntero < len(fila):
+                valor = fila[col_puntero]
+                print(f"[Obj{col_puntero}:{valor}]", end=" ")
+                total_fila += valor
+                col_puntero += 1
+
+            print(f" | Total Fila: {total_fila}")
+            fila_puntero += 1
+            
+    def mostrar_matriz_dias_con_puntero(self):
+        print("\n=== MATRIZ DE DÍAS (MÉTODO DEL PUNTERO) ===")
+        dia_puntero = 0
+        while dia_puntero < len(self.matriz_dias):
+            fila = self.matriz_dias[dia_puntero]
+            objeto_puntero = 0
+            total_dia = 0
+
+            print(f"Día {dia_puntero + 1}: ", end="")
+            while objeto_puntero < len(fila):
+                valor = fila[objeto_puntero]
+                print(f"Obj{objeto_puntero}={valor}", end=" ")
+                total_dia += valor
+                objeto_puntero += 1
+
+            print(f"| Total día: {total_dia}")
+            dia_puntero += 1
+
+    def mostrar_matriz_3D_con_puntero(self):
+        print("\n=== MATRIZ 3D (MÉTODO DEL PUNTERO) ===")
+        partida_puntero = 0
+        while partida_puntero < len(self.matriz_3D):
+            partida = self.matriz_3D[partida_puntero]
+            total_partida = 0
+            print(f"\nPartida {partida_puntero + 1}:")
+            mes_puntero = 0
+            while mes_puntero < len(partida):
+                mes = partida[mes_puntero]
+                objeto_puntero = 0
+                total_mes = 0
+                while objeto_puntero < len(mes):
+                    valor = mes[objeto_puntero]
+                    total_mes += valor
+                    objeto_puntero += 1
+                print(f"  Mes {mes_puntero + 1} -> Total: {total_mes}")
+                total_partida += total_mes
+                mes_puntero += 1
+            print(f"Total partida: {total_partida}")
+            partida_puntero += 1
+
 
 
 # ====== Juego ======
@@ -705,9 +847,38 @@ class Juego:
 
 
         if self.game_over:
-            msg = fuente.render("GAME OVER - Presiona ESC para salir", True, (255, 50, 50))
-            rect = msg.get_rect(center=(ANCHO // 2, ALTO // 2))
-            surf.blit(msg, rect)
+            msg = fuente.render("Presiona ESC para ver los resultados", True, (255, 255, 255))
+            rect = msg.get_rect(center=(ANCHO // 2, ALTO // 2 + 60))
+            pantalla.blit(msg, rect)
+            pygame.display.flip()
+
+            # Esperar a que el jugador presione ESC
+            esperando = True
+            while esperando:
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                        esperando = False
+            print()
+            self.matriz.mostrar_matriz()
+            self.matriz.mostrar_matriz_dias()
+            self.matriz.mostrar_matriz_3D()
+            self.matriz.mostrar_matriz_con_puntero()
+            self.matriz.mostrar_matriz_dias_con_puntero()
+            self.matriz.mostrar_matriz_3D_con_puntero()
+            filas, columnas, total = self.matriz.calcular_totales()
+            # Mostrar resumen
+            print("\n=== RESUMEN DE TOTALES ===")
+            print(f"Total por jugada: {filas}")
+            print(f"Total por objeto: {columnas}")
+            print(f"Total general: {total}")
+            # Identificar “mejor” y “peor” jugada
+            if filas:
+                mejor_jugada = filas.index(max(filas)) + 1
+                peor_jugada = filas.index(min(filas)) + 1
+                print(f"\nMejor jugada: {mejor_jugada} (total {max(filas)})")
+                print(f"Peor jugada: {peor_jugada} (total {min(filas)})")
+
+            
 
     def run(self):
         while True:
@@ -715,8 +886,6 @@ class Juego:
             self.manejar_eventos()
             teclas = pygame.key.get_pressed()
             if self.game_over and teclas[pygame.K_ESCAPE]:
-                print("jugas|objetos")
-                self.matriz.mostrar_matriz(self.matriz.matriz_jugadas)
                 cod_usuario, nombre, apodo, clave = obtener_codigo_usuario()
                 guardar_detalle_partida(cod_usuario, self.partidas_jugadas, self.puntaje_A, self.puntaje_B)
                 pygame.quit()
@@ -729,7 +898,7 @@ class Juego:
 # ====== Ejecutar ======
 if __name__ == "__main__":
     print(__file__)
-    #pantalla_registro()
-    #pantalla_inicio()
+    pantalla_registro()
+    pantalla_inicio()
     Juego("jugador").run()
     

@@ -3518,3 +3518,1039 @@ l,137,1020,440,enemigo eliminado,2025-10-14 15:59:56
 l,137,987,-25,enemigo eliminado,2025-10-14 15:59:58
 l,137,1062,252,enemigo eliminado,2025-10-14 16:00:00
 l,137,987,-63,enemigo eliminado,2025-10-14 16:00:02
+l,139,1038,214,enemigo eliminado,2025-10-14 19:35:23
+l,139,1068,191,enemigo eliminado,2025-10-14 19:35:25
+l,139,1011,490,enemigo eliminado,2025-10-14 19:35:28
+l,139,1068,573,enemigo eliminado,2025-10-14 19:35:29
+l,139,927,495,enemigo eliminado,2025-10-14 19:35:32
+l,139,873,441,enemigo eliminado,2025-10-14 19:35:34
+l,139,1012,299,enemigo eliminado,2025-10-14 19:35:36
+l,139,978,299,enemigo eliminado,2025-10-14 19:35:36
+l,139,932,299,enemigo eliminado,2025-10-14 19:35:37
+l,139,633,-4,enemigo eliminado,2025-10-14 19:35:37
+l,139,780,299,enemigo eliminado,2025-10-14 19:35:38
+l,139,744,299,enemigo eliminado,2025-10-14 19:35:39
+l,139,501,40,enemigo eliminado,2025-10-14 19:35:40
+l,139,753,35,enemigo eliminado,2025-10-14 19:35:41
+l,139,902,10,enemigo eliminado,2025-10-14 19:35:42
+l,139,938,91,enemigo eliminado,2025-10-14 19:35:43
+l,139,980,-40,enemigo eliminado,2025-10-14 19:35:45
+l,139,947,559,enemigo eliminado,2025-10-14 19:35:47
+l,139,964,292,enemigo eliminado,2025-10-14 19:35:48
+l,139,948,292,enemigo eliminado,2025-10-14 19:35:48
+l,139,930,292,enemigo eliminado,2025-10-14 19:35:49
+l,139,767,16,enemigo eliminado,2025-10-14 19:35:49
+l,139,998,437,enemigo eliminado,2025-10-14 19:35:50
+l,139,827,292,enemigo eliminado,2025-10-14 19:35:50
+l,139,808,292,enemigo eliminado,2025-10-14 19:35:51
+l,139,790,292,enemigo eliminado,2025-10-14 19:35:51
+l,139,775,292,enemigo eliminado,2025-10-14 19:35:52
+l,139,697,292,enemigo eliminado,2025-10-14 19:35:53
+l,139,281,-27,enemigo eliminado,2025-10-14 19:35:55
+l,139,878,228,enemigo eliminado,2025-10-14 19:35:55
+l,139,386,303,enemigo eliminado,2025-10-14 19:35:56
+l,139,602,9,enemigo eliminado,2025-10-14 19:35:57
+l,139,700,559,enemigo eliminado,2025-10-14 19:35:58
+l,139,764,191,enemigo eliminado,2025-10-14 19:35:59
+l,139,732,191,enemigo eliminado,2025-10-14 19:36:00
+l,139,690,191,enemigo eliminado,2025-10-14 19:36:00
+l,139,374,335,enemigo eliminado,2025-10-14 19:36:01
+l,139,524,364,enemigo eliminado,2025-10-14 19:36:02
+l,139,430,191,enemigo eliminado,2025-10-14 19:36:02
+l,139,358,191,enemigo eliminado,2025-10-14 19:36:03
+l,139,360,259,enemigo eliminado,2025-10-14 19:36:04
+l,139,482,397,enemigo eliminado,2025-10-14 19:36:05
+l,139,936,491,enemigo eliminado,2025-10-14 19:36:06
+l,139,440,577,enemigo eliminado,2025-10-14 19:36:06
+l,139,738,332,enemigo eliminado,2025-10-14 19:36:08
+l,139,708,33,enemigo eliminado,2025-10-14 19:36:09
+l,139,1272,404,enemigo eliminado,2025-10-14 19:36:10
+l,139,476,508,enemigo eliminado,2025-10-14 19:36:11
+l,139,516,231,enemigo eliminado,2025-10-14 19:36:12
+l,139,1226,437,enemigo eliminado,2025-10-14 19:36:13
+l,139,512,543,enemigo eliminado,2025-10-14 19:36:14
+l,139,783,114,enemigo eliminado,2025-10-14 19:36:15
+l,139,763,114,enemigo eliminado,2025-10-14 19:36:15
+l,139,740,114,enemigo eliminado,2025-10-14 19:36:16
+l,139,440,8,enemigo eliminado,2025-10-14 19:36:16
+l,139,286,542,enemigo eliminado,2025-10-14 19:36:18
+l,139,680,380,enemigo eliminado,2025-10-14 19:36:19
+l,139,248,541,enemigo eliminado,2025-10-14 19:36:19
+l,139,461,114,enemigo eliminado,2025-10-14 19:36:20
+l,139,678,284,enemigo eliminado,2025-10-14 19:36:20
+l,139,447,114,enemigo eliminado,2025-10-14 19:36:20
+l,139,429,114,enemigo eliminado,2025-10-14 19:36:21
+l,139,412,114,enemigo eliminado,2025-10-14 19:36:21
+l,139,352,133,enemigo eliminado,2025-10-14 19:36:22
+l,139,347,114,enemigo eliminado,2025-10-14 19:36:23
+l,139,406,54,enemigo eliminado,2025-10-14 19:36:23
+l,139,502,213,enemigo eliminado,2025-10-14 19:36:24
+l,139,520,79,enemigo eliminado,2025-10-14 19:36:25
+l,139,415,587,enemigo eliminado,2025-10-14 19:36:26
+l,139,470,184,enemigo eliminado,2025-10-14 19:36:26
+l,139,495,49,enemigo eliminado,2025-10-14 19:36:27
+l,139,400,483,enemigo eliminado,2025-10-14 19:36:28
+l,139,505,314,enemigo eliminado,2025-10-14 19:36:29
+l,139,495,0,enemigo eliminado,2025-10-14 19:36:30
+l,139,455,-33,enemigo eliminado,2025-10-14 19:36:30
+l,139,1145,198,enemigo eliminado,2025-10-14 19:36:32
+l,139,125,81,enemigo eliminado,2025-10-14 19:36:32
+l,139,105,84,enemigo eliminado,2025-10-14 19:36:33
+l,139,195,353,enemigo eliminado,2025-10-14 19:36:34
+l,139,540,93,enemigo eliminado,2025-10-14 19:36:34
+l,139,570,334,enemigo eliminado,2025-10-14 19:36:35
+l,139,620,482,enemigo eliminado,2025-10-14 19:36:36
+l,139,560,25,enemigo eliminado,2025-10-14 19:36:37
+l,139,660,-68,enemigo eliminado,2025-10-14 19:36:37
+l,139,470,292,enemigo eliminado,2025-10-14 19:36:38
+l,139,424,292,enemigo eliminado,2025-10-14 19:36:39
+l,139,180,501,enemigo eliminado,2025-10-14 19:36:39
+l,139,145,535,enemigo eliminado,2025-10-14 19:36:40
+l,139,115,609,enemigo eliminado,2025-10-14 19:36:41
+l,139,233,292,enemigo eliminado,2025-10-14 19:36:42
+l,139,-195,551,enemigo llegó al castillo,2025-10-14 19:36:43
+l,139,665,634,enemigo eliminado,2025-10-14 19:36:43
+l,139,-195,356,enemigo llegó al castillo,2025-10-14 19:36:43
+l,139,98,292,enemigo eliminado,2025-10-14 19:36:44
+l,139,-175,108,enemigo llegó al castillo,2025-10-14 19:36:44
+l,139,52,292,enemigo eliminado,2025-10-14 19:36:45
+l,139,39,292,enemigo eliminado,2025-10-14 19:36:45
+l,139,-175,165,enemigo llegó al castillo,2025-10-14 19:36:46
+l,139,30,561,enemigo eliminado,2025-10-14 19:36:46
+l,139,-43,292,enemigo eliminado,2025-10-14 19:36:47
+l,139,-175,173,enemigo llegó al castillo,2025-10-14 19:36:48
+l,140,420,427,enemigo eliminado,2025-10-14 20:08:39
+l,140,699,585,enemigo eliminado,2025-10-14 20:08:40
+l,140,981,231,enemigo eliminado,2025-10-14 20:08:40
+l,140,993,-55,enemigo eliminado,2025-10-14 20:08:42
+l,140,1050,281,enemigo eliminado,2025-10-14 20:08:44
+l,141,912,638,enemigo eliminado,2025-10-14 20:09:26
+l,141,1158,26,enemigo eliminado,2025-10-14 20:09:27
+l,141,120,1,enemigo eliminado,2025-10-14 20:09:28
+l,141,963,106,enemigo eliminado,2025-10-14 20:09:29
+l,141,459,597,enemigo eliminado,2025-10-14 20:09:34
+l,141,1014,421,enemigo eliminado,2025-10-14 20:09:35
+l,141,489,289,enemigo eliminado,2025-10-14 20:09:36
+l,141,1191,238,enemigo eliminado,2025-10-14 20:09:37
+l,141,874,318,enemigo eliminado,2025-10-14 20:09:38
+l,141,760,318,enemigo eliminado,2025-10-14 20:09:39
+l,141,855,206,enemigo eliminado,2025-10-14 20:09:40
+l,141,644,318,enemigo eliminado,2025-10-14 20:09:41
+l,141,602,318,enemigo eliminado,2025-10-14 20:09:41
+l,141,506,318,enemigo eliminado,2025-10-14 20:09:42
+l,141,570,265,enemigo eliminado,2025-10-14 20:09:43
+l,141,822,534,enemigo eliminado,2025-10-14 20:09:44
+l,141,1031,596,enemigo eliminado,2025-10-14 20:09:45
+l,141,1019,367,enemigo eliminado,2025-10-14 20:09:47
+l,141,854,254,enemigo eliminado,2025-10-14 20:09:49
+l,141,938,96,enemigo eliminado,2025-10-14 20:09:50
+l,141,918,149,enemigo eliminado,2025-10-14 20:09:52
+l,141,836,378,enemigo eliminado,2025-10-14 20:09:53
+l,141,794,149,enemigo eliminado,2025-10-14 20:09:54
+l,141,866,485,enemigo eliminado,2025-10-14 20:09:54
+l,141,728,149,enemigo eliminado,2025-10-14 20:09:55
+l,141,690,149,enemigo eliminado,2025-10-14 20:09:56
+l,141,666,149,enemigo eliminado,2025-10-14 20:09:56
+l,141,642,149,enemigo eliminado,2025-10-14 20:09:57
+l,141,619,149,enemigo eliminado,2025-10-14 20:09:58
+l,141,597,149,enemigo eliminado,2025-10-14 20:09:58
+l,141,173,393,enemigo eliminado,2025-10-14 20:09:59
+l,141,383,528,enemigo eliminado,2025-10-14 20:10:00
+l,141,572,198,enemigo eliminado,2025-10-14 20:10:01
+l,141,968,42,enemigo eliminado,2025-10-14 20:10:01
+l,141,356,132,enemigo eliminado,2025-10-14 20:10:02
+l,141,960,110,enemigo eliminado,2025-10-14 20:10:03
+l,141,728,546,enemigo eliminado,2025-10-14 20:10:04
+l,141,758,110,enemigo eliminado,2025-10-14 20:10:04
+l,141,860,319,enemigo eliminado,2025-10-14 20:10:04
+l,141,570,110,enemigo eliminado,2025-10-14 20:10:06
+l,141,614,606,enemigo eliminado,2025-10-14 20:10:07
+l,141,402,110,enemigo eliminado,2025-10-14 20:10:07
+l,141,294,110,enemigo eliminado,2025-10-14 20:10:09
+l,141,242,237,enemigo eliminado,2025-10-14 20:10:09
+l,141,454,563,enemigo eliminado,2025-10-14 20:10:10
+l,141,630,626,enemigo eliminado,2025-10-14 20:10:11
+l,141,524,544,enemigo eliminado,2025-10-14 20:10:12
+l,141,640,172,enemigo eliminado,2025-10-14 20:10:13
+l,141,788,16,enemigo eliminado,2025-10-14 20:10:14
+l,141,916,145,enemigo eliminado,2025-10-14 20:10:14
+l,141,892,466,enemigo eliminado,2025-10-14 20:10:16
+l,141,822,-59,enemigo eliminado,2025-10-14 20:10:17
+l,141,949,195,enemigo eliminado,2025-10-14 20:10:18
+l,141,916,195,enemigo eliminado,2025-10-14 20:10:18
+l,141,520,551,enemigo eliminado,2025-10-14 20:10:19
+l,141,847,195,enemigo eliminado,2025-10-14 20:10:20
+l,141,830,195,enemigo eliminado,2025-10-14 20:10:20
+l,141,406,55,enemigo eliminado,2025-10-14 20:10:21
+l,141,773,195,enemigo eliminado,2025-10-14 20:10:21
+l,141,400,91,enemigo eliminado,2025-10-14 20:10:22
+l,141,534,27,enemigo eliminado,2025-10-14 20:10:22
+l,141,578,279,enemigo eliminado,2025-10-14 20:10:23
+l,141,692,238,enemigo eliminado,2025-10-14 20:10:24
+l,141,548,195,enemigo eliminado,2025-10-14 20:10:25
+l,141,666,90,enemigo eliminado,2025-10-14 20:10:25
+l,141,489,195,enemigo eliminado,2025-10-14 20:10:26
+l,141,596,415,enemigo eliminado,2025-10-14 20:10:26
+l,141,405,195,enemigo eliminado,2025-10-14 20:10:27
+l,141,552,416,enemigo eliminado,2025-10-14 20:10:28
+l,141,702,300,enemigo eliminado,2025-10-14 20:10:28
+l,141,935,385,enemigo eliminado,2025-10-14 20:10:29
+l,141,488,382,enemigo eliminado,2025-10-14 20:10:30
+l,141,640,352,enemigo eliminado,2025-10-14 20:10:31
+l,141,710,222,enemigo eliminado,2025-10-14 20:10:31
+l,141,465,357,enemigo eliminado,2025-10-14 20:10:33
+l,141,410,365,enemigo eliminado,2025-10-14 20:10:34
+l,141,500,150,enemigo eliminado,2025-10-14 20:10:34
+l,141,585,179,enemigo eliminado,2025-10-14 20:10:35
+l,141,510,579,enemigo eliminado,2025-10-14 20:10:36
+l,141,485,451,enemigo eliminado,2025-10-14 20:10:37
+l,141,580,258,enemigo eliminado,2025-10-14 20:10:37
+l,141,525,623,enemigo eliminado,2025-10-14 20:10:38
+l,141,575,274,enemigo eliminado,2025-10-14 20:10:39
+l,141,625,637,enemigo eliminado,2025-10-14 20:10:40
+l,141,616,394,enemigo eliminado,2025-10-14 20:10:41
+l,141,370,381,enemigo eliminado,2025-10-14 20:10:41
+l,141,532,394,enemigo eliminado,2025-10-14 20:10:42
+l,141,175,99,enemigo eliminado,2025-10-14 20:10:43
+l,141,305,227,enemigo eliminado,2025-10-14 20:10:43
+l,141,310,592,enemigo eliminado,2025-10-14 20:10:44
+l,141,346,394,enemigo eliminado,2025-10-14 20:10:45
+l,141,50,30,enemigo eliminado,2025-10-14 20:10:45
+l,141,120,53,enemigo eliminado,2025-10-14 20:10:46
+l,141,210,394,enemigo eliminado,2025-10-14 20:10:47
+l,141,115,-44,enemigo eliminado,2025-10-14 20:10:48
+l,141,-195,-51,enemigo llegó al castillo,2025-10-14 20:10:48
+l,141,86,394,enemigo eliminado,2025-10-14 20:10:49
+l,141,245,494,enemigo eliminado,2025-10-14 20:10:49
+l,141,-175,35,enemigo llegó al castillo,2025-10-14 20:10:49
+l,141,67,394,enemigo eliminado,2025-10-14 20:10:49
+l,141,50,394,enemigo eliminado,2025-10-14 20:10:50
+l,141,34,394,enemigo eliminado,2025-10-14 20:10:50
+l,141,-175,-56,enemigo llegó al castillo,2025-10-14 20:10:51
+l,142,1257,301,enemigo eliminado,2025-10-14 20:11:39
+l,142,1068,490,enemigo eliminado,2025-10-14 20:11:42
+l,142,1023,186,enemigo eliminado,2025-10-14 20:11:44
+l,142,996,462,enemigo eliminado,2025-10-14 20:11:46
+l,142,1161,503,enemigo eliminado,2025-10-14 20:11:48
+l,142,954,-15,enemigo eliminado,2025-10-14 20:11:51
+l,142,914,385,enemigo eliminado,2025-10-14 20:11:52
+l,142,914,385,enemigo eliminado,2025-10-14 20:11:52
+l,142,957,193,enemigo eliminado,2025-10-14 20:11:53
+l,142,712,385,enemigo eliminado,2025-10-14 20:11:54
+l,142,712,385,enemigo eliminado,2025-10-14 20:11:54
+l,142,614,385,enemigo eliminado,2025-10-14 20:11:55
+l,142,654,350,enemigo eliminado,2025-10-14 20:11:56
+l,142,906,539,enemigo eliminado,2025-10-14 20:11:57
+l,142,890,-13,enemigo eliminado,2025-10-14 20:11:59
+l,142,863,651,enemigo eliminado,2025-10-14 20:12:00
+l,142,1016,585,enemigo eliminado,2025-10-14 20:12:01
+l,142,1076,480,enemigo eliminado,2025-10-14 20:12:03
+l,142,964,301,enemigo eliminado,2025-10-14 20:12:04
+l,142,964,301,enemigo eliminado,2025-10-14 20:12:04
+l,142,986,374,enemigo eliminado,2025-10-14 20:12:05
+l,142,888,301,enemigo eliminado,2025-10-14 20:12:05
+l,142,861,301,enemigo eliminado,2025-10-14 20:12:06
+l,142,861,301,enemigo eliminado,2025-10-14 20:12:06
+l,142,825,301,enemigo eliminado,2025-10-14 20:12:07
+l,142,825,301,enemigo eliminado,2025-10-14 20:12:07
+l,142,798,301,enemigo eliminado,2025-10-14 20:12:07
+l,143,1071,600,enemigo eliminado,2025-10-14 20:12:23
+l,143,981,397,enemigo eliminado,2025-10-14 20:12:25
+l,143,954,326,enemigo eliminado,2025-10-14 20:12:27
+l,143,744,-38,enemigo eliminado,2025-10-14 20:12:30
+l,143,1023,306,enemigo eliminado,2025-10-14 20:12:31
+l,143,999,63,enemigo eliminado,2025-10-14 20:12:33
+l,143,1030,266,enemigo eliminado,2025-10-14 20:12:34
+l,143,992,266,enemigo eliminado,2025-10-14 20:12:35
+l,143,960,266,enemigo eliminado,2025-10-14 20:12:35
+l,143,918,266,enemigo eliminado,2025-10-14 20:12:36
+l,143,874,266,enemigo eliminado,2025-10-14 20:12:37
+l,143,381,115,enemigo eliminado,2025-10-14 20:12:38
+l,143,651,133,enemigo eliminado,2025-10-14 20:12:38
+l,144,1221,311,enemigo eliminado,2025-10-14 20:12:51
+l,144,1068,269,enemigo eliminado,2025-10-14 20:12:54
+l,144,861,439,enemigo eliminado,2025-10-14 20:12:57
+l,144,957,622,enemigo eliminado,2025-10-14 20:12:58
+l,144,1056,502,enemigo eliminado,2025-10-14 20:13:00
+l,144,1041,493,enemigo eliminado,2025-10-14 20:13:02
+l,144,1024,322,enemigo eliminado,2025-10-14 20:13:03
+l,144,828,322,enemigo eliminado,2025-10-14 20:13:05
+l,144,796,322,enemigo eliminado,2025-10-14 20:13:05
+l,144,764,322,enemigo eliminado,2025-10-14 20:13:06
+l,144,732,322,enemigo eliminado,2025-10-14 20:13:06
+l,144,225,37,enemigo eliminado,2025-10-14 20:13:08
+l,144,459,501,enemigo eliminado,2025-10-14 20:13:09
+l,144,489,-64,enemigo eliminado,2025-10-14 20:13:10
+l,144,665,369,enemigo eliminado,2025-10-14 20:13:11
+l,144,881,358,enemigo eliminado,2025-10-14 20:13:12
+l,144,1001,298,enemigo eliminado,2025-10-14 20:13:13
+l,144,1040,188,enemigo eliminado,2025-10-14 20:13:14
+l,144,1024,188,enemigo eliminado,2025-10-14 20:13:15
+l,144,1007,188,enemigo eliminado,2025-10-14 20:13:16
+l,144,761,301,enemigo eliminado,2025-10-14 20:13:16
+l,144,953,188,enemigo eliminado,2025-10-14 20:13:17
+l,144,936,188,enemigo eliminado,2025-10-14 20:13:17
+l,144,919,188,enemigo eliminado,2025-10-14 20:13:18
+l,144,903,188,enemigo eliminado,2025-10-14 20:13:18
+l,144,886,188,enemigo eliminado,2025-10-14 20:13:19
+l,144,359,294,enemigo eliminado,2025-10-14 20:13:19
+l,144,542,-38,enemigo eliminado,2025-10-14 20:13:20
+l,144,764,140,enemigo eliminado,2025-10-14 20:13:21
+l,144,670,625,enemigo eliminado,2025-10-14 20:13:22
+l,144,1014,340,enemigo eliminado,2025-10-14 20:13:23
+l,144,734,488,enemigo eliminado,2025-10-14 20:13:23
+l,144,904,377,enemigo eliminado,2025-10-14 20:13:24
+l,144,798,340,enemigo eliminado,2025-10-14 20:13:25
+l,144,768,340,enemigo eliminado,2025-10-14 20:13:25
+l,144,724,340,enemigo eliminado,2025-10-14 20:13:26
+l,144,692,340,enemigo eliminado,2025-10-14 20:13:26
+l,144,414,-51,enemigo eliminado,2025-10-14 20:13:27
+l,144,562,85,enemigo eliminado,2025-10-14 20:13:28
+l,144,748,278,enemigo eliminado,2025-10-14 20:13:29
+l,144,898,508,enemigo eliminado,2025-10-14 20:13:30
+l,144,876,124,enemigo eliminado,2025-10-14 20:13:31
+l,144,922,217,enemigo eliminado,2025-10-14 20:13:32
+l,144,928,616,enemigo eliminado,2025-10-14 20:13:33
+l,144,860,85,enemigo eliminado,2025-10-14 20:13:34
+l,144,902,401,enemigo eliminado,2025-10-14 20:13:35
+l,144,750,25,enemigo eliminado,2025-10-14 20:13:37
+l,144,874,514,enemigo eliminado,2025-10-14 20:13:37
+l,144,760,295,enemigo eliminado,2025-10-14 20:13:38
+l,144,735,295,enemigo eliminado,2025-10-14 20:13:39
+l,144,722,295,enemigo eliminado,2025-10-14 20:13:39
+l,144,550,574,enemigo eliminado,2025-10-14 20:13:40
+l,144,662,295,enemigo eliminado,2025-10-14 20:13:40
+l,144,432,36,enemigo eliminado,2025-10-14 20:13:41
+l,144,378,257,enemigo eliminado,2025-10-14 20:13:42
+l,144,470,596,enemigo eliminado,2025-10-14 20:13:43
+l,144,433,295,enemigo eliminado,2025-10-14 20:13:44
+l,144,417,295,enemigo eliminado,2025-10-14 20:13:44
+l,144,400,295,enemigo eliminado,2025-10-14 20:13:45
+l,144,226,426,enemigo eliminado,2025-10-14 20:13:45
+l,144,346,295,enemigo eliminado,2025-10-14 20:13:46
+l,144,196,590,enemigo eliminado,2025-10-14 20:13:47
+l,144,-173,-5,enemigo llegó al castillo,2025-10-14 20:13:47
+l,144,352,236,enemigo eliminado,2025-10-14 20:13:48
+l,144,486,597,enemigo eliminado,2025-10-14 20:13:49
+l,144,370,180,enemigo eliminado,2025-10-14 20:13:49
+l,144,470,464,enemigo eliminado,2025-10-14 20:13:50
+l,144,325,61,enemigo eliminado,2025-10-14 20:13:51
+l,144,370,493,enemigo eliminado,2025-10-14 20:13:52
+l,144,255,418,enemigo eliminado,2025-10-14 20:13:53
+l,144,340,306,enemigo eliminado,2025-10-14 20:13:53
+l,144,900,83,enemigo eliminado,2025-10-14 20:13:54
+l,144,190,230,enemigo eliminado,2025-10-14 20:13:55
+l,144,305,188,enemigo eliminado,2025-10-14 20:13:55
+l,144,80,227,enemigo eliminado,2025-10-14 20:13:57
+l,144,175,76,enemigo eliminado,2025-10-14 20:13:58
+l,144,210,294,enemigo eliminado,2025-10-14 20:13:59
+l,144,235,598,enemigo eliminado,2025-10-14 20:13:59
+l,144,240,38,enemigo eliminado,2025-10-14 20:14:00
+l,144,492,127,enemigo eliminado,2025-10-14 20:14:01
+l,144,40,425,enemigo eliminado,2025-10-14 20:14:01
+l,144,-195,197,enemigo llegó al castillo,2025-10-14 20:14:03
+l,144,345,127,enemigo eliminado,2025-10-14 20:14:03
+l,144,-175,623,enemigo llegó al castillo,2025-10-14 20:14:04
+l,144,329,127,enemigo eliminado,2025-10-14 20:14:04
+l,144,20,417,enemigo eliminado,2025-10-14 20:14:04
+l,144,100,496,enemigo eliminado,2025-10-14 20:14:04
+l,144,180,276,enemigo eliminado,2025-10-14 20:14:05
+l,144,193,127,enemigo eliminado,2025-10-14 20:14:06
+l,144,168,127,enemigo eliminado,2025-10-14 20:14:06
+l,144,-175,596,enemigo llegó al castillo,2025-10-14 20:14:07
+l,144,147,127,enemigo eliminado,2025-10-14 20:14:07
+l,144,128,127,enemigo eliminado,2025-10-14 20:14:08
+l,144,-195,206,enemigo llegó al castillo,2025-10-14 20:14:08
+l,145,1059,486,enemigo eliminado,2025-10-15 16:40:28
+l,145,1014,-69,enemigo eliminado,2025-10-15 16:40:30
+l,145,1029,641,enemigo eliminado,2025-10-15 16:40:32
+l,146,849,246,enemigo eliminado,2025-10-15 16:49:47
+l,146,849,246,enemigo eliminado,2025-10-15 16:49:48
+l,146,879,296,enemigo eliminado,2025-10-15 16:49:49
+l,146,897,483,enemigo eliminado,2025-10-15 16:49:51
+l,146,897,483,enemigo eliminado,2025-10-15 16:49:51
+l,146,834,533,enemigo eliminado,2025-10-15 16:49:53
+l,146,834,533,enemigo eliminado,2025-10-15 16:49:54
+l,146,942,518,enemigo eliminado,2025-10-15 16:49:55
+l,146,942,518,enemigo eliminado,2025-10-15 16:49:55
+l,146,948,643,enemigo eliminado,2025-10-15 16:49:57
+l,146,948,643,enemigo eliminado,2025-10-15 16:49:57
+l,146,480,119,enemigo eliminado,2025-10-15 16:49:59
+l,146,432,119,enemigo eliminado,2025-10-15 16:49:59
+l,146,372,119,enemigo eliminado,2025-10-15 16:50:00
+l,146,308,119,enemigo eliminado,2025-10-15 16:50:01
+l,146,268,119,enemigo eliminado,2025-10-15 16:50:01
+l,146,387,133,enemigo eliminado,2025-10-15 16:50:01
+l,146,268,119,enemigo eliminado,2025-10-15 16:50:02
+l,146,486,232,enemigo eliminado,2025-10-15 16:50:03
+l,146,522,41,enemigo eliminado,2025-10-15 16:50:05
+l,146,689,347,enemigo eliminado,2025-10-15 16:50:06
+l,146,728,386,enemigo eliminado,2025-10-15 16:50:07
+l,146,950,552,enemigo eliminado,2025-10-15 16:50:08
+l,146,722,643,enemigo eliminado,2025-10-15 16:50:11
+l,146,881,225,enemigo eliminado,2025-10-15 16:50:11
+l,146,801,236,enemigo eliminado,2025-10-15 16:50:12
+l,146,784,236,enemigo eliminado,2025-10-15 16:50:13
+l,146,767,236,enemigo eliminado,2025-10-15 16:50:13
+l,146,751,236,enemigo eliminado,2025-10-15 16:50:14
+l,146,734,236,enemigo eliminado,2025-10-15 16:50:15
+l,146,718,236,enemigo eliminado,2025-10-15 16:50:15
+l,146,701,236,enemigo eliminado,2025-10-15 16:50:16
+l,146,684,236,enemigo eliminado,2025-10-15 16:50:16
+l,146,185,197,enemigo eliminado,2025-10-15 16:50:16
+l,146,323,252,enemigo eliminado,2025-10-15 16:50:17
+l,146,776,514,enemigo eliminado,2025-10-15 16:50:19
+l,146,308,638,enemigo eliminado,2025-10-15 16:50:19
+l,146,656,591,enemigo eliminado,2025-10-15 16:50:20
+l,146,676,79,enemigo eliminado,2025-10-15 16:50:21
+l,146,764,279,enemigo eliminado,2025-10-15 16:50:22
+l,146,726,279,enemigo eliminado,2025-10-15 16:50:23
+l,146,602,459,enemigo eliminado,2025-10-15 16:50:23
+l,146,624,279,enemigo eliminado,2025-10-15 16:50:24
+l,146,578,279,enemigo eliminado,2025-10-15 16:50:24
+l,146,484,460,enemigo eliminado,2025-10-15 16:50:25
+l,146,382,279,enemigo eliminado,2025-10-15 16:50:26
+l,146,382,279,enemigo eliminado,2025-10-15 16:50:27
+l,146,248,496,enemigo eliminado,2025-10-15 16:50:27
+l,146,464,576,enemigo eliminado,2025-10-15 16:50:28
+l,146,1262,397,enemigo eliminado,2025-10-15 16:50:29
+l,146,552,537,enemigo eliminado,2025-10-15 16:50:29
+l,146,554,505,enemigo eliminado,2025-10-15 16:50:30
+l,146,874,124,enemigo eliminado,2025-10-15 16:50:31
+l,146,954,547,enemigo eliminado,2025-10-15 16:50:32
+l,146,842,602,enemigo eliminado,2025-10-15 16:50:33
+l,146,1260,174,enemigo eliminado,2025-10-15 16:50:34
+l,146,1204,179,enemigo eliminado,2025-10-15 16:50:36
+l,146,882,150,enemigo eliminado,2025-10-15 16:50:36
+l,146,374,238,enemigo eliminado,2025-10-15 16:50:36
+l,146,1096,112,enemigo eliminado,2025-10-15 16:50:37
+l,146,696,150,enemigo eliminado,2025-10-15 16:50:39
+l,146,683,150,enemigo eliminado,2025-10-15 16:50:39
+l,146,667,150,enemigo eliminado,2025-10-15 16:50:40
+l,146,650,150,enemigo eliminado,2025-10-15 16:50:40
+l,146,634,150,enemigo eliminado,2025-10-15 16:50:41
+l,146,172,647,enemigo eliminado,2025-10-15 16:50:41
+l,146,142,446,enemigo eliminado,2025-10-15 16:50:42
+l,146,270,633,enemigo eliminado,2025-10-15 16:50:43
+l,146,332,209,enemigo eliminado,2025-10-15 16:50:44
+l,146,378,150,enemigo eliminado,2025-10-15 16:50:45
+l,146,336,96,enemigo eliminado,2025-10-15 16:50:45
+l,146,1260,566,enemigo eliminado,2025-10-15 16:50:46
+l,146,255,150,enemigo eliminado,2025-10-15 16:50:47
+l,146,144,448,enemigo eliminado,2025-10-15 16:50:47
+l,146,176,-32,enemigo eliminado,2025-10-15 16:50:48
+l,146,268,396,enemigo eliminado,2025-10-15 16:50:49
+l,146,500,-23,enemigo eliminado,2025-10-15 16:50:49
+l,146,565,387,enemigo eliminado,2025-10-15 16:50:50
+l,146,550,621,enemigo eliminado,2025-10-15 16:50:51
+l,146,1160,357,enemigo eliminado,2025-10-15 16:50:52
+l,146,460,486,enemigo eliminado,2025-10-15 16:50:52
+l,146,325,-37,enemigo eliminado,2025-10-15 16:50:53
+l,146,1030,635,enemigo eliminado,2025-10-15 16:50:54
+l,146,1070,420,enemigo eliminado,2025-10-15 16:50:55
+l,146,926,183,enemigo eliminado,2025-10-15 16:50:56
+l,146,1150,394,enemigo eliminado,2025-10-15 16:50:56
+l,146,-175,479,enemigo llegó al castillo,2025-10-15 16:50:56
+l,146,1150,394,enemigo eliminado,2025-10-15 16:50:56
+l,146,-15,281,enemigo eliminado,2025-10-15 16:50:56
+l,146,465,55,enemigo eliminado,2025-10-15 16:50:58
+l,146,701,183,enemigo eliminado,2025-10-15 16:50:59
+l,146,685,183,enemigo eliminado,2025-10-15 16:51:00
+l,146,505,364,enemigo eliminado,2025-10-15 16:51:00
+l,146,505,364,enemigo eliminado,2025-10-15 16:51:00
+l,146,-195,185,enemigo llegó al castillo,2025-10-15 16:51:01
+l,146,591,183,enemigo eliminado,2025-10-15 16:51:01
+l,146,574,183,enemigo eliminado,2025-10-15 16:51:02
+l,146,557,183,enemigo eliminado,2025-10-15 16:51:02
+l,146,-195,122,enemigo llegó al castillo,2025-10-15 16:51:02
+l,146,534,183,enemigo eliminado,2025-10-15 16:51:03
+l,146,520,183,enemigo eliminado,2025-10-15 16:51:03
+l,146,-175,80,enemigo llegó al castillo,2025-10-15 16:51:03
+L,147,1017,190,enemigo eliminado,2025-10-15 17:04:10
+L,147,1017,190,enemigo eliminado,2025-10-15 17:04:11
+L,147,849,276,enemigo eliminado,2025-10-15 17:04:13
+L,147,849,276,enemigo eliminado,2025-10-15 17:04:14
+L,147,858,100,enemigo eliminado,2025-10-15 17:04:15
+L,147,864,594,enemigo eliminado,2025-10-15 17:04:17
+L,147,1008,337,enemigo eliminado,2025-10-15 17:04:19
+L,147,852,550,enemigo eliminado,2025-10-15 17:04:19
+L,147,852,550,enemigo eliminado,2025-10-15 17:04:20
+L,147,830,337,enemigo eliminado,2025-10-15 17:04:20
+L,147,798,337,enemigo eliminado,2025-10-15 17:04:21
+L,147,930,459,enemigo eliminado,2025-10-15 17:04:21
+L,147,764,337,enemigo eliminado,2025-10-15 17:04:21
+L,147,730,337,enemigo eliminado,2025-10-15 17:04:22
+L,147,730,337,enemigo eliminado,2025-10-15 17:04:22
+L,147,807,-17,enemigo eliminado,2025-10-15 17:04:23
+L,147,908,62,enemigo eliminado,2025-10-15 17:04:25
+L,147,908,62,enemigo eliminado,2025-10-15 17:04:25
+L,147,1049,85,enemigo eliminado,2025-10-15 17:04:26
+L,147,965,504,enemigo eliminado,2025-10-15 17:04:28
+L,147,1029,104,enemigo eliminado,2025-10-15 17:04:30
+L,147,779,301,enemigo eliminado,2025-10-15 17:04:30
+L,147,1019,273,enemigo eliminado,2025-10-15 17:04:31
+L,147,1256,-47,enemigo eliminado,2025-10-15 17:04:32
+L,147,861,104,enemigo eliminado,2025-10-15 17:04:33
+L,147,845,104,enemigo eliminado,2025-10-15 17:04:33
+L,147,790,104,enemigo eliminado,2025-10-15 17:04:34
+L,147,774,104,enemigo eliminado,2025-10-15 17:04:35
+L,147,757,104,enemigo eliminado,2025-10-15 17:04:35
+L,147,740,104,enemigo eliminado,2025-10-15 17:04:36
+L,147,431,-44,enemigo eliminado,2025-10-15 17:04:37
+L,147,668,287,enemigo eliminado,2025-10-15 17:04:38
+L,147,668,287,enemigo eliminado,2025-10-15 17:04:38
+L,147,535,104,enemigo eliminado,2025-10-15 17:04:39
+L,147,692,400,enemigo eliminado,2025-10-15 17:04:39
+L,147,692,400,enemigo eliminado,2025-10-15 17:04:40
+L,147,824,399,enemigo eliminado,2025-10-15 17:04:40
+L,147,824,399,enemigo eliminado,2025-10-15 17:04:41
+L,147,640,649,enemigo eliminado,2025-10-15 17:04:42
+L,147,872,539,enemigo eliminado,2025-10-15 17:04:43
+L,147,1004,317,enemigo eliminado,2025-10-15 17:04:43
+L,148,1011,103,enemigo eliminado,2025-10-15 17:05:49
+L,148,1080,368,enemigo eliminado,2025-10-15 17:05:50
+L,148,981,391,enemigo eliminado,2025-10-15 17:05:53
+L,148,1089,325,enemigo eliminado,2025-10-15 17:05:54
+L,148,834,-65,enemigo eliminado,2025-10-15 17:05:57
+L,148,741,359,enemigo eliminado,2025-10-15 17:06:00
+L,148,1086,272,enemigo eliminado,2025-10-15 17:06:01
+L,148,846,536,enemigo eliminado,2025-10-15 17:06:01
+L,148,906,272,enemigo eliminado,2025-10-15 17:06:02
+L,148,882,302,enemigo eliminado,2025-10-15 17:06:03
+L,148,714,272,enemigo eliminado,2025-10-15 17:06:04
+L,148,674,272,enemigo eliminado,2025-10-15 17:06:04
+L,148,640,272,enemigo eliminado,2025-10-15 17:06:05
+L,148,753,184,enemigo eliminado,2025-10-15 17:06:06
+L,148,786,253,enemigo eliminado,2025-10-15 17:06:08
+L,148,698,496,enemigo eliminado,2025-10-15 17:06:10
+L,148,935,436,enemigo eliminado,2025-10-15 17:06:10
+L,148,1125,310,enemigo eliminado,2025-10-15 17:06:11
+L,148,962,552,enemigo eliminado,2025-10-15 17:06:12
+L,148,1071,310,enemigo eliminado,2025-10-15 17:06:12
+L,148,1097,410,enemigo eliminado,2025-10-15 17:06:13
+L,148,999,310,enemigo eliminado,2025-10-15 17:06:14
+L,148,978,310,enemigo eliminado,2025-10-15 17:06:14
+L,148,1070,400,enemigo eliminado,2025-10-15 17:06:15
+L,148,903,310,enemigo eliminado,2025-10-15 17:06:16
+L,148,878,310,enemigo eliminado,2025-10-15 17:06:16
+L,148,862,310,enemigo eliminado,2025-10-15 17:06:17
+L,148,844,310,enemigo eliminado,2025-10-15 17:06:17
+L,148,593,324,enemigo eliminado,2025-10-15 17:06:19
+L,148,725,481,enemigo eliminado,2025-10-15 17:06:20
+L,148,780,545,enemigo eliminado,2025-10-15 17:06:20
+L,148,1064,336,enemigo eliminado,2025-10-15 17:06:21
+L,148,1034,336,enemigo eliminado,2025-10-15 17:06:22
+L,148,1002,336,enemigo eliminado,2025-10-15 17:06:22
+L,148,970,336,enemigo eliminado,2025-10-15 17:06:23
+L,148,938,336,enemigo eliminado,2025-10-15 17:06:23
+L,148,166,354,enemigo eliminado,2025-10-15 17:06:24
+L,148,722,272,enemigo eliminado,2025-10-15 17:06:25
+L,148,152,228,enemigo eliminado,2025-10-15 17:06:25
+L,148,564,256,enemigo eliminado,2025-10-15 17:06:27
+L,148,638,30,enemigo eliminado,2025-10-15 17:06:28
+L,148,668,627,enemigo eliminado,2025-10-15 17:06:29
+L,148,814,547,enemigo eliminado,2025-10-15 17:06:29
+L,148,922,376,enemigo eliminado,2025-10-15 17:06:30
+L,148,906,475,enemigo eliminado,2025-10-15 17:06:31
+l,149,1026,624,enemigo eliminado,2025-10-16 17:24:05
+l,149,831,-18,enemigo eliminado,2025-10-16 17:24:08
+l,149,654,75,enemigo eliminado,2025-10-16 17:24:11
+l,149,648,581,enemigo eliminado,2025-10-16 17:24:13
+l,149,873,427,enemigo eliminado,2025-10-16 17:24:14
+l,149,609,571,enemigo eliminado,2025-10-16 17:24:17
+l,149,903,282,enemigo eliminado,2025-10-16 17:24:17
+l,149,894,264,enemigo eliminado,2025-10-16 17:24:18
+l,149,806,264,enemigo eliminado,2025-10-16 17:24:19
+l,149,903,645,enemigo eliminado,2025-10-16 17:24:19
+l,149,686,264,enemigo eliminado,2025-10-16 17:24:20
+l,149,620,264,enemigo eliminado,2025-10-16 17:24:21
+l,149,548,264,enemigo eliminado,2025-10-16 17:24:22
+l,149,612,353,enemigo eliminado,2025-10-16 17:24:23
+l,149,822,537,enemigo eliminado,2025-10-16 17:24:24
+l,149,914,263,enemigo eliminado,2025-10-16 17:24:25
+l,149,1031,366,enemigo eliminado,2025-10-16 17:24:26
+l,149,1004,508,enemigo eliminado,2025-10-16 17:24:28
+l,149,1033,258,enemigo eliminado,2025-10-16 17:24:30
+l,149,1009,258,enemigo eliminado,2025-10-16 17:24:30
+l,149,986,258,enemigo eliminado,2025-10-16 17:24:31
+l,149,518,123,enemigo eliminado,2025-10-16 17:24:32
+l,149,686,399,enemigo eliminado,2025-10-16 17:24:33
+l,149,797,258,enemigo eliminado,2025-10-16 17:24:34
+l,149,775,258,enemigo eliminado,2025-10-16 17:24:34
+l,149,752,258,enemigo eliminado,2025-10-16 17:24:35
+l,149,536,534,enemigo eliminado,2025-10-16 17:24:35
+l,149,701,179,enemigo eliminado,2025-10-16 17:24:36
+l,149,631,258,enemigo eliminado,2025-10-16 17:24:37
+l,149,608,258,enemigo eliminado,2025-10-16 17:24:37
+l,149,554,389,enemigo eliminado,2025-10-16 17:24:39
+l,149,740,156,enemigo eliminado,2025-10-16 17:24:40
+l,149,826,297,enemigo eliminado,2025-10-16 17:24:40
+l,149,848,586,enemigo eliminado,2025-10-16 17:24:41
+l,149,892,363,enemigo eliminado,2025-10-16 17:24:42
+l,149,850,363,enemigo eliminado,2025-10-16 17:24:43
+l,149,804,363,enemigo eliminado,2025-10-16 17:24:44
+l,149,454,-31,enemigo eliminado,2025-10-16 17:24:44
+l,149,546,634,enemigo eliminado,2025-10-16 17:24:45
+l,149,512,363,enemigo eliminado,2025-10-16 17:24:46
+l,149,468,363,enemigo eliminado,2025-10-16 17:24:46
+l,149,432,469,enemigo eliminado,2025-10-16 17:24:47
+l,149,636,404,enemigo eliminado,2025-10-16 17:24:48
+l,149,688,116,enemigo eliminado,2025-10-16 17:24:49
+l,149,822,156,enemigo eliminado,2025-10-16 17:24:50
+l,149,1224,261,enemigo eliminado,2025-10-16 17:24:50
+l,149,784,545,enemigo eliminado,2025-10-16 17:24:51
+l,149,890,327,enemigo eliminado,2025-10-16 17:24:53
+l,149,1105,237,enemigo eliminado,2025-10-16 17:24:53
+l,149,852,-65,enemigo eliminado,2025-10-16 17:24:54
+l,149,1260,310,enemigo eliminado,2025-10-16 17:24:55
+l,149,996,237,enemigo eliminado,2025-10-16 17:24:55
+l,149,973,237,enemigo eliminado,2025-10-16 17:24:56
+l,149,504,-47,enemigo eliminado,2025-10-16 17:24:56
+l,149,934,311,enemigo eliminado,2025-10-16 17:24:57
+l,149,862,237,enemigo eliminado,2025-10-16 17:24:58
+l,149,838,237,enemigo eliminado,2025-10-16 17:24:58
+l,149,734,23,enemigo eliminado,2025-10-16 17:24:59
+l,149,854,172,enemigo eliminado,2025-10-16 17:24:59
+l,149,727,237,enemigo eliminado,2025-10-16 17:25:00
+l,149,814,482,enemigo eliminado,2025-10-16 17:25:01
+l,149,614,237,enemigo eliminado,2025-10-16 17:25:02
+l,149,591,237,enemigo eliminado,2025-10-16 17:25:02
+l,149,466,614,enemigo eliminado,2025-10-16 17:25:03
+l,149,446,311,enemigo eliminado,2025-10-16 17:25:04
+l,149,574,270,enemigo eliminado,2025-10-16 17:25:05
+l,149,1225,515,enemigo eliminado,2025-10-16 17:25:06
+l,149,265,582,enemigo eliminado,2025-10-16 17:25:06
+l,149,65,-52,enemigo eliminado,2025-10-16 17:25:07
+l,149,65,578,enemigo eliminado,2025-10-16 17:25:08
+l,149,395,530,enemigo eliminado,2025-10-16 17:25:09
+l,149,325,-54,enemigo eliminado,2025-10-16 17:25:10
+l,149,265,529,enemigo eliminado,2025-10-16 17:25:11
+l,149,330,209,enemigo eliminado,2025-10-16 17:25:11
+l,149,370,645,enemigo eliminado,2025-10-16 17:25:12
+l,149,330,125,enemigo eliminado,2025-10-16 17:25:13
+l,149,940,411,enemigo eliminado,2025-10-16 17:25:14
+l,149,180,244,enemigo eliminado,2025-10-16 17:25:14
+l,149,165,259,enemigo eliminado,2025-10-16 17:25:15
+l,149,485,159,enemigo eliminado,2025-10-16 17:25:16
+l,149,500,89,enemigo eliminado,2025-10-16 17:25:17
+l,149,498,165,enemigo eliminado,2025-10-16 17:25:17
+l,149,482,165,enemigo eliminado,2025-10-16 17:25:18
+l,149,245,172,enemigo eliminado,2025-10-16 17:25:18
+l,149,416,165,enemigo eliminado,2025-10-16 17:25:19
+l,149,400,165,enemigo eliminado,2025-10-16 17:25:19
+l,149,200,608,enemigo eliminado,2025-10-16 17:25:20
+l,149,-175,37,enemigo llegó al castillo,2025-10-16 17:25:20
+l,149,340,165,enemigo eliminado,2025-10-16 17:25:21
+l,149,298,165,enemigo eliminado,2025-10-16 17:25:21
+l,149,-175,211,enemigo llegó al castillo,2025-10-16 17:25:22
+l,149,278,165,enemigo eliminado,2025-10-16 17:25:22
+l,149,264,165,enemigo eliminado,2025-10-16 17:25:22
+l,149,-175,239,enemigo llegó al castillo,2025-10-16 17:25:23
+l,150,921,370,enemigo eliminado,2025-10-16 17:26:37
+l,150,921,370,enemigo eliminado,2025-10-16 17:26:37
+l,150,921,370,enemigo eliminado,2025-10-16 17:26:38
+l,150,1032,134,enemigo eliminado,2025-10-16 17:26:38
+l,150,1032,134,enemigo eliminado,2025-10-16 17:26:39
+l,150,1188,140,enemigo eliminado,2025-10-16 17:26:39
+l,150,1188,140,enemigo eliminado,2025-10-16 17:26:40
+l,150,1188,140,enemigo eliminado,2025-10-16 17:26:40
+l,150,1278,148,enemigo eliminado,2025-10-16 17:26:41
+l,150,986,291,enemigo eliminado,2025-10-16 17:26:43
+l,150,944,291,enemigo eliminado,2025-10-16 17:26:43
+l,150,920,291,enemigo eliminado,2025-10-16 17:26:44
+l,150,892,291,enemigo eliminado,2025-10-16 17:26:44
+l,150,866,291,enemigo eliminado,2025-10-16 17:26:45
+l,150,866,291,enemigo eliminado,2025-10-16 17:26:45
+l,150,1158,391,enemigo eliminado,2025-10-16 17:26:46
+l,150,468,222,enemigo eliminado,2025-10-16 17:26:47
+l,150,468,222,enemigo eliminado,2025-10-16 17:26:47
+l,150,881,67,enemigo eliminado,2025-10-16 17:26:48
+l,150,1130,201,enemigo eliminado,2025-10-16 17:26:49
+l,150,1241,568,enemigo eliminado,2025-10-16 17:26:52
+l,150,800,406,enemigo eliminado,2025-10-16 17:26:52
+l,150,800,406,enemigo eliminado,2025-10-16 17:26:53
+l,150,963,126,enemigo eliminado,2025-10-16 17:26:53
+l,150,949,126,enemigo eliminado,2025-10-16 17:26:54
+l,150,928,126,enemigo eliminado,2025-10-16 17:26:55
+l,150,926,110,enemigo eliminado,2025-10-16 17:26:55
+l,150,870,126,enemigo eliminado,2025-10-16 17:26:56
+l,150,847,126,enemigo eliminado,2025-10-16 17:26:56
+l,150,835,126,enemigo eliminado,2025-10-16 17:26:57
+l,150,830,53,enemigo eliminado,2025-10-16 17:26:57
+l,150,770,126,enemigo eliminado,2025-10-16 17:26:58
+l,150,757,126,enemigo eliminado,2025-10-16 17:26:58
+l,150,860,299,enemigo eliminado,2025-10-16 17:26:59
+l,150,860,299,enemigo eliminado,2025-10-16 17:26:59
+l,151,1008,358,enemigo eliminado,2025-10-16 17:27:27
+l,151,939,536,enemigo eliminado,2025-10-16 17:27:29
+l,151,849,313,enemigo eliminado,2025-10-16 17:27:32
+l,151,975,147,enemigo eliminado,2025-10-16 17:27:33
+l,151,960,631,enemigo eliminado,2025-10-16 17:27:35
+l,151,930,16,enemigo eliminado,2025-10-16 17:27:37
+l,151,1059,165,enemigo eliminado,2025-10-16 17:27:39
+l,151,1014,115,enemigo eliminado,2025-10-16 17:27:39
+l,151,878,115,enemigo eliminado,2025-10-16 17:27:40
+l,151,878,115,enemigo eliminado,2025-10-16 17:27:40
+l,151,852,115,enemigo eliminado,2025-10-16 17:27:40
+l,151,852,115,enemigo eliminado,2025-10-16 17:27:40
+l,151,804,62,enemigo eliminado,2025-10-16 17:27:42
+l,151,920,435,enemigo eliminado,2025-10-16 17:27:43
+l,151,1013,579,enemigo eliminado,2025-10-16 17:27:44
+l,151,1049,411,enemigo eliminado,2025-10-16 17:27:46
+l,151,1085,136,enemigo eliminado,2025-10-16 17:27:48
+l,151,1085,136,enemigo eliminado,2025-10-16 17:27:48
+l,151,797,217,enemigo eliminado,2025-10-16 17:27:49
+l,151,1127,232,enemigo eliminado,2025-10-16 17:27:49
+l,151,982,136,enemigo eliminado,2025-10-16 17:27:50
+l,151,982,136,enemigo eliminado,2025-10-16 17:27:50
+l,151,934,136,enemigo eliminado,2025-10-16 17:27:51
+l,151,934,136,enemigo eliminado,2025-10-16 17:27:51
+l,151,947,63,enemigo eliminado,2025-10-16 17:27:52
+l,151,846,136,enemigo eliminado,2025-10-16 17:27:52
+l,151,846,136,enemigo eliminado,2025-10-16 17:27:52
+l,151,899,267,enemigo eliminado,2025-10-16 17:27:54
+l,151,936,124,enemigo eliminado,2025-10-16 17:27:54
+l,151,1098,327,enemigo eliminado,2025-10-16 17:27:56
+l,151,1098,327,enemigo eliminado,2025-10-16 17:27:56
+l,151,732,529,enemigo eliminado,2025-10-16 17:27:56
+l,151,914,327,enemigo eliminado,2025-10-16 17:27:57
+l,151,914,327,enemigo eliminado,2025-10-16 17:27:57
+l,151,592,536,enemigo eliminado,2025-10-16 17:27:58
+l,151,788,327,enemigo eliminado,2025-10-16 17:27:59
+l,151,894,612,enemigo eliminado,2025-10-16 17:28:00
+l,151,238,-22,enemigo eliminado,2025-10-16 17:28:01
+l,151,684,530,enemigo eliminado,2025-10-16 17:28:02
+l,151,810,546,enemigo eliminado,2025-10-16 17:28:03
+l,151,898,354,enemigo eliminado,2025-10-16 17:28:03
+l,151,954,502,enemigo eliminado,2025-10-16 17:28:04
+l,151,868,215,enemigo eliminado,2025-10-16 17:28:06
+l,151,1144,193,enemigo eliminado,2025-10-16 17:28:06
+l,151,993,119,enemigo eliminado,2025-10-16 17:28:07
+l,151,993,119,enemigo eliminado,2025-10-16 17:28:07
+l,151,854,451,enemigo eliminado,2025-10-16 17:28:08
+l,151,870,119,enemigo eliminado,2025-10-16 17:28:09
+l,151,870,119,enemigo eliminado,2025-10-16 17:28:09
+l,151,636,644,enemigo eliminado,2025-10-16 17:28:10
+l,151,668,314,enemigo eliminado,2025-10-16 17:28:11
+l,151,998,387,enemigo eliminado,2025-10-16 17:28:11
+l,151,676,119,enemigo eliminado,2025-10-16 17:28:12
+l,151,676,119,enemigo eliminado,2025-10-16 17:28:12
+l,151,698,362,enemigo eliminado,2025-10-16 17:28:13
+l,151,623,119,enemigo eliminado,2025-10-16 17:28:13
+l,151,614,119,enemigo eliminado,2025-10-16 17:28:14
+l,151,1126,301,enemigo eliminado,2025-10-16 17:28:14
+l,151,630,474,enemigo eliminado,2025-10-16 17:28:14
+l,151,610,432,enemigo eliminado,2025-10-16 17:28:16
+l,151,710,639,enemigo eliminado,2025-10-16 17:28:16
+l,151,610,-44,enemigo eliminado,2025-10-16 17:28:18
+l,151,630,380,enemigo eliminado,2025-10-16 17:28:18
+l,151,630,380,enemigo eliminado,2025-10-16 17:28:18
+l,151,1200,70,enemigo eliminado,2025-10-16 17:28:19
+l,151,1129,314,enemigo eliminado,2025-10-16 17:28:20
+l,151,530,554,enemigo eliminado,2025-10-16 17:28:20
+l,151,1091,314,enemigo eliminado,2025-10-16 17:28:21
+l,151,1066,314,enemigo eliminado,2025-10-16 17:28:21
+l,151,1066,314,enemigo eliminado,2025-10-16 17:28:21
+l,151,-195,281,enemigo llegó al castillo,2025-10-16 17:28:21
+l,151,495,564,enemigo eliminado,2025-10-16 17:28:22
+l,151,735,601,enemigo eliminado,2025-10-16 17:28:22
+l,151,983,314,enemigo eliminado,2025-10-16 17:28:23
+l,151,983,314,enemigo eliminado,2025-10-16 17:28:23
+l,151,550,235,enemigo eliminado,2025-10-16 17:28:23
+l,151,630,556,enemigo eliminado,2025-10-16 17:28:24
+l,151,901,314,enemigo eliminado,2025-10-16 17:28:24
+l,151,885,314,enemigo eliminado,2025-10-16 17:28:25
+l,152,990,-38,enemigo eliminado,2025-10-16 17:28:39
+l,152,1287,621,enemigo eliminado,2025-10-16 17:28:42
+l,152,759,321,enemigo eliminado,2025-10-16 17:28:42
+l,152,918,627,enemigo eliminado,2025-10-16 17:28:47
+l,152,1224,568,enemigo eliminado,2025-10-16 17:28:48
+l,152,264,20,enemigo eliminado,2025-10-16 17:28:48
+l,152,1140,189,enemigo eliminado,2025-10-16 17:28:51
+l,152,978,415,enemigo eliminado,2025-10-16 17:28:51
+l,152,838,189,enemigo eliminado,2025-10-16 17:28:53
+l,152,814,189,enemigo eliminado,2025-10-16 17:28:54
+l,152,774,189,enemigo eliminado,2025-10-16 17:28:54
+l,152,734,189,enemigo eliminado,2025-10-16 17:28:55
+l,152,549,218,enemigo eliminado,2025-10-16 17:28:55
+l,152,834,288,enemigo eliminado,2025-10-16 17:28:56
+l,154,1041,388,enemigo eliminado,2025-10-16 22:21:40
+l,154,1020,103,enemigo eliminado,2025-10-16 22:21:42
+l,154,1044,214,enemigo eliminado,2025-10-16 22:21:44
+l,154,1068,284,enemigo eliminado,2025-10-16 22:21:46
+l,154,1017,600,enemigo eliminado,2025-10-16 22:21:48
+l,154,993,182,enemigo eliminado,2025-10-16 22:21:50
+l,154,1146,262,enemigo eliminado,2025-10-16 22:21:51
+l,154,954,182,enemigo eliminado,2025-10-16 22:21:52
+l,154,900,182,enemigo eliminado,2025-10-16 22:21:53
+l,154,856,182,enemigo eliminado,2025-10-16 22:21:53
+l,154,810,182,enemigo eliminado,2025-10-16 22:21:54
+l,154,772,182,enemigo eliminado,2025-10-16 22:21:54
+l,154,753,222,enemigo eliminado,2025-10-16 22:21:55
+l,154,903,520,enemigo eliminado,2025-10-16 22:21:56
+l,154,941,138,enemigo eliminado,2025-10-16 22:21:58
+l,154,1010,6,enemigo eliminado,2025-10-16 22:21:59
+l,154,1055,248,enemigo eliminado,2025-10-16 22:22:01
+l,154,1091,362,enemigo eliminado,2025-10-16 22:22:02
+l,154,981,312,enemigo eliminado,2025-10-16 22:22:03
+l,154,963,312,enemigo eliminado,2025-10-16 22:22:04
+l,154,938,312,enemigo eliminado,2025-10-16 22:22:04
+l,154,890,335,enemigo eliminado,2025-10-16 22:22:05
+l,154,854,312,enemigo eliminado,2025-10-16 22:22:06
+l,154,974,455,enemigo eliminado,2025-10-16 22:22:06
+l,154,793,312,enemigo eliminado,2025-10-16 22:22:07
+l,154,754,312,enemigo eliminado,2025-10-16 22:22:08
+l,154,731,312,enemigo eliminado,2025-10-16 22:22:08
+l,154,674,-62,enemigo eliminado,2025-10-16 22:22:09
+l,154,591,312,enemigo eliminado,2025-10-16 22:22:10
+l,154,1049,515,enemigo eliminado,2025-10-16 22:22:11
+l,154,551,534,enemigo eliminado,2025-10-16 22:22:12
+l,154,830,39,enemigo eliminado,2025-10-16 22:22:13
+l,154,694,11,enemigo eliminado,2025-10-16 22:22:15
+l,154,808,-21,enemigo eliminado,2025-10-16 22:22:16
+l,154,730,250,enemigo eliminado,2025-10-16 22:22:17
+l,154,792,-3,enemigo eliminado,2025-10-16 22:22:17
+l,154,558,250,enemigo eliminado,2025-10-16 22:22:18
+l,154,518,250,enemigo eliminado,2025-10-16 22:22:19
+l,154,480,250,enemigo eliminado,2025-10-16 22:22:19
+l,154,450,250,enemigo eliminado,2025-10-16 22:22:20
+l,154,-192,364,enemigo llegó al castillo,2025-10-16 22:22:22
+l,154,-174,220,enemigo llegó al castillo,2025-10-16 22:22:23
+l,154,-192,365,enemigo llegó al castillo,2025-10-16 22:22:25
+l,154,-173,459,enemigo llegó al castillo,2025-10-16 22:22:26
+l,154,-191,429,enemigo llegó al castillo,2025-10-16 22:22:27
+001,158,568,84,enemigo eliminado,2025-10-16 22:27:33
+001,158,574,244,enemigo eliminado,2025-10-16 22:27:35
+001,158,496,173,enemigo eliminado,2025-10-16 22:27:37
+001,158,494,268,enemigo eliminado,2025-10-16 22:27:39
+001,158,666,282,enemigo eliminado,2025-10-16 22:27:40
+001,158,508,157,enemigo eliminado,2025-10-16 22:27:43
+001,158,594,239,enemigo eliminado,2025-10-16 22:27:44
+001,158,660,359,enemigo eliminado,2025-10-16 22:27:45
+001,158,554,126,enemigo eliminado,2025-10-16 22:27:48
+001,158,544,355,enemigo eliminado,2025-10-16 22:27:50
+001,158,572,191,enemigo eliminado,2025-10-16 22:27:52
+001,158,521,43,enemigo eliminado,2025-10-16 22:27:54
+001,158,164,81,enemigo eliminado,2025-10-16 22:27:55
+001,158,497,155,enemigo eliminado,2025-10-16 22:27:56
+001,158,440,314,enemigo eliminado,2025-10-16 22:27:58
+001,158,326,50,enemigo eliminado,2025-10-16 22:28:00
+001,158,494,78,enemigo eliminado,2025-10-16 22:28:01
+001,158,338,204,enemigo eliminado,2025-10-16 22:28:03
+001,158,305,40,enemigo eliminado,2025-10-16 22:28:05
+001,158,323,96,enemigo eliminado,2025-10-16 22:28:06
+001,158,443,193,enemigo eliminado,2025-10-16 22:28:07
+001,158,394,231,enemigo eliminado,2025-10-16 22:28:08
+001,158,422,366,enemigo eliminado,2025-10-16 22:28:09
+001,158,354,166,enemigo eliminado,2025-10-16 22:28:10
+001,158,674,220,enemigo eliminado,2025-10-16 22:28:11
+001,158,358,229,enemigo eliminado,2025-10-16 22:28:11
+001,158,434,130,enemigo eliminado,2025-10-16 22:28:13
+001,158,334,220,enemigo eliminado,2025-10-16 22:28:15
+001,158,690,351,enemigo eliminado,2025-10-16 22:28:16
+001,158,18,346,enemigo llegó al castillo,2025-10-16 22:28:17
+001,158,18,60,enemigo llegó al castillo,2025-10-16 22:28:18
+001,158,290,106,enemigo eliminado,2025-10-16 22:28:19
+001,158,254,351,enemigo eliminado,2025-10-16 22:28:20
+001,158,200,143,enemigo eliminado,2025-10-16 22:28:21
+001,158,265,33,enemigo eliminado,2025-10-16 22:28:21
+001,158,120,83,enemigo eliminado,2025-10-16 22:28:23
+001,158,515,105,enemigo eliminado,2025-10-16 22:28:23
+001,158,15,292,enemigo llegó al castillo,2025-10-16 22:28:24
+001,158,255,177,enemigo eliminado,2025-10-16 22:28:25
+001,158,275,138,enemigo eliminado,2025-10-16 22:28:25
+001,158,475,123,enemigo eliminado,2025-10-16 22:28:26
+001,158,250,35,enemigo eliminado,2025-10-16 22:28:26
+001,158,715,137,enemigo eliminado,2025-10-16 22:28:27
+001,158,135,281,enemigo eliminado,2025-10-16 22:28:28
+001,158,205,280,enemigo eliminado,2025-10-16 22:28:28
+001,158,285,298,enemigo eliminado,2025-10-16 22:28:28
+001,158,194,29,enemigo eliminado,2025-10-16 22:28:30
+001,158,14,102,enemigo llegó al castillo,2025-10-16 22:28:31
+001,158,608,116,enemigo eliminado,2025-10-16 22:28:31
+001,158,134,384,enemigo eliminado,2025-10-16 22:28:31
+l,159,594,148,enemigo eliminado,2025-10-16 22:28:48
+l,159,18,150,enemigo llegó al castillo,2025-10-16 22:28:55
+l,159,18,273,enemigo llegó al castillo,2025-10-16 22:28:57
+l,159,18,351,enemigo llegó al castillo,2025-10-16 22:28:59
+l,159,18,96,enemigo llegó al castillo,2025-10-16 22:29:01
+l,159,18,52,enemigo llegó al castillo,2025-10-16 22:29:03
+l,3,384,257,enemigo eliminado,2025-10-18 17:26:04
+l,3,300,177,enemigo eliminado,2025-10-18 17:26:07
+l,3,510,335,enemigo eliminado,2025-10-18 17:26:09
+l,3,142,360,enemigo eliminado,2025-10-18 17:26:10
+l,3,200,355,enemigo eliminado,2025-10-18 17:26:14
+l,3,134,263,enemigo eliminado,2025-10-18 17:26:16
+l,3,154,51,enemigo eliminado,2025-10-18 17:26:18
+l,3,254,25,enemigo eliminado,2025-10-18 17:26:19
+l,3,234,290,enemigo eliminado,2025-10-18 17:26:21
+l,3,348,257,enemigo eliminado,2025-10-18 17:26:22
+l,3,314,345,enemigo eliminado,2025-10-18 17:26:24
+l,3,17,26,enemigo llegó al castillo,2025-10-18 17:26:26
+l,3,767,52,enemigo eliminado,2025-10-18 17:26:27
+l,3,17,221,enemigo llegó al castillo,2025-10-18 17:26:28
+l,3,17,146,enemigo llegó al castillo,2025-10-18 17:26:29
+l,3,17,351,enemigo llegó al castillo,2025-10-18 17:26:33
+l,3,17,49,enemigo llegó al castillo,2025-10-18 17:26:34
+l,4,798,382,enemigo eliminado,2025-10-18 18:04:56
+l,4,963,213,enemigo eliminado,2025-10-18 18:04:58
+l,4,789,476,enemigo eliminado,2025-10-18 18:05:00
+l,4,993,609,enemigo eliminado,2025-10-18 18:05:01
+l,4,1059,604,enemigo eliminado,2025-10-18 18:05:03
+l,4,918,72,enemigo eliminado,2025-10-18 18:05:06
+l,4,978,438,enemigo eliminado,2025-10-18 18:05:08
+l,4,830,311,enemigo eliminado,2025-10-18 18:05:08
+l,4,790,311,enemigo eliminado,2025-10-18 18:05:09
+l,4,758,311,enemigo eliminado,2025-10-18 18:05:09
+l,4,718,311,enemigo eliminado,2025-10-18 18:05:10
+l,4,692,311,enemigo eliminado,2025-10-18 18:05:10
+l,4,597,276,enemigo eliminado,2025-10-18 18:05:11
+l,4,882,104,enemigo eliminado,2025-10-18 18:05:12
+l,4,-194,465,enemigo llegó al castillo,2025-10-18 18:05:18
+l,4,-194,523,enemigo llegó al castillo,2025-10-18 18:05:20
+l,4,-194,27,enemigo llegó al castillo,2025-10-18 18:05:22
+l,4,-194,-26,enemigo llegó al castillo,2025-10-18 18:05:23
+l,4,-194,-28,enemigo llegó al castillo,2025-10-18 18:05:25
+l,5,981,489,enemigo eliminado,2025-10-18 18:09:06
+l,5,780,243,enemigo eliminado,2025-10-18 18:09:09
+l,5,660,478,enemigo eliminado,2025-10-18 18:09:11
+l,5,963,550,enemigo eliminado,2025-10-18 18:09:12
+l,5,1014,305,enemigo eliminado,2025-10-18 18:09:14
+l,5,-171,416,enemigo llegó al castillo,2025-10-18 18:09:21
+l,5,-171,370,enemigo llegó al castillo,2025-10-18 18:09:23
+l,5,-171,593,enemigo llegó al castillo,2025-10-18 18:09:25
+l,5,-171,316,enemigo llegó al castillo,2025-10-18 18:09:27
+l,6,807,341,enemigo eliminado,2025-10-18 18:10:44
+l,6,954,-7,enemigo eliminado,2025-10-18 18:10:45
+l,6,1263,22,enemigo eliminado,2025-10-18 18:10:46
+l,6,-171,525,enemigo llegó al castillo,2025-10-18 18:10:54
+l,6,-171,128,enemigo llegó al castillo,2025-10-18 18:10:56
+l,6,-171,123,enemigo llegó al castillo,2025-10-18 18:10:58
+l,6,-171,114,enemigo llegó al castillo,2025-10-18 18:11:00
+l,6,-171,320,enemigo llegó al castillo,2025-10-18 18:11:02
+l,7,1212,621,enemigo eliminado,2025-10-18 18:15:47
+l,7,609,534,enemigo eliminado,2025-10-18 18:15:48
+l,7,828,571,enemigo eliminado,2025-10-18 18:15:51
+l,7,981,347,enemigo eliminado,2025-10-18 18:15:52
+l,7,1047,244,enemigo eliminado,2025-10-18 18:15:54
+l,7,831,-51,enemigo eliminado,2025-10-18 18:15:57
+l,7,-171,591,enemigo llegó al castillo,2025-10-18 18:16:03
+l,7,-171,191,enemigo llegó al castillo,2025-10-18 18:16:05
+l,7,-171,560,enemigo llegó al castillo,2025-10-18 18:16:07
+l,8,1023,528,enemigo eliminado,2025-10-18 18:17:27
+l,8,-171,352,enemigo llegó al castillo,2025-10-18 18:17:35
+l,8,-171,87,enemigo llegó al castillo,2025-10-18 18:17:37
+l,8,-171,-7,enemigo llegó al castillo,2025-10-18 18:17:39
+l,8,-171,357,enemigo llegó al castillo,2025-10-18 18:17:41
+l,8,-171,384,enemigo llegó al castillo,2025-10-18 18:17:43
+l,9,840,382,enemigo eliminado,2025-10-18 18:18:39
+l,9,804,212,enemigo eliminado,2025-10-18 18:18:43
+l,9,894,447,enemigo eliminado,2025-10-18 18:18:45
+l,9,1170,470,enemigo eliminado,2025-10-18 18:18:46
+l,9,-171,-22,enemigo llegó al castillo,2025-10-18 18:18:46
+l,9,1068,548,enemigo eliminado,2025-10-18 18:18:48
+l,9,1158,335,enemigo eliminado,2025-10-18 18:18:51
+l,9,1136,335,enemigo eliminado,2025-10-18 18:18:51
+l,9,1104,335,enemigo eliminado,2025-10-18 18:18:52
+l,9,1062,335,enemigo eliminado,2025-10-18 18:18:52
+l,9,1036,335,enemigo eliminado,2025-10-18 18:18:53
+l,9,1254,494,enemigo eliminado,2025-10-18 18:18:53
+l,9,723,226,enemigo eliminado,2025-10-18 18:18:54
+l,9,-171,-62,enemigo llegó al castillo,2025-10-18 18:18:56
+l,9,1154,598,enemigo eliminado,2025-10-18 18:18:57
+l,9,-194,7,enemigo llegó al castillo,2025-10-18 18:19:01
+l,9,-194,444,enemigo llegó al castillo,2025-10-18 18:19:05
+l,9,-194,-29,enemigo llegó al castillo,2025-10-18 18:19:06
+l,10,-171,251,enemigo llegó al castillo,2025-10-18 18:20:25
+l,1,624,300,enemigo eliminado,2025-10-18 18:20:40
+l,1,-171,463,enemigo llegó al castillo,2025-10-18 18:20:46
+l,1,-171,434,enemigo llegó al castillo,2025-10-18 18:20:48
+l,1,-171,589,enemigo llegó al castillo,2025-10-18 18:20:50
+l,1,-171,-19,enemigo llegó al castillo,2025-10-18 18:20:52
+l,1,-171,561,enemigo llegó al castillo,2025-10-18 18:20:54
+l,2,1002,194,enemigo eliminado,2025-10-18 18:23:15
+l,2,-171,389,enemigo llegó al castillo,2025-10-18 18:23:22
+l,2,-171,-46,enemigo llegó al castillo,2025-10-18 18:23:24
+l,2,-171,248,enemigo llegó al castillo,2025-10-18 18:23:26
+l,2,-171,-19,enemigo llegó al castillo,2025-10-18 18:23:28
+l,2,-171,-28,enemigo llegó al castillo,2025-10-18 18:23:30
+l,3,-171,262,enemigo llegó al castillo,2025-10-18 18:24:03
+l,3,-171,617,enemigo llegó al castillo,2025-10-18 18:24:05
+l,3,-171,268,enemigo llegó al castillo,2025-10-18 18:24:07
+l,3,-171,461,enemigo llegó al castillo,2025-10-18 18:24:09
+l,3,-171,410,enemigo llegó al castillo,2025-10-18 18:24:11
+,4,831,617,enemigo eliminado,2025-10-18 18:25:04
+,4,-171,42,enemigo llegó al castillo,2025-10-18 18:25:10
+,4,-171,503,enemigo llegó al castillo,2025-10-18 18:25:12
+,4,-171,-37,enemigo llegó al castillo,2025-10-18 18:25:14
+,4,-171,521,enemigo llegó al castillo,2025-10-18 18:25:16
+,4,-171,254,enemigo llegó al castillo,2025-10-18 18:25:18
+l,5,675,397,enemigo eliminado,2025-10-18 18:26:47
+l,5,-171,-52,enemigo llegó al castillo,2025-10-18 18:26:53
+l,5,-171,-20,enemigo llegó al castillo,2025-10-18 18:26:55
+l,5,-171,72,enemigo llegó al castillo,2025-10-18 18:26:57
+l,5,-171,65,enemigo llegó al castillo,2025-10-18 18:26:59
+l,5,-171,371,enemigo llegó al castillo,2025-10-18 18:27:01
+l,6,780,52,enemigo eliminado,2025-10-18 18:27:45
+l,6,-171,1,enemigo llegó al castillo,2025-10-18 18:27:51
+l,6,-171,206,enemigo llegó al castillo,2025-10-18 18:27:54
+l,6,-171,94,enemigo llegó al castillo,2025-10-18 18:27:56
+l,6,-171,179,enemigo llegó al castillo,2025-10-18 18:27:58
+l,6,-171,431,enemigo llegó al castillo,2025-10-18 18:28:00
+l,7,1053,404,enemigo eliminado,2025-10-18 18:30:58
+l,7,-171,644,enemigo llegó al castillo,2025-10-18 18:31:06
+l,7,-171,-62,enemigo llegó al castillo,2025-10-18 18:31:08
+l,7,-171,404,enemigo llegó al castillo,2025-10-18 18:31:10
+l,7,-171,-15,enemigo llegó al castillo,2025-10-18 18:31:12
+l,7,-171,136,enemigo llegó al castillo,2025-10-18 18:31:14
+l,8,1023,254,enemigo eliminado,2025-10-18 18:35:04
+l,8,-171,559,enemigo llegó al castillo,2025-10-18 18:35:12
+l,8,-171,425,enemigo llegó al castillo,2025-10-18 18:35:14
+l,8,-171,557,enemigo llegó al castillo,2025-10-18 18:35:16
+l,8,-171,547,enemigo llegó al castillo,2025-10-18 18:35:18
+l,8,-171,476,enemigo llegó al castillo,2025-10-18 18:35:20
+L,9,861,565,enemigo eliminado,2025-10-18 18:39:19
+L,9,-171,121,enemigo llegó al castillo,2025-10-18 18:39:26
+L,9,-171,317,enemigo llegó al castillo,2025-10-18 18:39:28
+L,9,-171,-46,enemigo llegó al castillo,2025-10-18 18:39:30
+L,9,-171,436,enemigo llegó al castillo,2025-10-18 18:39:32
+L,9,-171,160,enemigo llegó al castillo,2025-10-18 18:39:34
+l,10,1050,392,enemigo eliminado,2025-10-18 18:44:44
+l,10,1263,354,enemigo eliminado,2025-10-18 18:44:45
+l,10,1014,291,enemigo eliminado,2025-10-18 18:44:48
+l,10,936,241,enemigo eliminado,2025-10-18 18:44:51
+l,10,1059,629,enemigo eliminado,2025-10-18 18:44:52
+l,10,720,-56,enemigo eliminado,2025-10-18 18:44:56
+l,10,914,367,enemigo eliminado,2025-10-18 18:44:56
+l,10,903,641,enemigo eliminado,2025-10-18 18:44:57
+l,10,802,367,enemigo eliminado,2025-10-18 18:44:58
+l,10,756,367,enemigo eliminado,2025-10-18 18:44:58
+l,10,714,367,enemigo eliminado,2025-10-18 18:44:59
+l,10,1218,137,enemigo eliminado,2025-10-18 18:44:59
+l,10,590,367,enemigo eliminado,2025-10-18 18:45:00
+l,10,372,464,enemigo eliminado,2025-10-18 18:45:01
+l,10,608,247,enemigo eliminado,2025-10-18 18:45:04
+l,10,-194,588,enemigo llegó al castillo,2025-10-18 18:45:09
+l,10,-194,72,enemigo llegó al castillo,2025-10-18 18:45:11
+l,10,-194,12,enemigo llegó al castillo,2025-10-18 18:45:12
+l,10,-194,-52,enemigo llegó al castillo,2025-10-18 18:45:14
+l,10,-194,360,enemigo llegó al castillo,2025-10-18 18:45:16
+l,4,1047,413,enemigo eliminado,2025-10-18 18:46:17
+l,4,1047,376,enemigo eliminado,2025-10-18 18:46:19
+l,4,1068,380,enemigo eliminado,2025-10-18 18:46:21
+l,4,-171,334,enemigo llegó al castillo,2025-10-18 18:46:28
+l,4,-171,349,enemigo llegó al castillo,2025-10-18 18:46:30
+l,4,-171,52,enemigo llegó al castillo,2025-10-18 18:46:32
+l,4,-171,184,enemigo llegó al castillo,2025-10-18 18:46:34
+l,4,-171,-11,enemigo llegó al castillo,2025-10-18 18:46:36
+001,5,825,42,enemigo eliminado,2025-10-18 18:47:46
+001,5,699,2,enemigo eliminado,2025-10-18 18:47:49
+001,5,723,445,enemigo eliminado,2025-10-18 18:47:51
+001,5,966,242,enemigo eliminado,2025-10-18 18:47:54
+001,5,798,54,enemigo eliminado,2025-10-18 18:47:56
+001,5,-171,64,enemigo llegó al castillo,2025-10-18 18:47:57
+001,5,894,251,enemigo eliminado,2025-10-18 18:47:58
+001,5,1212,178,enemigo eliminado,2025-10-18 18:47:59
+001,5,-171,125,enemigo llegó al castillo,2025-10-18 18:48:05
+001,5,-171,276,enemigo llegó al castillo,2025-10-18 18:48:07
+001,5,-171,405,enemigo llegó al castillo,2025-10-18 18:48:09
