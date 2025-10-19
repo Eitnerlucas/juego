@@ -4554,3 +4554,111 @@ l,4,-171,-11,enemigo llegó al castillo,2025-10-18 18:46:36
 001,5,-171,125,enemigo llegó al castillo,2025-10-18 18:48:05
 001,5,-171,276,enemigo llegó al castillo,2025-10-18 18:48:07
 001,5,-171,405,enemigo llegó al castillo,2025-10-18 18:48:09
+L,6,1065,377,enemigo eliminado,2025-10-19 18:58:52
+L,6,1044,563,enemigo eliminado,2025-10-19 18:58:54
+L,6,1005,442,enemigo eliminado,2025-10-19 18:58:56
+L,6,1020,82,enemigo eliminado,2025-10-19 18:58:58
+L,6,852,595,enemigo eliminado,2025-10-19 18:59:01
+L,6,849,144,enemigo eliminado,2025-10-19 18:59:03
+L,6,978,514,enemigo eliminado,2025-10-19 18:59:04
+L,6,952,182,enemigo eliminado,2025-10-19 18:59:05
+L,6,908,182,enemigo eliminado,2025-10-19 18:59:06
+L,6,864,182,enemigo eliminado,2025-10-19 18:59:06
+L,6,832,182,enemigo eliminado,2025-10-19 18:59:07
+L,6,786,182,enemigo eliminado,2025-10-19 18:59:07
+L,6,570,569,enemigo eliminado,2025-10-19 18:59:08
+L,6,741,55,enemigo eliminado,2025-10-19 18:59:10
+L,6,809,403,enemigo eliminado,2025-10-19 18:59:11
+L,6,1271,81,enemigo eliminado,2025-10-19 18:59:12
+L,6,812,160,enemigo eliminado,2025-10-19 18:59:13
+L,6,1148,294,enemigo eliminado,2025-10-19 18:59:14
+L,6,1100,294,enemigo eliminado,2025-10-19 18:59:15
+L,6,1175,603,enemigo eliminado,2025-10-19 18:59:16
+L,6,485,153,enemigo eliminado,2025-10-19 18:59:17
+L,6,864,294,enemigo eliminado,2025-10-19 18:59:18
+L,6,850,294,enemigo eliminado,2025-10-19 18:59:19
+L,6,840,294,enemigo eliminado,2025-10-19 18:59:19
+L,6,781,294,enemigo eliminado,2025-10-19 18:59:20
+L,6,769,294,enemigo eliminado,2025-10-19 18:59:21
+L,6,341,-15,enemigo eliminado,2025-10-19 18:59:22
+L,6,593,-9,enemigo eliminado,2025-10-19 18:59:22
+L,6,809,149,enemigo eliminado,2025-10-19 18:59:23
+L,6,1031,138,enemigo eliminado,2025-10-19 18:59:24
+L,6,521,294,enemigo eliminado,2025-10-19 18:59:24
+L,6,1055,490,enemigo eliminado,2025-10-19 18:59:25
+L,6,1072,607,enemigo eliminado,2025-10-19 18:59:26
+L,6,956,245,enemigo eliminado,2025-10-19 18:59:28
+L,6,1020,212,enemigo eliminado,2025-10-19 18:59:29
+L,6,1046,363,enemigo eliminado,2025-10-19 18:59:29
+L,6,846,212,enemigo eliminado,2025-10-19 18:59:30
+L,6,820,212,enemigo eliminado,2025-10-19 18:59:31
+L,6,774,212,enemigo eliminado,2025-10-19 18:59:31
+L,6,750,212,enemigo eliminado,2025-10-19 18:59:32
+L,6,634,574,enemigo eliminado,2025-10-19 18:59:32
+L,6,838,358,enemigo eliminado,2025-10-19 18:59:34
+L,6,852,130,enemigo eliminado,2025-10-19 18:59:35
+L,6,-174,-69,enemigo llegó al castillo,2025-10-19 18:59:36
+L,6,448,428,enemigo eliminado,2025-10-19 18:59:38
+L,6,914,386,enemigo eliminado,2025-10-19 18:59:38
+L,6,474,276,enemigo eliminado,2025-10-19 18:59:39
+L,6,816,579,enemigo eliminado,2025-10-19 18:59:40
+L,6,1218,232,enemigo eliminado,2025-10-19 18:59:41
+L,6,934,141,enemigo eliminado,2025-10-19 18:59:41
+L,7,-171,346,enemigo llegó al castillo,2025-10-19 19:00:53
+L,7,-171,471,enemigo llegó al castillo,2025-10-19 19:00:55
+L,7,-171,554,enemigo llegó al castillo,2025-10-19 19:00:57
+L,7,-171,447,enemigo llegó al castillo,2025-10-19 19:00:59
+L,7,-171,50,enemigo llegó al castillo,2025-10-19 19:01:01
+002,8,858,104,enemigo eliminado,2025-10-19 19:04:16
+002,8,1050,404,enemigo eliminado,2025-10-19 19:04:17
+002,8,1095,403,enemigo eliminado,2025-10-19 19:04:19
+002,8,975,41,enemigo eliminado,2025-10-19 19:04:22
+002,8,-171,262,enemigo llegó al castillo,2025-10-19 19:04:29
+002,8,-171,611,enemigo llegó al castillo,2025-10-19 19:04:31
+002,8,-171,215,enemigo llegó al castillo,2025-10-19 19:04:33
+002,8,-171,505,enemigo llegó al castillo,2025-10-19 19:04:35
+002,8,-171,548,enemigo llegó al castillo,2025-10-19 19:04:37
+001,4,963,514,enemigo eliminado,2025-10-19 19:11:40
+001,4,978,56,enemigo eliminado,2025-10-19 19:11:42
+001,4,972,105,enemigo eliminado,2025-10-19 19:11:44
+001,4,948,285,enemigo eliminado,2025-10-19 19:11:46
+001,4,-171,325,enemigo llegó al castillo,2025-10-19 19:11:54
+001,4,-171,121,enemigo llegó al castillo,2025-10-19 19:11:56
+001,4,-171,302,enemigo llegó al castillo,2025-10-19 19:11:58
+001,4,-171,372,enemigo llegó al castillo,2025-10-19 19:12:00
+001,4,-171,633,enemigo llegó al castillo,2025-10-19 19:12:02
+l,7,452,325,enemigo eliminado,2025-10-19 19:15:06
+l,7,680,99,enemigo eliminado,2025-10-19 19:15:08
+l,7,240,32,enemigo eliminado,2025-10-19 19:15:10
+l,7,394,94,enemigo eliminado,2025-10-19 19:15:13
+l,7,466,346,enemigo eliminado,2025-10-19 19:15:14
+l,7,466,260,enemigo eliminado,2025-10-19 19:15:16
+l,7,18,241,enemigo llegó al castillo,2025-10-19 19:15:22
+l,7,18,323,enemigo llegó al castillo,2025-10-19 19:15:23
+l,7,18,383,enemigo llegó al castillo,2025-10-19 19:15:25
+l,7,18,213,enemigo llegó al castillo,2025-10-19 19:15:27
+l,7,18,122,enemigo llegó al castillo,2025-10-19 19:15:29
+l,8,522,133,enemigo eliminado,2025-10-19 19:20:51
+l,8,18,39,enemigo llegó al castillo,2025-10-19 19:20:57
+l,8,18,177,enemigo llegó al castillo,2025-10-19 19:20:59
+l,8,18,371,enemigo llegó al castillo,2025-10-19 19:21:01
+l,8,18,340,enemigo llegó al castillo,2025-10-19 19:21:03
+l,8,18,155,enemigo llegó al castillo,2025-10-19 19:21:05
+001,9,1269,312,enemigo eliminado,2025-10-19 19:21:45
+001,9,618,319,enemigo eliminado,2025-10-19 19:21:46
+001,9,999,524,enemigo eliminado,2025-10-19 19:21:48
+001,9,933,477,enemigo eliminado,2025-10-19 19:21:50
+001,9,-171,538,enemigo llegó al castillo,2025-10-19 19:21:57
+001,9,-171,393,enemigo llegó al castillo,2025-10-19 19:21:59
+001,9,-171,498,enemigo llegó al castillo,2025-10-19 19:22:01
+001,9,-171,85,enemigo llegó al castillo,2025-10-19 19:22:03
+001,9,-171,71,enemigo llegó al castillo,2025-10-19 19:22:05
+l,10,1005,93,enemigo eliminado,2025-10-19 19:23:01
+l,10,861,412,enemigo eliminado,2025-10-19 19:23:03
+l,10,882,575,enemigo eliminado,2025-10-19 19:23:05
+l,10,975,233,enemigo eliminado,2025-10-19 19:23:07
+l,10,-171,456,enemigo llegó al castillo,2025-10-19 19:23:14
+l,10,-171,224,enemigo llegó al castillo,2025-10-19 19:23:16
+l,10,-171,378,enemigo llegó al castillo,2025-10-19 19:23:18
+l,10,-171,618,enemigo llegó al castillo,2025-10-19 19:23:20
+l,10,-171,25,enemigo llegó al castillo,2025-10-19 19:23:22

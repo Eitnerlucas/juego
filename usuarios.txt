@@ -1,2 +1,14 @@
 l,l,l,l
 001, lucas, joa, 001
+L,L,L,L
+L,L,L,L
+002,LUCAS,JOA,002
+002,lucas,joa,002
+001,lucas,joa,001
+001,lucas,joa,002
+l,l,l,l
+l,l,l,l
+l,l,l,l
+l,l,l,l
+001,lucas,joa,002
+l,l,l,l

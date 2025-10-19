@@ -624,27 +624,67 @@ class GestionMatriz:
 
     def mostrar_matriz_3D_con_puntero(self):
         print("\n=== MATRIZ 3D (MÉTODO DEL PUNTERO) ===")
+        
         partida_puntero = 0
+        total_general = 0  # total de todas las partidas
+        
         while partida_puntero < len(self.matriz_3D):
             partida = self.matriz_3D[partida_puntero]
             total_partida = 0
+            
             print(f"\nPartida {partida_puntero + 1}:")
+            print("Mes | Obj0 | Obj1 | Total Mes")
+            print("-------------------------------")
+            
             mes_puntero = 0
             while mes_puntero < len(partida):
                 mes = partida[mes_puntero]
                 objeto_puntero = 0
                 total_mes = 0
+                fila_datos = []
+                
+                # recorrer objetos (Obj0, Obj1)
                 while objeto_puntero < len(mes):
                     valor = mes[objeto_puntero]
+                    fila_datos.append(valor)
                     total_mes += valor
                     objeto_puntero += 1
-                print(f"  Mes {mes_puntero + 1} -> Total: {total_mes}")
+                
+                # imprimir la fila con totales
+                if total_mes > 0:  # mostrar solo meses con datos
+                    print(f"{mes_puntero + 1:3} | " + " | ".join(f"{v:5}" for v in fila_datos) + f" | {total_mes:10}")
+                
                 total_partida += total_mes
                 mes_puntero += 1
-            print(f"Total partida: {total_partida}")
+            
+            print("-------------------------------")
+            print(f"Total partida {partida_puntero + 1}: {total_partida}")
+            total_general += total_partida
             partida_puntero += 1
-
-
+        
+        # Mostrar totales por objeto
+        objetos = len(self.matriz_3D[0][0]) if self.matriz_3D and self.matriz_3D[0] else 0
+        tot_obj = [0] * objetos
+        partida_puntero = 0
+        
+        # recorrer todo el 3D para sumar objetos
+        while partida_puntero < len(self.matriz_3D):
+            partida = self.matriz_3D[partida_puntero]
+            mes_puntero = 0
+            while mes_puntero < len(partida):
+                mes = partida[mes_puntero]
+                objeto_puntero = 0
+                while objeto_puntero < len(mes):
+                    tot_obj[objeto_puntero] += mes[objeto_puntero]
+                    objeto_puntero += 1
+                mes_puntero += 1
+            partida_puntero += 1
+        
+        print("\nTotales generales por objeto:", " | ".join(f"Obj{j}:{v}" for j, v in enumerate(tot_obj)))
+        print("Total 3D general:", total_general)
+    
+    
+    
 
 # ====== Juego ======
 class Juego:
@@ -682,6 +722,11 @@ class Juego:
         self.jefe = None  # referencia al jefe
         self.max_nivel = 5  # Nivel máximo para limitar la dificultad
         self.barras_vidas = cargar_frames(ruta("Sprite/barra"), escala = 3)
+        self.fecha = datetime.now()
+        self.dia = self.fecha.day - 1
+        self.mes = self.fecha.month - 1
+
+        self.partida_idx = self.partidas_jugadas - 1
 
     def subir_nivel(self):
         if self.nivel < self.max_nivel:
@@ -767,6 +812,8 @@ class Juego:
                 else:
                     self.vidas -= 1
                     self.puntaje_B += 1
+                    self.matriz.cargar_matriz_3D(self.partida_idx, self.mes, 1)
+                    self.matriz.cargar_matriz_dias(self.dia, 1)
                     self.matriz.cargar_matriz_jugadas(self.contador_jugadas, 1)
                     self.contador_jugadas += 1
                     cod_usuario = obtener_codigo_usuario()[0]
@@ -787,6 +834,8 @@ class Juego:
         if colisiones:
             kills = len(colisiones)
             self.puntaje_A += kills
+            self.matriz.cargar_matriz_3D(self.partida_idx, self.mes, 0)
+            self.matriz.cargar_matriz_dias(self.dia, 0)
             self.matriz.cargar_matriz_jugadas(self.contador_jugadas, 0)
             self.contador_jugadas += 1
 
@@ -847,7 +896,7 @@ class Juego:
 
 
         if self.game_over:
-            msg = fuente.render("Presiona ESC para ver los resultados", True, (255, 255, 255))
+            msg = fuente.render("Presiona ESC para ver los resultados", True, (COLOR_TEXTO_REGISTRO))
             rect = msg.get_rect(center=(ANCHO // 2, ALTO // 2 + 60))
             pantalla.blit(msg, rect)
             pygame.display.flip()
@@ -893,7 +942,6 @@ class Juego:
             self.actualizar(dt)
             self.dibujar(pantalla)
             pygame.display.flip()
-
 
 # ====== Ejecutar ======
 if __name__ == "__main__":
