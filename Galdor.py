@@ -5,32 +5,30 @@ import os
 from pygame.sprite import LayeredUpdates
 from datetime import datetime
 
-# ====== Configuración ======
+# ====== Configuración ============================================================================================================
 ANCHO, ALTO = 1400, 800
 FPS = 75
 COLOR_TEXTO = (255, 255, 255)
 COLOR_TEXTO_REGISTRO = (255, 205, 0)
 
-# ====== Inicialización ======
+# ====== Inicialización ==================================================================================================
 pygame.init()
 pantalla = pygame.display.set_mode((ANCHO, ALTO))
 pygame.display.set_caption("Juego de Eitner")
 clock = pygame.time.Clock()
 
-# === RUTA BASE ===
+# === RUTA BASE ==========================================================================================================
 BASE_DIR = os.path.dirname(__file__)
 
 def ruta(relativa):
     return os.path.join(BASE_DIR, relativa)
 
 def colision_mask_segura(sprite1, sprite2):
-    """Evita errores cuando una de las máscaras es None."""
     if sprite1.mask is None or sprite2.mask is None:
         return False  # no hay colisión posible
-    return pygame.sprite.collide_mask(sprite1, sprite2)
+    return pygame.sprite.collide_mask(sprite1, sprite2) #funcion de deteccion de colisiones por pixel
 
-
-# === FONDOS ===
+# =============== FONDOS ===============================================================================================
 fondo_inicio = pygame.image.load(ruta("fondo_galdor.png")).convert()
 fondo_inicio = pygame.transform.scale(fondo_inicio, (ANCHO, ALTO))
 fondo_juego = pygame.image.load(ruta("dungeon.png")).convert()
@@ -38,7 +36,7 @@ fondo_juego = pygame.transform.scale(fondo_juego, (ANCHO, ALTO))
 fuente = pygame.font.Font(ruta("QuinqueFive.ttf"), 10)
 fuente_R = pygame.font.Font(ruta("QuinqueFive.ttf"), 15)
 
-# ====== Funciones de carga de frames ======
+# ====== Funciones de carga de frames ============================================================================================
 def cargar_frames(carpeta, escala=3):
     frames = []
     if not os.path.exists(carpeta):
@@ -54,7 +52,29 @@ def cargar_frames(carpeta, escala=3):
             frames.append(img)
     return frames
 
-# ====== Clases base ======
+
+def pantalla_inicio():
+    activo = True
+    while activo:
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif evento.type == pygame.KEYDOWN:
+                if evento.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
+                else:
+                    return
+        pantalla.blit(fondo_inicio, (0, 0))
+        instruccion = fuente.render("Presiona cualquier tecla para comenzar", True, (180, 180, 180))
+        salir = fuente.render("Presiona ESC para salir", True, (180, 100, 100))
+        pantalla.blit(instruccion, (ANCHO // 2 - instruccion.get_width() // 2, ALTO // 2))
+        pantalla.blit(salir, (ANCHO // 2 - salir.get_width() // 2, ALTO // 2 + 40))
+        pygame.display.flip()
+        clock.tick(FPS)
+
+# ====== Clases ============================================================================================================
 class SpriteAnimado(pygame.sprite.Sprite):
     def __init__(self, animaciones, pos_inicial, escala=1, accion_inicial=None):
         super().__init__()
@@ -130,27 +150,6 @@ class Bala(pygame.sprite.Sprite):
         if self.rect.right < 0 or self.rect.left > ANCHO:
             self.kill()
 
-# ====== Pantallas iniciales ======
-def pantalla_inicio():
-    activo = True
-    while activo:
-        for evento in pygame.event.get():
-            if evento.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            elif evento.type == pygame.KEYDOWN:
-                if evento.key == pygame.K_ESCAPE:
-                    pygame.quit()
-                    sys.exit()
-                else:
-                    return
-        pantalla.blit(fondo_inicio, (0, 0))
-        instruccion = fuente.render("Presiona cualquier tecla para comenzar", True, (180, 180, 180))
-        salir = fuente.render("Presiona ESC para salir", True, (180, 100, 100))
-        pantalla.blit(instruccion, (ANCHO // 2 - instruccion.get_width() // 2, ALTO // 2))
-        pantalla.blit(salir, (ANCHO // 2 - salir.get_width() // 2, ALTO // 2 + 40))
-        pygame.display.flip()
-        clock.tick(FPS)
 
 def pantalla_registro():
     texto = ""
@@ -624,49 +623,49 @@ class GestionMatriz:
 
     def mostrar_matriz_3D_con_puntero(self):
         print("\n=== MATRIZ 3D (MÉTODO DEL PUNTERO) ===")
-        
+
         partida_puntero = 0
         total_general = 0  # total de todas las partidas
-        
+
         while partida_puntero < len(self.matriz_3D):
             partida = self.matriz_3D[partida_puntero]
             total_partida = 0
-            
+
             print(f"\nPartida {partida_puntero + 1}:")
             print("Mes | Obj0 | Obj1 | Total Mes")
             print("-------------------------------")
-            
+
             mes_puntero = 0
             while mes_puntero < len(partida):
                 mes = partida[mes_puntero]
                 objeto_puntero = 0
                 total_mes = 0
                 fila_datos = []
-                
+
                 # recorrer objetos (Obj0, Obj1)
                 while objeto_puntero < len(mes):
                     valor = mes[objeto_puntero]
                     fila_datos.append(valor)
                     total_mes += valor
                     objeto_puntero += 1
-                
+
                 # imprimir la fila con totales
                 if total_mes > 0:  # mostrar solo meses con datos
                     print(f"{mes_puntero + 1:3} | " + " | ".join(f"{v:5}" for v in fila_datos) + f" | {total_mes:10}")
-                
+
                 total_partida += total_mes
                 mes_puntero += 1
-            
+
             print("-------------------------------")
             print(f"Total partida {partida_puntero + 1}: {total_partida}")
             total_general += total_partida
             partida_puntero += 1
-        
+
         # Mostrar totales por objeto
         objetos = len(self.matriz_3D[0][0]) if self.matriz_3D and self.matriz_3D[0] else 0
         tot_obj = [0] * objetos
         partida_puntero = 0
-        
+
         # recorrer todo el 3D para sumar objetos
         while partida_puntero < len(self.matriz_3D):
             partida = self.matriz_3D[partida_puntero]
@@ -679,12 +678,12 @@ class GestionMatriz:
                     objeto_puntero += 1
                 mes_puntero += 1
             partida_puntero += 1
-        
+
         print("\nTotales generales por objeto:", " | ".join(f"Obj{j}:{v}" for j, v in enumerate(tot_obj)))
         print("Total 3D general:", total_general)
-    
-    
-    
+
+
+
 
 # ====== Juego ======
 class Juego:
