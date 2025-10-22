@@ -67,16 +67,84 @@ def pantalla_inicio():
                 else:
                     return
         pantalla.blit(fondo_inicio, (0, 0))
-        instruccion = fuente.render("Presiona cualquier tecla para comenzar", True, (180, 180, 180))
+        instruccion = fuente.render("Presiona cualquier tecla para comenzar", False, (180, 180, 180))
         salir = fuente.render("Presiona ESC para salir", True, (180, 100, 100))
         pantalla.blit(instruccion, (ANCHO // 2 - instruccion.get_width() // 2, ALTO // 2))
         pantalla.blit(salir, (ANCHO // 2 - salir.get_width() // 2, ALTO // 2 + 40))
         pygame.display.flip()
         clock.tick(FPS)
 
+def pantalla_registro():
+    texto = ""
+    activo = True
+    while activo:
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif evento.type == pygame.KEYDOWN:
+                if evento.key == pygame.K_RETURN and texto.strip() != "":
+                    with open(ruta("usuarios.txt"), "a") as archivo:
+                        archivo.write(f"{texto}\n")
+                    return texto
+                elif evento.key == pygame.K_BACKSPACE:
+                    texto = texto[:-1]
+                else:
+                    texto += evento.unicode
+        pantalla.blit(fondo_inicio, (0, 0))
+        msg = fuente_R.render("Ingresar: codigo, nombre, apodo, clave", True, COLOR_TEXTO_REGISTRO)
+        pantalla.blit(msg, (340, 230))
+        render = fuente_R.render(texto, False, COLOR_TEXTO_REGISTRO)
+        pantalla.blit(render, (350, 280))
+        pygame.display.flip()
+        clock.tick(FPS)
+
+def obtener_codigo_usuario():
+    with open(ruta("usuarios.txt"), "r") as archivo:
+        for linea in archivo:
+            campos = linea.strip().split(",")
+            if len(campos) < 4:
+                continue
+            cod_usuario, nombre, apodo, clave = campos[0], campos[1], campos[2], campos[3]
+    return cod_usuario, nombre, apodo, clave
+
+# ====== Gestión de partidas y colisiones ======
+def acumulador_partidas():
+    archivo_path = ruta("acumulador_partidas.txt")
+    if not os.path.exists(archivo_path):
+        with open(archivo_path, "w") as archivo:
+            archivo.write("0")
+        return 1
+    else:
+        with open(archivo_path, "r") as archivo:
+            linea = archivo.readline()
+            return int(linea.strip()) + 1 if linea else 1
+
+def guardar_partida(num):
+    with open(ruta("acumulador_partidas.txt"), "w") as archivo:
+        archivo.write(str(num))
+
+def guardar_detalle_partida(cod_usuario, num_partida, puntaje_a, puntaje_b):
+    archivo_path = ruta("detalle_partidas.txt")
+    fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    id_jugador = 1
+    if os.path.exists(archivo_path):
+        with open(archivo_path, "r") as f:
+            lineas = f.readlines()
+        if lineas:
+            ultima_linea = lineas[-1].strip()
+            id_jugador = int(ultima_linea.split(",")[0]) + 1
+    with open(archivo_path, "a") as f:
+        f.write(f"{id_jugador},{cod_usuario},{num_partida},{puntaje_a},{puntaje_b},{fecha}\n")
+
+def Guardar_colisiones(cod_usuario, num_partida, x, y, obs="danio a enemigo"):
+    fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open(ruta("colisiones.txt"), "a") as f:
+        f.write(f"{cod_usuario},{num_partida},{x},{y},{obs},{fecha}\n")
+
 # ====== Clases ============================================================================================================
 class SpriteAnimado(pygame.sprite.Sprite):
-    def __init__(self, animaciones, pos_inicial, escala=1, accion_inicial=None):
+    def __init__(self, animaciones, pos_inicial, accion_inicial=None):
         super().__init__()
         self.animaciones = animaciones
         self.accion_actual = accion_inicial if accion_inicial and accion_inicial in animaciones else list(animaciones.keys())[0]
@@ -93,7 +161,7 @@ class SpriteAnimado(pygame.sprite.Sprite):
             self.mask = pygame.mask.from_surface(self.image)
         self.timer_animacion = 0
         self.velocidad_animacion = 120
-        self.escala = escala
+
 
     def cambiar_accion(self, nueva_accion):
         if nueva_accion != self.accion_actual and nueva_accion in self.animaciones:
@@ -151,89 +219,22 @@ class Bala(pygame.sprite.Sprite):
             self.kill()
 
 
-def pantalla_registro():
-    texto = ""
-    activo = True
-    while activo:
-        for evento in pygame.event.get():
-            if evento.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            elif evento.type == pygame.KEYDOWN:
-                if evento.key == pygame.K_RETURN and texto.strip() != "":
-                    with open(ruta("usuarios.txt"), "a") as archivo:
-                        archivo.write(f"{texto}\n")
-                    return texto
-                elif evento.key == pygame.K_BACKSPACE:
-                    texto = texto[:-1]
-                else:
-                    texto += evento.unicode
-        pantalla.blit(fondo_inicio, (0, 0))
-        msg = fuente_R.render("Ingresar: codigo, nombre, apodo, clave", True, COLOR_TEXTO_REGISTRO)
-        pantalla.blit(msg, (340, 230))
-        render = fuente_R.render(texto, True, COLOR_TEXTO_REGISTRO)
-        pantalla.blit(render, (350, 280))
-        pygame.display.flip()
-        clock.tick(FPS)
-
-def obtener_codigo_usuario():
-    with open(ruta("usuarios.txt"), "r") as archivo:
-        for linea in archivo:
-            campos = linea.strip().split(",")
-            if len(campos) < 4:
-                continue
-            cod_usuario, nombre, apodo, clave = campos[0], campos[1], campos[2], campos[3]
-    return cod_usuario, nombre, apodo, clave
-
-# ====== Gestión de partidas y colisiones ======
-def acumulador_partidas():
-    archivo_path = ruta("acumulador_partidas.txt")
-    if not os.path.exists(archivo_path):
-        with open(archivo_path, "w") as archivo:
-            archivo.write("0")
-        return 1
-    else:
-        with open(archivo_path, "r") as archivo:
-            linea = archivo.readline()
-            return int(linea.strip()) + 1 if linea else 1
-
-def guardar_partida(num):
-    with open(ruta("acumulador_partidas.txt"), "w") as archivo:
-        archivo.write(str(num))
-
-def guardar_detalle_partida(cod_usuario, num_partida, puntaje_a, puntaje_b):
-    archivo_path = ruta("detalle_partidas.txt")
-    fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    id_jugador = 1
-    if os.path.exists(archivo_path):
-        with open(archivo_path, "r") as f:
-            lineas = f.readlines()
-        if lineas:
-            ultima_linea = lineas[-1].strip()
-            id_jugador = int(ultima_linea.split(",")[0]) + 1
-    with open(archivo_path, "a") as f:
-        f.write(f"{id_jugador},{cod_usuario},{num_partida},{puntaje_a},{puntaje_b},{fecha}\n")
-
-def Guardar_colisiones(cod_usuario, num_partida, x, y, obs="enemigo eliminado"):
-    fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    with open(ruta("colisiones.txt"), "a") as f:
-        f.write(f"{cod_usuario},{num_partida},{x},{y},{obs},{fecha}\n")
 
 # ====== Clases de Jugador y Enemigos ======
 class Jugador(SpriteAnimado):
-    def __init__(self, x, y, escala=2):
+    def __init__(self, x, y):
         animaciones = {
             "quieto": cargar_frames(ruta("Sprite/jugador/quieto")),
             "run": cargar_frames(ruta("Sprite/jugador/run")),
             "shoot": cargar_frames(ruta("Sprite/jugador/shoot")),
             "dead": cargar_frames(ruta("Sprite/jugador/dead"))
         }
-        super().__init__(animaciones, (x, y), escala=escala)
+        super().__init__(animaciones, (x, y))
         self.vel_y = 0
         self.velocidad = 10
         self.direccion = "derecha"
         self.disparando = False
-        self.tiempo_recarga = 150
+        self.tiempo_recarga = 170
         self.ultimo_disparo = 0
         self.accion_previa = "quieto"
         self.bala_disparada = False
@@ -263,7 +264,7 @@ class Jugador(SpriteAnimado):
             self.cambiar_accion("shoot")
             self.ultimo_disparo = tiempo_actual
 
-    def update(self, *args):
+    def update(self):
         dt = clock.get_time()
         teclas = pygame.key.get_pressed()
         self.manejar_input(teclas)
@@ -273,7 +274,7 @@ class Jugador(SpriteAnimado):
             self.disparar()
         self.update_animacion(dt)
         if self.disparando and self.frames:
-            key_frame = 1 if len(self.frames) > 1 else len(self.frames) - 1
+            key_frame = 3 if len(self.frames) > 1 else len(self.frames) - 1
             key_frame = max(0, min(key_frame, len(self.frames) - 1))
             if self.indice_frame == key_frame and not self.bala_disparada:
                 self.juego.crear_bala(self.rect.centerx + 50, self.rect.centery, self.direccion)
@@ -284,7 +285,7 @@ class Jugador(SpriteAnimado):
                 self.cambiar_accion(self.accion_previa)
 
 class Enemigo(SpriteAnimado):
-    def __init__(self, y, velocidad, escala=1):
+    def __init__(self, y, velocidad):
         animaciones = {
             "enemy run": cargar_frames(ruta("Sprite/enemigo/enemy run"), escala=2.75),
             "enemy down": cargar_frames(ruta("Sprite/enemigo/enemy down"), escala=2.75)
@@ -294,7 +295,6 @@ class Enemigo(SpriteAnimado):
         self.vida = 1
         self.max_vida = 1
         self.muerto = False
-        self.escala = escala
 
     def recibir_dano(self, cantidad):
         self.vida -= cantidad
@@ -318,7 +318,7 @@ class Enemigo(SpriteAnimado):
 
 # ====== Nuevo enemigo a partir del nivel 2 ======
 class Enemigo2(SpriteAnimado):
-    def __init__(self, y, velocidad, escala=6):
+    def __init__(self, y, velocidad):
         animaciones = {
             "run": cargar_frames(ruta("Sprite/enemidos/caminata"), escala=3.75),
             "down": cargar_frames(ruta("Sprite/enemidos/esquelemuerte"), escala=3.75)
@@ -327,7 +327,6 @@ class Enemigo2(SpriteAnimado):
         self.vel_x = velocidad
         self.vida = 1
         self.max_vida = 1
-        self.escala = escala
         self.muerto = False
         
 
@@ -355,13 +354,12 @@ class Enemigo2(SpriteAnimado):
 
 # ====== Clase Jefe ======
 class Jefe(pygame.sprite.Sprite):
-    def __init__(self, x, y, escala=3):
+    def __init__(self, x, y):
         super().__init__()
-        self.escala = escala
         self.animaciones = {
-            'caminar': self.cargar_animacion('Sprite/jefe/caminar'),
-            'danio': self.cargar_animacion('Sprite/jefe/danio'),
-            'muerte': self.cargar_animacion('Sprite/jefe/muerte')
+            'caminar': cargar_frames(ruta('Sprite/jefe/caminar'),escala=3),
+            'danio': cargar_frames(ruta('Sprite/jefe/danio'),escala=3),
+            'muerte': cargar_frames(ruta('Sprite/jefe/muerte'),escala=3)
         }
         self.estado = 'caminar'
         self.frame = 0
@@ -372,15 +370,6 @@ class Jefe(pygame.sprite.Sprite):
         self.vivo = True
         self.mask = pygame.mask.from_surface(self.image)
 
-    def cargar_animacion(self, ruta_carpeta):
-        imagenes = []
-        for nombre in sorted(os.listdir(ruta_carpeta)):
-            img = pygame.image.load(os.path.join(ruta_carpeta, nombre)).convert_alpha()
-            ancho = int(img.get_width() * self.escala)
-            alto = int(img.get_height() * self.escala)
-            img = pygame.transform.scale(img, (ancho, alto))
-            imagenes.append(img)
-        return imagenes
 
     def recibir_dano(self, cantidad):
         if not self.vivo:
@@ -401,6 +390,7 @@ class Jefe(pygame.sprite.Sprite):
         if self.estado == 'danio' and ahora - self.tiempo_danio > 300:
             if self.vivo:
                 self.estado = 'caminar'
+                
         self.frame += 0.2
         if self.frame >= len(self.animaciones[self.estado]):
             if self.estado == 'muerte':
@@ -416,12 +406,12 @@ class Jefe(pygame.sprite.Sprite):
 
 # ====== Jefe2 para nivel >=2 ======
 class Jefe2(Jefe):
-    def __init__(self, x, y, escala=4):
-        super().__init__(x, y, escala)
+    def __init__(self, x, y):
+        super().__init__(x, y)
         self.animaciones = {
-            "caminar": cargar_frames(ruta("Sprite/jefedos/walk"), escala),
-            "danio": cargar_frames(ruta("Sprite/jefedos/danio"), escala),
-            "muerte": cargar_frames(ruta("Sprite/jefedos/muerte"), escala)
+            "caminar": cargar_frames(ruta("Sprite/jefedos/walk"), 4),
+            "danio": cargar_frames(ruta("Sprite/jefedos/danio"), 4),
+            "muerte": cargar_frames(ruta("Sprite/jefedos/muerte"), 4)
         }
         self.estado = "caminar"
         self.frame = 0
@@ -433,15 +423,6 @@ class Jefe2(Jefe):
         self.mask = pygame.mask.from_surface(self.image)
 
 
-    def cargar_animacion(self, ruta_carpeta):
-        imagenes = []
-        for nombre in sorted(os.listdir(ruta_carpeta)):
-            img = pygame.image.load(os.path.join(ruta_carpeta, nombre)).convert_alpha()
-            ancho = int(img.get_width() * self.escala)
-            alto = int(img.get_height() * self.escala)
-            img = pygame.transform.scale(img, (ancho, alto))
-            imagenes.append(img)
-        return imagenes
 
     def recibir_dano(self, cantidad):
         if not self.vivo:
@@ -478,7 +459,7 @@ class Jefe2(Jefe):
 
 # ====== Clase Juego ======
 class GestionMatriz:
-    def __init__(self, MAX_JUGADAS=50, NUM_OBJETOS=2, DIAS =31, MES=12, PARTIDAS=10):
+    def __init__(self, MAX_JUGADAS=100, NUM_OBJETOS=2, DIAS =31, MES=12, PARTIDAS=10):
         #PRIMERA MATRIZ (JUGADAS X OBJETOS)
         self.matriz_jugadas = [[0 for _ in range(NUM_OBJETOS)] for _ in range(MAX_JUGADAS)] #[[cuantos elementos en cada fila] cuantas filas en cada matriz]
         #SEGUNDA MATRIZ (DIAS X OBJETOS)
@@ -496,13 +477,10 @@ class GestionMatriz:
         self.matriz_3D[partida][mes][objeto] += 1
         
     def calcular_totales(self):
-        # Totales por fila (por jugada)
         totales_filas = [sum(fila) for fila in self.matriz_jugadas]
 
-        # Totales por columna (por tipo de objeto/evento)
         totales_columnas = [sum(col) for col in zip(*self.matriz_jugadas)]
-
-        # Total general (suma de todo)
+        
         total_general = sum(totales_filas)
     
         return totales_filas, totales_columnas, total_general
@@ -513,7 +491,6 @@ class GestionMatriz:
         for i, fila in enumerate(self.matriz_jugadas):
             print(f"Fila {i + 1}: {fila} | Total Fila: {sum(fila)}")
 
-        # Totales por columna
         totales_columnas = [sum(col) for col in zip(*self.matriz_jugadas)]
         print(f"Totales por objeto: {totales_columnas}")
         print(f"Total general: {sum(totales_columnas)}")
@@ -550,22 +527,19 @@ class GestionMatriz:
         hay_partidas_con_movimiento = False  # bandera para saber si hay alguna partida válida
 
         for idx_partida, partida in enumerate(self.matriz_3D):
-            # Calcular el total de la partida (suma de todos los objetos y meses)
             total_partida = sum(sum(mes) for mes in partida)
 
             if total_partida == 0:
-                continue  # si no hubo movimientos, no se muestra esta partida
+                continue  
 
             hay_partidas_con_movimiento = True
             print(f"\nPartida {idx_partida + 1}")
             print("Mes | Obj0 | Obj1 | Total Mes")
             print("------------------------------")
-
-            # mostrar todos los meses, aunque tengan ceros
+            # mostrar todos los meses
             for idx_mes, mes in enumerate(partida):
                 total_mes = sum(mes)
-                print(f"{idx_mes + 1:3} | " + " | ".join(f"{v:5}" for v in mes) + f" | {total_mes:10}")
-
+                print(f"{idx_mes + 1:3} | " + " | ".join(f"{v:5}" for v in mes) + f" | {total_mes:10}")               
             print("------------------------------")
             print(f"Total partida {idx_partida + 1}: {total_partida}")
 
@@ -697,7 +671,7 @@ class Juego:
 
         self.partidas_jugadas = acumulador_partidas()  # llama a la funcion para contar las partidas jugadas
         guardar_partida(self.partidas_jugadas)  # guarda la cantidad de partidas jugadas en el archivo
-        self.jugador = Jugador(60, ALTO // 2)
+        self.jugador = Jugador(60, ALTO // 2,)
         self.jugador.juego = self  # ← referencia para que el jugador acceda a self.balas
 
         self.sprites = LayeredUpdates()
