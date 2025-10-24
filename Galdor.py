@@ -6,7 +6,7 @@ from pygame.sprite import LayeredUpdates
 from datetime import datetime
 
 # ====== Configuración ============================================================================================================
-ANCHO, ALTO = 1400, 800
+ANCHO, ALTO = 1366, 768
 FPS = 75
 COLOR_TEXTO = (255, 255, 255)
 COLOR_TEXTO_REGISTRO = (255, 205, 0)
@@ -52,7 +52,7 @@ def cargar_frames(carpeta, escala=3):
             frames.append(img)
     return frames
 
-
+#==============================================================================================================================================================================================================================================
 def pantalla_inicio():
     activo = True
     while activo:
@@ -73,7 +73,7 @@ def pantalla_inicio():
         pantalla.blit(salir, (ANCHO // 2 - salir.get_width() // 2, ALTO // 2 + 40))
         pygame.display.flip()
         clock.tick(FPS)
-
+#==============================================================================================================================================================================================================================================
 def pantalla_registro():
     texto = ""
     activo = True
@@ -92,23 +92,24 @@ def pantalla_registro():
                 else:
                     texto += evento.unicode
         pantalla.blit(fondo_inicio, (0, 0))
-        msg = fuente_R.render("Ingresar: codigo, nombre, apodo, clave", True, COLOR_TEXTO_REGISTRO)
-        pantalla.blit(msg, (340, 230))
+        msg = fuente_R.render("Ingresar: codigo, nombre_usuario", True, COLOR_TEXTO_REGISTRO)
+        pantalla.blit(msg, (50, ALTO // 3))
         render = fuente_R.render(texto, False, COLOR_TEXTO_REGISTRO)
-        pantalla.blit(render, (350, 280))
+        pantalla.blit(render, (ANCHO // 3, ALTO // 2))
         pygame.display.flip()
         clock.tick(FPS)
-
+#==============================================================================================================================================================================================================================================
 def obtener_codigo_usuario():
     with open(ruta("usuarios.txt"), "r") as archivo:
         for linea in archivo:
             campos = linea.strip().split(",")
-            if len(campos) < 4:
+            if len(campos) < 2:
                 continue
             cod_usuario, nombre, apodo, clave = campos[0], campos[1], campos[2], campos[3]
     return cod_usuario, nombre, apodo, clave
 
-# ====== Gestión de partidas y colisiones ======
+
+#==============================================================================================================================================================================================================================================
 def acumulador_partidas():
     archivo_path = ruta("acumulador_partidas.txt")
     if not os.path.exists(archivo_path):
@@ -136,13 +137,15 @@ def guardar_detalle_partida(cod_usuario, num_partida, puntaje_a, puntaje_b):
             id_jugador = int(ultima_linea.split(",")[0]) + 1
     with open(archivo_path, "a") as f:
         f.write(f"{id_jugador},{cod_usuario},{num_partida},{puntaje_a},{puntaje_b},{fecha}\n")
-
+       
+#==============================================================================================================================================================================================================================================
 def Guardar_colisiones(cod_usuario, num_partida, x, y, obs="danio a enemigo"):
     fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open(ruta("colisiones.txt"), "a") as f:
         f.write(f"{cod_usuario},{num_partida},{x},{y},{obs},{fecha}\n")
+            
 
-# ====== Clases ============================================================================================================
+# ====== Clases ==============================================================================================================================================================================================================================================
 class SpriteAnimado(pygame.sprite.Sprite):
     def __init__(self, animaciones, pos_inicial, accion_inicial=None):
         super().__init__()
@@ -524,7 +527,7 @@ class GestionMatriz:
 
     def mostrar_matriz_3D(self):
         print("=== MATRIZ 3D (SOLO PARTIDAS CON MOVIMIENTO) ===")
-        hay_partidas_con_movimiento = False  # bandera para saber si hay alguna partida válida
+        hay_partidas_con_movimiento = False  
 
         for idx_partida, partida in enumerate(self.matriz_3D):
             total_partida = sum(sum(mes) for mes in partida)
@@ -536,18 +539,19 @@ class GestionMatriz:
             print(f"\nPartida {idx_partida + 1}")
             print("Mes | Obj0 | Obj1 | Total Mes")
             print("------------------------------")
-            # mostrar todos los meses
+
+
             for idx_mes, mes in enumerate(partida):
                 total_mes = sum(mes)
                 print(f"{idx_mes + 1:3} | " + " | ".join(f"{v:5}" for v in mes) + f" | {total_mes:10}")               
             print("------------------------------")
             print(f"Total partida {idx_partida + 1}: {total_partida}")
 
-        # Si ninguna partida tuvo movimiento
+
         if not hay_partidas_con_movimiento:
             print("\nNo hay partidas registradas con movimiento aún.")
 
-        # Totales generales (solo si hubo partidas con datos)
+
         if hay_partidas_con_movimiento:
             totales_obj = [
                 sum(sum(mes[j] for mes in partida) for partida in self.matriz_3D)
@@ -610,6 +614,7 @@ class GestionMatriz:
             print("-------------------------------")
 
             mes_puntero = 0
+            
             while mes_puntero < len(partida):
                 mes = partida[mes_puntero]
                 objeto_puntero = 0
@@ -634,28 +639,7 @@ class GestionMatriz:
             print(f"Total partida {partida_puntero + 1}: {total_partida}")
             total_general += total_partida
             partida_puntero += 1
-
-        # Mostrar totales por objeto
-        objetos = len(self.matriz_3D[0][0]) if self.matriz_3D and self.matriz_3D[0] else 0
-        tot_obj = [0] * objetos
-        partida_puntero = 0
-
-        # recorrer todo el 3D para sumar objetos
-        while partida_puntero < len(self.matriz_3D):
-            partida = self.matriz_3D[partida_puntero]
-            mes_puntero = 0
-            while mes_puntero < len(partida):
-                mes = partida[mes_puntero]
-                objeto_puntero = 0
-                while objeto_puntero < len(mes):
-                    tot_obj[objeto_puntero] += mes[objeto_puntero]
-                    objeto_puntero += 1
-                mes_puntero += 1
-            partida_puntero += 1
-
-        print("\nTotales generales por objeto:", " | ".join(f"Obj{j}:{v}" for j, v in enumerate(tot_obj)))
-        print("Total 3D general:", total_general)
-
+    
 
 
 
@@ -678,6 +662,7 @@ class Juego:
         self.sprites.add(self.jugador, layer=3)
         self.grupo_balas = pygame.sprite.Group()
         self.enemigos = pygame.sprite.Group()
+        
         self.matriz = GestionMatriz()
         self.spawn_timer = 0
         self.spawn_interval = 2000
@@ -688,7 +673,7 @@ class Juego:
         self.vidas = 5
         self.game_over = False
         self.contador_jugadas = 0
-        # selfs para manejar jefes
+        #manejar jefes
         self.nivel = 1
         self.enemigos_para_jefe = 5  # cantidad de enemigos a eliminar para que aparezca el jefe
         self.jefe_activo = False  # indica si el jefe está activo en pantalla
@@ -700,7 +685,7 @@ class Juego:
         self.mes = self.fecha.month - 1
 
         self.partida_idx = self.partidas_jugadas - 1
-
+#===========================================================================================================================================================
     def subir_nivel(self):
         if self.nivel < self.max_nivel:
             self.nivel += 1
@@ -711,30 +696,27 @@ class Juego:
             self.jefe_activo = False
             self.jefe = None
         else:
-            print("¡¡ JUEGO COMPLETADO !!")
             self.game_over = True
-
+#===========================================================================================================================================================
     def manejar_eventos(self):
         for evento in pygame.event.get():
-            if evento.type == pygame.QUIT:
+            if evento.type == pygame.QUIT: #si el tipo de evento es salic, cierra todo correctamente
                 pygame.quit()
                 sys.exit()
-            if evento.type == pygame.KEYDOWN:
-                if evento.key == pygame.K_ESCAPE:
+            if evento.type == pygame.KEYDOWN: #si presiona una tecla
+                if evento.key == pygame.K_ESCAPE: #y la tecla es escape, cierra todo correctamente
                     pygame.quit()
                     sys.exit()
-
+#===========================================================================================================================================================
     def crear_bala(self, x, y, direccion):
         bala = Bala(x, y, direccion)
         self.grupo_balas.add(bala)
         self.sprites.add(bala)
 
-
+#===========================================================================================================================================================
     def actualizar(self, dt):
         if self.game_over:
             return
-
-        # Spawn de enemigos
         # Spawn de enemigos
         self.spawn_timer += dt
         if self.spawn_timer >= self.spawn_interval:
@@ -789,7 +771,7 @@ class Juego:
                     self.matriz.cargar_matriz_dias(self.dia, 1)
                     self.matriz.cargar_matriz_jugadas(self.contador_jugadas, 1)
                     self.contador_jugadas += 1
-                    cod_usuario = obtener_codigo_usuario()[0]
+                    cod_usuario,  = obtener_codigo_usuario()[0]
                     Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y,
                                       "enemigo llegó al castillo")
                 enemigo.kill()
@@ -818,7 +800,6 @@ class Juego:
                     cod_usuario = obtener_codigo_usuario()[0]
                     Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y)
 
-        # Invocar jefe según nivel
 # Invocar jefe según nivel
         if self.puntaje_A >= self.enemigos_para_jefe * self.nivel and not self.jefe_activo:
             pos_y = random.randint(100, ALTO - 400)  # posición vertical aleatoria
@@ -837,8 +818,7 @@ class Juego:
             self.sprites.add(self.jefe, layer=5)
             self.jefe_activo = True
 
-
-
+#============================================================================================================================================================
             
     def dibujar_barra_vida(self, surf):
             if not self.barras_vidas:
@@ -846,9 +826,9 @@ class Juego:
             # Elegir la imagen correcta según la vida actual (0 a 5)
             vida_index = max(0, min(self.vidas, 5))  # asegura que no salga de rango
             barra = self.barras_vidas[vida_index]
-            surf.blit(barra, (60, 0))  # posición de la barra
+            surf.blit(barra, (ANCHO -(ANCHO + 30), 0))  # posición de la barra
             # posición de la barra
-
+#============================================================================================================================================================
     def dibujar(self, surf):
         surf.blit(fondo_juego, (0, 0))
 
@@ -887,20 +867,14 @@ class Juego:
             self.matriz.mostrar_matriz_con_puntero()
             self.matriz.mostrar_matriz_dias_con_puntero()
             self.matriz.mostrar_matriz_3D_con_puntero()
-            filas, columnas, total = self.matriz.calcular_totales()
-            # Mostrar resumen
-            print("\n=== RESUMEN DE TOTALES ===")
-            print(f"Total por jugada: {filas}")
-            print(f"Total por objeto: {columnas}")
-            print(f"Total general: {total}")
-            # Identificar “mejor” y “peor” jugada
+            filas, columnas, total = self.matriz.calcular_totales()               
             if filas:
                 mejor_jugada = filas.index(max(filas)) + 1
                 peor_jugada = filas.index(min(filas)) + 1
                 print(f"\nMejor jugada: {mejor_jugada} (total {max(filas)})")
                 print(f"Peor jugada: {peor_jugada} (total {min(filas)})")
 
-            
+#============================================================================================================================================================
 
     def run(self):
         while True:
@@ -908,14 +882,14 @@ class Juego:
             self.manejar_eventos()
             teclas = pygame.key.get_pressed()
             if self.game_over and teclas[pygame.K_ESCAPE]:
-                cod_usuario, nombre, apodo, clave = obtener_codigo_usuario()
+                cod_usuario = obtener_codigo_usuario()[0]
                 guardar_detalle_partida(cod_usuario, self.partidas_jugadas, self.puntaje_A, self.puntaje_B)
                 pygame.quit()
                 sys.exit()
             self.actualizar(dt)
             self.dibujar(pantalla)
             pygame.display.flip()
-
+#============================================================================================================================================================
 # ====== Ejecutar ======
 if __name__ == "__main__":
     print(__file__)
