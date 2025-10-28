@@ -5,19 +5,19 @@ import os
 from pygame.sprite import LayeredUpdates
 from datetime import datetime
 
-# ====== Configuración ============================================================================================================
-ANCHO, ALTO = 1366, 768
+# ====== Configuración ==========================================================================================================================================================================================================================================================================================================================
+ANCHO, ALTO = 1400, 800
 FPS = 75
 COLOR_TEXTO = (255, 255, 255)
 COLOR_TEXTO_REGISTRO = (255, 205, 0)
 
-# ====== Inicialización ==================================================================================================
+# ====== Inicialización ================================================================================================================================================================================================================================================================================================================
 pygame.init()
 pantalla = pygame.display.set_mode((ANCHO, ALTO))
 pygame.display.set_caption("Juego de Eitner")
 clock = pygame.time.Clock()
 
-# === RUTA BASE ==========================================================================================================
+# === RUTA BASE ========================================================================================================================================================================================================================================================================================================================
 BASE_DIR = os.path.dirname(__file__)
 
 def ruta(relativa):
@@ -28,7 +28,7 @@ def colision_mask_segura(sprite1, sprite2):
         return False  # no hay colisión posible
     return pygame.sprite.collide_mask(sprite1, sprite2) #funcion de deteccion de colisiones por pixel
 
-# =============== FONDOS ===============================================================================================
+# =============== FONDOS =============================================================================================================================================================================================================================================================================================================
 fondo_inicio = pygame.image.load(ruta("fondo_galdor.png")).convert()
 fondo_inicio = pygame.transform.scale(fondo_inicio, (ANCHO, ALTO))
 fondo_juego = pygame.image.load(ruta("dungeon.png")).convert()
@@ -36,7 +36,7 @@ fondo_juego = pygame.transform.scale(fondo_juego, (ANCHO, ALTO))
 fuente = pygame.font.Font(ruta("QuinqueFive.ttf"), 10)
 fuente_R = pygame.font.Font(ruta("QuinqueFive.ttf"), 15)
 
-# ====== Funciones de carga de frames ============================================================================================
+# ====== Funciones de carga de frames ==========================================================================================================================================================================================================================================================================================================
 def cargar_frames(carpeta, escala=3):
     frames = []
     if not os.path.exists(carpeta):
@@ -139,12 +139,81 @@ def guardar_detalle_partida(cod_usuario, num_partida, puntaje_a, puntaje_b):
         f.write(f"{id_jugador},{cod_usuario},{num_partida},{puntaje_a},{puntaje_b},{fecha}\n")
        
 #==============================================================================================================================================================================================================================================
-def Guardar_colisiones(cod_usuario, num_partida, x, y, obs="danio a enemigo"):
-    fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    with open(ruta("colisiones.txt"), "a") as f:
-        f.write(f"{cod_usuario},{num_partida},{x},{y},{obs},{fecha}\n")
-            
 
+def registrar_colision_puntero(cod_usuario, num_partida, x, y, obs="danio a enemigo"):
+   
+   
+    fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    # ====== A) ABRIR ARCHIVO NOVEDAD Y CONTAR MOVIMIENTOS 
+    archivo_novedad = ruta("colisiones.txt")
+    if not os.path.exists(archivo_novedad):
+        with open(archivo_novedad, "w") as f:
+            pass
+
+    with open(archivo_novedad, "r") as f:
+        lineas = [linea.strip() for linea in f if linea.strip() != ""]
+
+    contador_mov = len(lineas) + 1  # nueva posición
+    registro_siguiente = 0  # siempre 0 al insertar
+    registro_anterior = 0   # se actualizará si ya tenía colisiones previas
+
+    # ====== B) LEER ARCHIVO MAESTRO PARA OBTENER POSICIONES 
+    usuarios_path = ruta("usuarios.txt")
+    usuarios = []
+    pos_final_anterior = 0
+    pos_inicial = 0
+
+    with open(usuarios_path, "r") as f:
+        for linea in f:
+            campos = linea.strip().split(",")
+            if len(campos) < 6:
+                # agregar pos_inicial y pos_final si no existen
+                while len(campos) < 6:
+                    campos.append("0")
+            if campos[0] == cod_usuario:
+                pos_inicial = int(campos[4])
+                pos_final_anterior = int(campos[5])
+            usuarios.append(campos)
+
+    # ====== C) SI POS_FINAL = 0 → PRIMERA INTERACCIÓN 
+    if pos_final_anterior == 0:
+        pos_inicial = contador_mov
+        pos_final_anterior = contador_mov
+
+    # ====== D) SI POS_FINAL != 0 → ACTUALIZAR EL REGISTRO ANTERIOR 
+
+    else:
+        if 0 < pos_final_anterior <= len(lineas):
+            # modificar la línea anterior en colisiones.txt
+            linea_vieja = lineas[pos_final_anterior - 1]
+            campos_viejos = linea_vieja.split(",")
+            if campos_viejos[0] == cod_usuario:  # coincide el usuario
+                campos_viejos[-1] = str(contador_mov)  # actualizar registro_siguiente
+                lineas[pos_final_anterior - 1] = ",".join(campos_viejos)
+
+            # regrabar archivo actualizado
+            with open(archivo_novedad, "w") as f:
+                for l in lineas:
+                    f.write(l + "\n")
+
+        registro_anterior = pos_final_anterior
+        pos_final_anterior = contador_mov
+
+    # ====== E) GRABAR NUEVA NOVEDAD 
+    with open(archivo_novedad, "a") as f:
+        f.write(f"{cod_usuario},{num_partida},{x},{y},{obs},{fecha},{registro_anterior},{registro_siguiente}\n")
+
+    # ====== F) ACTUALIZAR ARCHIVO MAESTRO 
+    
+    with open(usuarios_path, "w") as f:
+        for campos in usuarios:
+            if campos[0] == cod_usuario:
+                campos[4] = str(pos_inicial)
+                campos[5] = str(pos_final_anterior)
+            f.write(",".join(campos) + "\n")
+
+            
 # ====== Clases ==============================================================================================================================================================================================================================================
 class SpriteAnimado(pygame.sprite.Sprite):
     def __init__(self, animaciones, pos_inicial, accion_inicial=None):
@@ -223,7 +292,7 @@ class Bala(pygame.sprite.Sprite):
 
 
 
-# ====== Clases de Jugador y Enemigos ======
+# ====== Clases de Jugador y Enemigos ====================================================================================================================================================================================================================
 class Jugador(SpriteAnimado):
     def __init__(self, x, y):
         animaciones = {
@@ -319,7 +388,7 @@ class Enemigo(SpriteAnimado):
                 self.kill()
         return None
 
-# ====== Nuevo enemigo a partir del nivel 2 ======
+
 class Enemigo2(SpriteAnimado):
     def __init__(self, y, velocidad):
         animaciones = {
@@ -355,7 +424,6 @@ class Enemigo2(SpriteAnimado):
         return None
 
 
-# ====== Clase Jefe ======
 class Jefe(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
@@ -407,7 +475,6 @@ class Jefe(pygame.sprite.Sprite):
                 return "castillo"
         return None
 
-# ====== Jefe2 para nivel >=2 ======
 class Jefe2(Jefe):
     def __init__(self, x, y):
         super().__init__(x, y)
@@ -460,7 +527,6 @@ class Jefe2(Jefe):
         return None
 
 
-# ====== Clase Juego ======
 class GestionMatriz:
     def __init__(self, MAX_JUGADAS=100, NUM_OBJETOS=2, DIAS =31, MES=12, PARTIDAS=10):
         #PRIMERA MATRIZ (JUGADAS X OBJETOS)
@@ -563,87 +629,10 @@ class GestionMatriz:
             print("Total 3D general:", total_general)
 
     
-    def mostrar_matriz_con_puntero(self):
-        print("\n=== MATRIZ DE JUGADAS (MÉTODO DEL PUNTERO) ===")
-        fila_puntero = 0
-        while fila_puntero < len(self.matriz_jugadas):
-            fila = self.matriz_jugadas[fila_puntero]
-            col_puntero = 0
-            total_fila = 0
-
-            print(f"Fila {fila_puntero + 1} -> ", end="")
-            while col_puntero < len(fila):
-                valor = fila[col_puntero]
-                print(f"[Obj{col_puntero}:{valor}]", end=" ")
-                total_fila += valor
-                col_puntero += 1
-
-            print(f" | Total Fila: {total_fila}")
-            fila_puntero += 1
-            
-    def mostrar_matriz_dias_con_puntero(self):
-        print("\n=== MATRIZ DE DÍAS (MÉTODO DEL PUNTERO) ===")
-        dia_puntero = 0
-        while dia_puntero < len(self.matriz_dias):
-            fila = self.matriz_dias[dia_puntero]
-            objeto_puntero = 0
-            total_dia = 0
-
-            print(f"Día {dia_puntero + 1}: ", end="")
-            while objeto_puntero < len(fila):
-                valor = fila[objeto_puntero]
-                print(f"Obj{objeto_puntero}={valor}", end=" ")
-                total_dia += valor
-                objeto_puntero += 1
-
-            print(f"| Total día: {total_dia}")
-            dia_puntero += 1
-
-    def mostrar_matriz_3D_con_puntero(self):
-        print("\n=== MATRIZ 3D (MÉTODO DEL PUNTERO) ===")
-
-        partida_puntero = 0
-        total_general = 0  # total de todas las partidas
-
-        while partida_puntero < len(self.matriz_3D):
-            partida = self.matriz_3D[partida_puntero]
-            total_partida = 0
-
-            print(f"\nPartida {partida_puntero + 1}:")
-            print("Mes | Obj0 | Obj1 | Total Mes")
-            print("-------------------------------")
-
-            mes_puntero = 0
-            
-            while mes_puntero < len(partida):
-                mes = partida[mes_puntero]
-                objeto_puntero = 0
-                total_mes = 0
-                fila_datos = []
-
-                # recorrer objetos (Obj0, Obj1)
-                while objeto_puntero < len(mes):
-                    valor = mes[objeto_puntero]
-                    fila_datos.append(valor)
-                    total_mes += valor
-                    objeto_puntero += 1
-
-                # imprimir la fila con totales
-                if total_mes > 0:  # mostrar solo meses con datos
-                    print(f"{mes_puntero + 1:3} | " + " | ".join(f"{v:5}" for v in fila_datos) + f" | {total_mes:10}")
-
-                total_partida += total_mes
-                mes_puntero += 1
-
-            print("-------------------------------")
-            print(f"Total partida {partida_puntero + 1}: {total_partida}")
-            total_general += total_partida
-            partida_puntero += 1
     
 
 
 
-# ====== Juego ======
 class Juego:
     # dividir el texto ingresado por comas y asignar el nombre de usuario
     def __init__(self, texto):
@@ -771,9 +760,10 @@ class Juego:
                     self.matriz.cargar_matriz_dias(self.dia, 1)
                     self.matriz.cargar_matriz_jugadas(self.contador_jugadas, 1)
                     self.contador_jugadas += 1
-                    cod_usuario,  = obtener_codigo_usuario()[0]
-                    Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y,
-                                      "enemigo llegó al castillo")
+                    cod_usuario  = obtener_codigo_usuario()[0]
+                    registrar_colision_puntero(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y,
+                           "enemigo llego al castillo")
+
                 enemigo.kill()
                 if self.vidas <= 0:
                     self.game_over = True
@@ -798,8 +788,7 @@ class Juego:
                 for enemigo in enemigos:
                     enemigo.recibir_dano(1)
                     cod_usuario = obtener_codigo_usuario()[0]
-                    Guardar_colisiones(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y)
-
+                    registrar_colision_puntero(cod_usuario, self.partidas_jugadas, enemigo.rect.x, enemigo.rect.y, "danio a enemigo")
 # Invocar jefe según nivel
         if self.puntaje_A >= self.enemigos_para_jefe * self.nivel and not self.jefe_activo:
             pos_y = random.randint(100, ALTO - 400)  # posición vertical aleatoria
@@ -818,7 +807,7 @@ class Juego:
             self.sprites.add(self.jefe, layer=5)
             self.jefe_activo = True
 
-#============================================================================================================================================================
+#===================================================================================================================================================================================================================================================================
             
     def dibujar_barra_vida(self, surf):
             if not self.barras_vidas:
@@ -828,7 +817,7 @@ class Juego:
             barra = self.barras_vidas[vida_index]
             surf.blit(barra, (ANCHO -(ANCHO + 30), 0))  # posición de la barra
             # posición de la barra
-#============================================================================================================================================================
+#===================================================================================================================================================================================================================================================================
     def dibujar(self, surf):
         surf.blit(fondo_juego, (0, 0))
 
@@ -864,9 +853,6 @@ class Juego:
             self.matriz.mostrar_matriz()
             self.matriz.mostrar_matriz_dias()
             self.matriz.mostrar_matriz_3D()
-            self.matriz.mostrar_matriz_con_puntero()
-            self.matriz.mostrar_matriz_dias_con_puntero()
-            self.matriz.mostrar_matriz_3D_con_puntero()
             filas, columnas, total = self.matriz.calcular_totales()               
             if filas:
                 mejor_jugada = filas.index(max(filas)) + 1
@@ -874,7 +860,7 @@ class Juego:
                 print(f"\nMejor jugada: {mejor_jugada} (total {max(filas)})")
                 print(f"Peor jugada: {peor_jugada} (total {min(filas)})")
 
-#============================================================================================================================================================
+#===================================================================================================================================================================================================================================================================
 
     def run(self):
         while True:
@@ -889,8 +875,9 @@ class Juego:
             self.actualizar(dt)
             self.dibujar(pantalla)
             pygame.display.flip()
-#============================================================================================================================================================
-# ====== Ejecutar ======
+#===================================================================================================================================================================================================================================================================
+
+
 if __name__ == "__main__":
     print(__file__)
     pantalla_registro()
